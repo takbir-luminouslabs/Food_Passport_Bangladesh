@@ -1,0 +1,1422 @@
+[
+  {
+    "id": "haji-biryani",
+    "name_bn": "হাজীর বিরিয়ানি",
+    "name_en": "Haji Biryani",
+    "description_bn": "পুরান ঢাকার জনপ্রিয় খাসির মাংসের বিরিয়ানি।",
+    "description_en": "A well-known mutton biryani associated with Old Dhaka.",
+    "category": "rice_biryani",
+    "scope": "regional",
+    "region": {
+      "district_en": "Dhaka",
+      "district_bn": "ঢাকা",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "dinajpur-katarivog",
+    "name_bn": "দিনাজপুরের কাটারিভোগ",
+    "name_en": "Dinajpur Katarivog Rice",
+    "description_bn": "সুগন্ধি সরু চাল, যা দিনাজপুরের বিখ্যাত।",
+    "description_en": "A fragrant, fine-grained rice the Dinajpur region is known for.",
+    "category": "rice_biryani",
+    "scope": "regional",
+    "region": {
+      "district_en": "Dinajpur",
+      "district_bn": "দিনাজপুর",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "sylheti-akhni",
+    "name_bn": "সিলেটি আখনি",
+    "name_en": "Sylheti Akhni",
+    "description_bn": "মাংস ও মশলা দিয়ে রান্না করা সুগন্ধি সিলেটি পোলাও।",
+    "description_en": "A fragrant Sylheti rice dish cooked with meat and whole spices.",
+    "category": "rice_biryani",
+    "scope": "regional",
+    "region": {
+      "district_en": "Sylhet",
+      "district_bn": "সিলেট",
+      "division": "Sylhet"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "chotpoti",
+    "name_bn": "চটপটি",
+    "name_en": "Chotpoti",
+    "description_bn": "মটর, ডিম ও তেঁতুলের টকঝাল মিশ্রণ, ঢাকার জনপ্রিয় রাস্তার খাবার।",
+    "description_en": "A tangy, spicy mix of peas, egg and tamarind, popular on Dhaka streets.",
+    "category": "street_food",
+    "scope": "regional",
+    "region": {
+      "district_en": "Dhaka",
+      "district_bn": "ঢাকা",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "haleem",
+    "name_bn": "হালিম",
+    "name_en": "Haleem",
+    "description_bn": "ডাল, গম ও মাংসের ঘন খিচুড়ি-জাতীয় পদ, রমজানে বিশেষ জনপ্রিয়।",
+    "description_en": "A thick stew of lentils, wheat and meat, especially popular in Ramadan.",
+    "category": "street_food",
+    "scope": "regional",
+    "region": {
+      "district_en": "Dhaka",
+      "district_bn": "ঢাকা",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "bakarkhani",
+    "name_bn": "বাখরখানি",
+    "name_en": "Bakarkhani",
+    "description_bn": "পুরান ঢাকার সুপরিচিত স্তরযুক্ত শক্ত রুটি।",
+    "description_en": "A layered, crisp flatbread associated with Old Dhaka.",
+    "category": "pitha_snacks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Dhaka",
+      "district_bn": "ঢাকা",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "borhani",
+    "name_bn": "বোরহানি",
+    "name_en": "Borhani",
+    "description_bn": "দই, পুদিনা ও মশলার ঝাল-টক পানীয়, বিরিয়ানির সঙ্গী।",
+    "description_en": "A spiced yoghurt and mint drink served with biryani.",
+    "category": "drinks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Dhaka",
+      "district_bn": "ঢাকা",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "porabari-chomchom",
+    "name_bn": "পোড়াবাড়ীর চমচম",
+    "name_en": "Porabari Chomchom",
+    "description_bn": "টাঙ্গাইলের পোড়াবাড়ীর বিখ্যাত ছানার মিষ্টি।",
+    "description_en": "A famous milk-based sweet from Porabari in Tangail.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Tangail",
+      "district_bn": "টাঙ্গাইল",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/life-living/news/rich-history-and-tradition-our-sweets-3296651",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "muktagacha-monda",
+    "name_bn": "মুক্তাগাছার মণ্ডা",
+    "name_en": "Muktagacha Monda",
+    "description_bn": "ময়মনসিংহের মুক্তাগাছার ঐতিহ্যবাহী দুধের মিষ্টি।",
+    "description_en": "A traditional milk sweet from Muktagacha, Mymensingh.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Mymensingh",
+      "district_bn": "ময়মনসিংহ",
+      "division": "Mymensingh"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "netrokona-balish-mishti",
+    "name_bn": "নেত্রকোণার বালিশ মিষ্টি",
+    "name_en": "Netrokona Balish Mishti",
+    "description_bn": "বালিশের মতো আকৃতির নেত্রকোণার পরিচিত মিষ্টি।",
+    "description_en": "A pillow-shaped sweet Netrokona is known for.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Netrokona",
+      "district_bn": "নেত্রকোণা",
+      "division": "Mymensingh"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "cumilla-roshmalai",
+    "name_bn": "কুমিল্লার রসমালাই",
+    "name_en": "Cumilla Roshmalai",
+    "description_bn": "ঘন দুধের সিরায় ভেজানো নরম ছানার মিষ্টি।",
+    "description_en": "Soft cheese patties soaked in thickened sweet milk.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Cumilla",
+      "district_bn": "কুমিল্লা",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "natore-kacha-gola",
+    "name_bn": "নাটোরের কাঁচাগোল্লা",
+    "name_en": "Natore Kacha Gola",
+    "description_bn": "ছানা ও চিনি দিয়ে তৈরি নাটোরের বিখ্যাত মিষ্টি।",
+    "description_en": "A soft sweet made from fresh cheese and sugar, famous in Natore.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Natore",
+      "district_bn": "নাটোর",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://unb.com.bd/category/Bangladesh/natores-kachagolla-latest-bangladeshi-product-to-get-gi-recognition/120137",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "bogura-doi",
+    "name_bn": "বগুড়ার দই",
+    "name_en": "Bogura Doi",
+    "description_bn": "মাটির পাত্রে জমানো মিষ্টি দই, বগুড়ার সুপরিচিত।",
+    "description_en": "Sweet set yoghurt in clay pots, well known from Bogura.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Bogura",
+      "district_bn": "বগুড়া",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "kushtia-tiler-khaja",
+    "name_bn": "কুষ্টিয়ার তিলের খাজা",
+    "name_en": "Kushtia Tiler Khaja",
+    "description_bn": "তিল দিয়ে তৈরি কুষ্টিয়ার জিআই-স্বীকৃত মিষ্টি।",
+    "description_en": "A sesame-based sweet from Kushtia with Geographical Indication status.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Kushtia",
+      "district_bn": "কুষ্টিয়া",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "jashore-khejur-gur",
+    "name_bn": "যশোরের খেজুরের গুড়",
+    "name_en": "Jashore Date Palm Jaggery",
+    "description_bn": "শীতকালে খেজুর রস জ্বাল দিয়ে তৈরি গুড়।",
+    "description_en": "Jaggery made in winter by boiling date palm sap.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Jashore",
+      "district_bn": "যশোর",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "jashore-khejur-rosh",
+    "name_bn": "খেজুরের রস",
+    "name_en": "Khejurer Rosh (Date Palm Sap)",
+    "description_bn": "শীতের সকালের সতেজ মিষ্টি খেজুর রস।",
+    "description_en": "Fresh, sweet date palm sap enjoyed on winter mornings.",
+    "category": "drinks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Jashore",
+      "district_bn": "যশোর",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "sylhet-shatkora-beef",
+    "name_bn": "শাতকরা গরুর মাংস",
+    "name_en": "Shatkora Beef",
+    "description_bn": "টক-সুগন্ধি শাতকরা লেবুর সঙ্গে রান্না সিলেটের মাংস।",
+    "description_en": "Beef cooked with tangy, aromatic shatkora citrus, a Sylhet favourite.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Sylhet",
+      "district_bn": "সিলেট",
+      "division": "Sylhet"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "seven-layer-tea",
+    "name_bn": "সাত রঙের চা",
+    "name_en": "Seven-Layer Tea",
+    "description_bn": "শ্রীমঙ্গলের বিখ্যাত সাত স্তরের রঙিন চা।",
+    "description_en": "The colourful seven-layer tea famous in Sreemangal.",
+    "category": "drinks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Moulvibazar",
+      "district_bn": "মৌলভীবাজার",
+      "division": "Sylhet"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "kala-bhuna",
+    "name_bn": "কালা ভুনা",
+    "name_en": "Kala Bhuna",
+    "description_bn": "চট্টগ্রামের ঝাল, কালচে রঙের ধীরে রান্না করা গরুর মাংস।",
+    "description_en": "A dark, spicy, slow-cooked beef dish from Chattogram.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Chattogram",
+      "district_bn": "চট্টগ্রাম",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "chattogram-mezbani-gosht",
+    "name_bn": "চট্টগ্রামের মেজবানি মাংস",
+    "name_en": "Chattogram Mezbani Beef",
+    "description_bn": "চট্টগ্রামের মেজবান ভোজের ঝাল গরুর মাংস।",
+    "description_en": "The spicy beef curry served at Chattogram’s traditional mezban feasts.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Chattogram",
+      "district_bn": "চট্টগ্রাম",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "coxs-bazar-shutki",
+    "name_bn": "কক্সবাজারের শুঁটকি",
+    "name_en": "Cox’s Bazar Shutki",
+    "description_bn": "রোদে শুকানো সামুদ্রিক মাছের ঝাঁঝালো ভুনা।",
+    "description_en": "Sun-dried sea fish cooked into a pungent, spicy dish.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Cox's Bazar",
+      "district_bn": "কক্সবাজার",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "bamboo-chicken",
+    "name_bn": "বাঁশের চোঙায় মুরগি",
+    "name_en": "Bamboo Chicken",
+    "description_bn": "পার্বত্য চট্টগ্রামে বাঁশের চোঙায় রান্না করা মুরগি।",
+    "description_en": "Chicken cooked inside bamboo, a hill-tracts style of cooking.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Bandarban",
+      "district_bn": "বান্দরবান",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "chandpur-ilish",
+    "name_bn": "চাঁদপুরের ইলিশ",
+    "name_en": "Chandpur Ilish",
+    "description_bn": "মেঘনার ইলিশ, যার জন্য চাঁদপুর পরিচিত।",
+    "description_en": "Hilsa from the Meghna, for which Chandpur is known.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Chandpur",
+      "district_bn": "চাঁদপুর",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "bagerhat-chingri-malaikari",
+    "name_bn": "চিংড়ি মালাইকারি",
+    "name_en": "Chingri Malaikari",
+    "description_bn": "নারকেল দুধে রান্না বড় চিংড়ি, বাগেরহাট-খুলনা অঞ্চলে জনপ্রিয়।",
+    "description_en": "Prawns in coconut milk gravy, popular around Bagerhat and Khulna.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Bagerhat",
+      "district_bn": "বাগেরহাট",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "swarupkathi-guava",
+    "name_bn": "স্বরূপকাঠির পেয়ারা",
+    "name_en": "Swarupkathi Guava",
+    "description_bn": "পিরোজপুরের স্বরূপকাঠির সুপরিচিত পেয়ারা।",
+    "description_en": "The well-known guava of Swarupkathi, Pirojpur.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Pirojpur",
+      "district_bn": "পিরোজপুর",
+      "division": "Barishal"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "rangpur-haribhanga-mango",
+    "name_bn": "রংপুরের হাড়িভাঙ্গা আম",
+    "name_en": "Rangpur Haribhanga Mango",
+    "description_bn": "রংপুরের হাড়িভাঙ্গা জাতের মিষ্টি আম।",
+    "description_en": "The sweet Haribhanga mango variety of Rangpur.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Rangpur",
+      "district_bn": "রংপুর",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "chapai-khirsapat-mango",
+    "name_bn": "চাঁপাইনবাবগঞ্জের ক্ষীরসাপাত আম",
+    "name_en": "Chapainawabganj Khirsapat Mango",
+    "description_bn": "চাঁপাইনবাবগঞ্জের জিআই-স্বীকৃত ক্ষীরসাপাত আম।",
+    "description_en": "The GI-registered Khirsapat mango of Chapainawabganj.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Chapainawabganj",
+      "district_bn": "চাঁপাইনবাবগঞ্জ",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "faridpur-chui-jhal-mangsho",
+    "name_bn": "ফরিদপুরের চুইঝালের মাংস",
+    "name_en": "Faridpur Chui Jhal Meat",
+    "description_bn": "চুইঝালের ঝাঁঝালো স্বাদে রান্না করা মাংস।",
+    "description_en": "Meat cooked with the pungent chui jhal vine.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Faridpur",
+      "district_bn": "ফরিদপুর",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "gazipur-jackfruit",
+    "name_bn": "গাজীপুরের কাঁঠাল",
+    "name_en": "Gazipur Jackfruit",
+    "description_bn": "গাজীপুর, বিশেষত শ্রীপুর এলাকা মিষ্টি কাঁঠালের জন্য পরিচিত।",
+    "description_en": "Gazipur, especially the Sreepur area, is known for sweet jackfruit.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Gazipur",
+      "district_bn": "গাজীপুর",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.bssnews.net/special-stories/413094",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "gopalganj-roshogolla",
+    "name_bn": "গোপালগঞ্জের রসগোল্লা",
+    "name_en": "Gopalganj Roshogolla",
+    "description_bn": "গোপালগঞ্জের ছোট আকারের সাদা রসগোল্লা স্থানীয়ভাবে পরিচিত।",
+    "description_en": "Small white roshogolla from Gopalganj, known locally.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Gopalganj",
+      "district_bn": "গোপালগঞ্জ",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://thefinancialexpress.com.bd/food/food-hunting-on-a-day-trip-in-gopalganj",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "kishoreganj-haor-fish-curry",
+    "name_bn": "কিশোরগঞ্জের হাওরের মাছের তরকারি",
+    "name_en": "Kishoreganj Haor Fish Curry",
+    "description_bn": "হাওর অঞ্চলের দেশি মাছের ঝোল।",
+    "description_en": "A curry of local fish from the haor wetlands.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Kishoreganj",
+      "district_bn": "কিশোরগঞ্জ",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "madaripur-khirpuri",
+    "name_bn": "মাদারীপুরের ক্ষীরপুরি",
+    "name_en": "Madaripur Khirpuri",
+    "description_bn": "ঘন ক্ষীর, ছানা ও চিনি দিয়ে তৈরি মাদারীপুরের মিষ্টি।",
+    "description_en": "A sweet of thickened milk, fresh cheese and sugar, known from Madaripur.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Madaripur",
+      "district_bn": "মাদারীপুর",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.jagonews24.com/country/news/1129156",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "manikganj-miniket-moa",
+    "name_bn": "মানিকগঞ্জের মিনিকেট মোয়া",
+    "name_en": "Manikganj Miniket Moa",
+    "description_bn": "মানিকগঞ্জের নিজাম সুইটসের জনপ্রিয় মোয়া।",
+    "description_en": "A moa (puffed-rice sweet) popular from Nizam Sweets in Manikganj.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Manikganj",
+      "district_bn": "মানিকগঞ্জ",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "munshiganj-muktarpur-moa",
+    "name_bn": "মুক্তারপুরের মোয়া",
+    "name_en": "Muktarpur Moa",
+    "description_bn": "মুন্সিগঞ্জের মুক্তারপুরের মোয়া।",
+    "description_en": "Moa from Muktarpur in Munshiganj.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Munshiganj",
+      "district_bn": "মুন্সিগঞ্জ",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "narayanganj-batasha",
+    "name_bn": "নারায়ণগঞ্জের বাতাসা",
+    "name_en": "Narayanganj Batasha",
+    "description_bn": "চিনির সিরায় তৈরি হালকা মিষ্টি বাতাসা।",
+    "description_en": "Batasha, a light sugar-syrup sweet.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Narayanganj",
+      "district_bn": "নারায়ণগঞ্জ",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "narsingdi-handmade-semai",
+    "name_bn": "নরসিংদীর হাতে তৈরি সেমাই",
+    "name_en": "Narsingdi Handmade Semai",
+    "description_bn": "ঈদে নরসিংদীর ঘরে ঘরে হাতে তৈরি সেমাই।",
+    "description_en": "Handmade vermicelli sweet, an Eid tradition in Narsingdi homes.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Narsingdi",
+      "district_bn": "নরসিংদী",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://thefinancialexpress.com.bd/food/eid-foods-across-bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "rajbari-gurer-mishti",
+    "name_bn": "রাজবাড়ীর গুড়ের মিষ্টি",
+    "name_en": "Rajbari Jaggery Sweets",
+    "description_bn": "গুড় দিয়ে তৈরি রাজবাড়ীর মিষ্টি।",
+    "description_en": "Sweets made with jaggery, associated with Rajbari.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Rajbari",
+      "district_bn": "রাজবাড়ী",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "shariatpur-rasgolla",
+    "name_bn": "শরীয়তপুরের রসগোল্লা",
+    "name_en": "Shariatpur Rasgolla",
+    "description_bn": "শরীয়তপুরের পালং বাজারের দীর্ঘদিনের জনপ্রিয় রসগোল্লা।",
+    "description_en": "A long-popular rasgolla from Palong Bazar in Shariatpur.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Shariatpur",
+      "district_bn": "শরীয়তপুর",
+      "division": "Dhaka"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.prothomalo.com/bangladesh/local-news/giqxr3h9aw",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "brahmanbaria-chhanamukhi",
+    "name_bn": "ব্রাহ্মণবাড়িয়ার ছানামুখী",
+    "name_en": "Brahmanbaria Chhanamukhi",
+    "description_bn": "ব্রাহ্মণবাড়িয়ার ছানার মিষ্টি, যা জিআই স্বীকৃতি পেয়েছে বলে জানা যায়।",
+    "description_en": "A cheese-based sweet from Brahmanbaria, reported to hold GI status.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Brahmanbaria",
+      "district_bn": "ব্রাহ্মণবাড়িয়া",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "feni-jilapi",
+    "name_bn": "ফেনীর জিলাপি",
+    "name_en": "Feni Jilapi",
+    "description_bn": "ঘি ও খেজুর গুড়ের জিলাপি।",
+    "description_en": "Jilapi made with ghee and date-palm jaggery.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Feni",
+      "district_bn": "ফেনী",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "khagrachhari-jum-rice-payesh",
+    "name_bn": "জুম চালের পায়েস",
+    "name_en": "Jum Rice Payesh",
+    "description_bn": "পাহাড়ি জুম চাষের চালের পায়েস।",
+    "description_en": "Payesh made from hill jum-cultivated rice.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Khagrachhari",
+      "district_bn": "খাগড়াছড়ি",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "lakshmipur-shutki-torkari",
+    "name_bn": "লক্ষ্মীপুরের শুঁটকি মাছের তরকারি",
+    "name_en": "Lakshmipur Shutki Torkari",
+    "description_bn": "শুঁটকি মাছ দিয়ে রান্না করা ঝাল তরকারি।",
+    "description_en": "A spicy curry of dried fish.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Lakshmipur",
+      "district_bn": "লক্ষ্মীপুর",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "noakhali-lathi-pitha",
+    "name_bn": "নোয়াখালীর লাঠি পিঠা",
+    "name_en": "Noakhali Lathi Pitha",
+    "description_bn": "নোয়াখালী অঞ্চলের ঐতিহ্যবাহী লাঠি পিঠা।",
+    "description_en": "A traditional pitha of the Noakhali region.",
+    "category": "pitha_snacks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Noakhali",
+      "district_bn": "নোয়াখালী",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "rangamati-buffalo-skin-curry",
+    "name_bn": "রাঙামাটির মহিষের চামড়ার তরকারি",
+    "name_en": "Rangamati Buffalo Skin Curry",
+    "description_bn": "পাহাড়ি অঞ্চলের ঐতিহ্যবাহী মহিষের চামড়ার তরকারি।",
+    "description_en": "A traditional hill-region curry made with buffalo skin.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Rangamati",
+      "district_bn": "রাঙামাটি",
+      "division": "Chattogram"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "joypurhat-chalta-achar",
+    "name_bn": "জয়পুরহাটের চালতার আচার",
+    "name_en": "Joypurhat Chalta Pickle",
+    "description_bn": "টক চালতা ফলের আচার।",
+    "description_en": "A pickle made from tangy elephant apple (chalta).",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Joypurhat",
+      "district_bn": "জয়পুরহাট",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "naogaon-beef-alu-ghati",
+    "name_bn": "নওগাঁর গরুর মাংসের আলু ঘাঁটি",
+    "name_en": "Naogaon Beef Alu Ghati",
+    "description_bn": "গরুর মাংস ও আলুর ঘন তরকারি।",
+    "description_en": "A thick beef and potato dish popular in Naogaon.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Naogaon",
+      "district_bn": "নওগাঁ",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "pabna-sagardighi-chomchom",
+    "name_bn": "পাবনার সাগরদীঘির চমচম",
+    "name_en": "Pabna Sagardighi Chomchom",
+    "description_bn": "পাবনার সাগরদীঘির চমচম।",
+    "description_en": "Chomchom said to come from Sagardighi, Pabna.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Pabna",
+      "district_bn": "পাবনা",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "rajshahi-fazli-mango",
+    "name_bn": "রাজশাহীর ফজলি আম",
+    "name_en": "Rajshahi Fazli Mango",
+    "description_bn": "রাজশাহী ও চাঁপাইনবাবগঞ্জ অঞ্চলের জিআই-স্বীকৃত ফজলি আম।",
+    "description_en": "The GI-registered Fazli mango of the Rajshahi and Chapainawabganj region.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Rajshahi",
+      "district_bn": "রাজশাহী",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "sirajganj-pithuli",
+    "name_bn": "সিরাজগঞ্জের পিঠুলি",
+    "name_en": "Sirajganj Pithuli",
+    "description_bn": "চালের গুঁড়ায় ঘন করা গরুর মাংসের তরকারি।",
+    "description_en": "A beef curry thickened with rice flour, associated with Sirajganj.",
+    "category": "meat_savoury",
+    "scope": "regional",
+    "region": {
+      "district_en": "Sirajganj",
+      "district_bn": "সিরাজগঞ্জ",
+      "division": "Rajshahi"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.dhakatribune.com/business/364773/regional-flavours-delicacies-from-sirajganj",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "chuadanga-khejur-gur",
+    "name_bn": "চুয়াডাঙ্গার খেজুরের গুড়",
+    "name_en": "Chuadanga Date Palm Jaggery",
+    "description_bn": "খেজুর রসের গুড়, চুয়াডাঙ্গার স্থানীয় পণ্য।",
+    "description_en": "Date-palm jaggery, listed among Chuadanga’s local products.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Chuadanga",
+      "district_bn": "চুয়াডাঙ্গা",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.banglapedia.org/index.php/Chuadanga_Sadar_Upazila",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "jhenaidah-kalojam-achar",
+    "name_bn": "ঝিনাইদহের কালোজামের আচার",
+    "name_en": "Jhenaidah Kalojam Pickle",
+    "description_bn": "কালোজাম ফলের আচার।",
+    "description_en": "A pickle made from jamun (kalojam) fruit.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Jhenaidah",
+      "district_bn": "ঝিনাইদহ",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "magura-chhanar-sandesh",
+    "name_bn": "মাগুরার ছানার সন্দেশ",
+    "name_en": "Magura Chhanar Sandesh",
+    "description_bn": "ছানা দিয়ে তৈরি সন্দেশ।",
+    "description_en": "Sandesh made from fresh cheese.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Magura",
+      "district_bn": "মাগুরা",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "meherpur-sabitri",
+    "name_bn": "মেহেরপুরের সাবিত্রী",
+    "name_en": "Meherpur Sabitri",
+    "description_bn": "দুধের স্তর ও চিনিতে তৈরি শতবর্ষী মিষ্টি।",
+    "description_en": "A century-old sweet made from layered boiled milk and sugar.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Meherpur",
+      "district_bn": "মেহেরপুর",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/life-living/news/rich-history-and-tradition-our-sweets-3296651",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "narail-khejur-gur",
+    "name_bn": "নড়াইলের খেজুরের গুড়",
+    "name_en": "Narail Date Palm Jaggery",
+    "description_bn": "শীতকালে খেজুর রস থেকে তৈরি গুড়।",
+    "description_en": "Jaggery made from date-palm sap in winter.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Narail",
+      "district_bn": "নড়াইল",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "satkhira-golda-chingri",
+    "name_bn": "সাতক্ষীরার গলদা চিংড়ি",
+    "name_en": "Satkhira Golda Chingri",
+    "description_bn": "সাতক্ষীরা অঞ্চলের বড় গলদা চিংড়ি।",
+    "description_en": "Giant freshwater prawn from the Satkhira region.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Satkhira",
+      "district_bn": "সাতক্ষীরা",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "barguna-narkel-torkari",
+    "name_bn": "বরগুনার নারিকেলের তরকারি",
+    "name_en": "Barguna Coconut Curry",
+    "description_bn": "নারিকেল দিয়ে রান্না করা তরকারি।",
+    "description_en": "A curry cooked with coconut.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Barguna",
+      "district_bn": "বরগুনা",
+      "division": "Barishal"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "barishal-ilish-jhol",
+    "name_bn": "বরিশালের ইলিশের ঝোল",
+    "name_en": "Barishal Ilish Jhol",
+    "description_bn": "ইলিশ মাছের ঝোল।",
+    "description_en": "Hilsa curry, associated with Barishal.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Barishal",
+      "district_bn": "বরিশাল",
+      "division": "Barishal"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "bhola-moisher-doi",
+    "name_bn": "ভোলার মহিষের দই",
+    "name_en": "Bhola Buffalo Curd",
+    "description_bn": "মহিষের দুধের দই।",
+    "description_en": "Yoghurt made from buffalo milk.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Bhola",
+      "district_bn": "ভোলা",
+      "division": "Barishal"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "jhalokathi-moa",
+    "name_bn": "ঝালকাঠির মোয়া",
+    "name_en": "Jhalokathi Moa",
+    "description_bn": "মুড়ি ও গুড়ের মোয়া।",
+    "description_en": "Moa made from puffed rice and jaggery.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Jhalokathi",
+      "district_bn": "ঝালকাঠি",
+      "division": "Barishal"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "patuakhali-coastal-fish-fry",
+    "name_bn": "পটুয়াখালীর উপকূলীয় মাছ ভাজা",
+    "name_en": "Patuakhali Coastal Fish Fry",
+    "description_bn": "উপকূলীয় সামুদ্রিক মাছ ভাজা।",
+    "description_en": "Fried coastal sea fish.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Patuakhali",
+      "district_bn": "পটুয়াখালী",
+      "division": "Barishal"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "habiganj-tea",
+    "name_bn": "হবিগঞ্জের চা",
+    "name_en": "Habiganj Tea",
+    "description_bn": "হবিগঞ্জের চা-বাগানের চা।",
+    "description_en": "Tea from the tea gardens of Habiganj.",
+    "category": "drinks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Habiganj",
+      "district_bn": "হবিগঞ্জ",
+      "division": "Sylhet"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": null,
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "sunamganj-mangsher-pitha",
+    "name_bn": "সুনামগঞ্জের মাংসের পিঠা",
+    "name_en": "Sunamganj Mangsher Pitha",
+    "description_bn": "মাংসের পুর দেওয়া পিঠা।",
+    "description_en": "A pitha with a meat filling.",
+    "category": "pitha_snacks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Sunamganj",
+      "district_bn": "সুনামগঞ্জ",
+      "division": "Sylhet"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/rising/2004/06/04/back.htm",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "gaibandha-doi",
+    "name_bn": "গাইবান্ধার দই",
+    "name_en": "Gaibandha Doi",
+    "description_bn": "গাইবান্ধার মিষ্টি দই।",
+    "description_en": "Sweet yoghurt from Gaibandha.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Gaibandha",
+      "district_bn": "গাইবান্ধা",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "kurigram-chomchom",
+    "name_bn": "কুড়িগ্রামের চমচম",
+    "name_en": "Kurigram Chomchom",
+    "description_bn": "টাঙ্গাইলের তুলনায় হালকা ধরনের কুড়িগ্রামের চমচম।",
+    "description_en": "A Kurigram variant of chomchom, lighter than Tangail’s.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Kurigram",
+      "district_bn": "কুড়িগ্রাম",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/life-living/news/rich-history-and-tradition-our-sweets-3296651",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "lalmonirhat-tea",
+    "name_bn": "লালমনিরহাটের চা",
+    "name_en": "Lalmonirhat Tea",
+    "description_bn": "লালমনিরহাটের নতুন চা-বাগানের চা।",
+    "description_en": "Tea from Lalmonirhat’s newer tea gardens.",
+    "category": "drinks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Lalmonirhat",
+      "district_bn": "লালমনিরহাট",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/business/news/tea-production-acreage-rising-northern-districts-2035157",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "nilphamari-hanif-sandesh",
+    "name_bn": "নীলফামারীর হানিফের সন্দেশ",
+    "name_en": "Nilphamari Hanif’s Sandesh",
+    "description_bn": "নীলফামারীর স্থানীয়ভাবে পরিচিত সন্দেশ।",
+    "description_en": "A locally known sandesh from Nilphamari.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Nilphamari",
+      "district_bn": "নীলফামারী",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://m.somewhereinblog.net/mobile/blog/Mdmoinuddin/30375696",
+    "verification_status": "unverified",
+    "association_confidence": "low"
+  },
+  {
+    "id": "panchagarh-tea",
+    "name_bn": "পঞ্চগড়ের চা",
+    "name_en": "Panchagarh Tea",
+    "description_bn": "পঞ্চগড়ের চা-বাগানের চা।",
+    "description_en": "Tea from the tea gardens of Panchagarh.",
+    "category": "drinks",
+    "scope": "regional",
+    "region": {
+      "district_en": "Panchagarh",
+      "district_bn": "পঞ্চগড়",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/business/news/tea-production-acreage-rising-northern-districts-2035157",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "thakurgaon-surjapuri-mango",
+    "name_bn": "ঠাকুরগাঁওয়ের সূর্যপুরী আম",
+    "name_en": "Thakurgaon Surjapuri Mango",
+    "description_bn": "ঠাকুরগাঁওয়ের পরিচিত সূর্যপুরী আম।",
+    "description_en": "The Surjapuri mango, associated with Thakurgaon.",
+    "category": "regional_specialties",
+    "scope": "regional",
+    "region": {
+      "district_en": "Thakurgaon",
+      "district_bn": "ঠাকুরগাঁও",
+      "division": "Rangpur"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://www.thedailystar.net/business/news/govt-draws-list-494-products-gi-status-3651496",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "jamalpur-sarishabari-pera-sandesh",
+    "name_bn": "সরিষাবাড়ীর প্যারা সন্দেশ",
+    "name_en": "Sarishabari Pera Sandesh",
+    "description_bn": "ঘন ক্ষীরে তৈরি জামালপুরের সরিষাবাড়ীর সন্দেশ।",
+    "description_en": "A sandesh of thickened milk from Sarishabari in Jamalpur.",
+    "category": "sweets_desserts",
+    "scope": "regional",
+    "region": {
+      "district_en": "Jamalpur",
+      "district_bn": "জামালপুর",
+      "division": "Mymensingh"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://bangla.thedailystar.net/life-living/food-recipe/news-531701",
+    "verification_status": "unverified",
+    "association_confidence": "medium"
+  },
+  {
+    "id": "sherpur-tulshimala-rice",
+    "name_bn": "শেরপুরের তুলসীমালা চাল",
+    "name_en": "Sherpur Tulshimala Rice",
+    "description_bn": "শেরপুরের জিআই-স্বীকৃত সুগন্ধি চাল।",
+    "description_en": "The GI-registered aromatic rice of Sherpur.",
+    "category": "rice_biryani",
+    "scope": "regional",
+    "region": {
+      "district_en": "Sherpur",
+      "district_bn": "শেরপুর",
+      "division": "Mymensingh"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  },
+  {
+    "id": "khulna-bagda-chingri",
+    "name_bn": "খুলনার বাগদা চিংড়ি",
+    "name_en": "Khulna Bagda Shrimp",
+    "description_bn": "খুলনা অঞ্চলের জিআই-স্বীকৃত বাগদা চিংড়ি।",
+    "description_en": "The GI-registered bagda shrimp of the Khulna region.",
+    "category": "fish_seafood",
+    "scope": "regional",
+    "region": {
+      "district_en": "Khulna",
+      "district_bn": "খুলনা",
+      "division": "Khulna"
+    },
+    "xp": 10,
+    "image_url": null,
+    "image_attribution": null,
+    "source_url": "https://en.wikipedia.org/wiki/Geographical_indications_in_Bangladesh",
+    "verification_status": "unverified",
+    "association_confidence": "high"
+  }
+]

@@ -1,0 +1,59 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# The site only needs to read the repository; Pages needs write access to publish.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push replaces one that is still running.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+
+      - uses: actions/configure-pages@v5
+
+      - name: Build
+        run: npm run build
+        env:
+          # Served from https://<user>.github.io/<repository>/ . For a <user>.github.io repository use "/" instead.
+          VITE_BASE: /${{ github.event.repository.name }}/
+          # These are PUBLIC (they end up in the browser bundle), so they are repository *variables*, never encrypted secrets
+          # Settings > Secrets and variables > Actions > Variables.
+          VITE_SITE_URL: ${{ vars.SITE_URL }}
+          # Leave BKASH_NUMBER unset until the number has been verified; the donation block then shows "coming soon".
+          VITE_BKASH_NUMBER: ${{ vars.BKASH_NUMBER }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

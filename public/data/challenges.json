@@ -1,0 +1,130 @@
+[
+  {
+    "id": "street-food-2",
+    "challenge_type": "collection",
+    "title_bn": "২টি স্ট্রিট ফুড",
+    "title_en": "Try 2 Street Foods",
+    "description_bn": "২টি আলাদা স্ট্রিট ফুড চেখে দেখুন।",
+    "description_en": "Mark 2 different street foods as tried.",
+    "rules": {
+      "type": "count_category",
+      "category": "street_food",
+      "target": 2
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "sweets-5",
+    "challenge_type": "collection",
+    "title_bn": "৫টি মিষ্টি",
+    "title_en": "Try 5 Sweets",
+    "description_bn": "৫টি আলাদা মিষ্টি বা ডেজার্ট চেখে দেখুন।",
+    "description_en": "Mark 5 different sweets or desserts as tried.",
+    "rules": {
+      "type": "count_category",
+      "category": "sweets_desserts",
+      "target": 5
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "pitha-3",
+    "challenge_type": "collection",
+    "title_bn": "৩টি পিঠা",
+    "title_en": "Try 3 Pitha",
+    "description_bn": "৩টি আলাদা পিঠা বা ঐতিহ্যবাহী নাস্তা চেখে দেখুন।",
+    "description_en": "Mark 3 different pitha or traditional snacks as tried.",
+    "rules": {
+      "type": "count_category",
+      "category": "pitha_snacks",
+      "target": 3
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "unique-10",
+    "challenge_type": "discovery",
+    "title_bn": "১০টি আলাদা খাবার",
+    "title_en": "Try 10 Unique Dishes",
+    "description_bn": "১০টি আলাদা খাবার চেখে দেখুন।",
+    "description_en": "Mark 10 different dishes as tried.",
+    "rules": {
+      "type": "count_total",
+      "target": 10
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "categories-5",
+    "challenge_type": "discovery",
+    "title_bn": "৫ ধরনের খাবার",
+    "title_en": "Try 5 Different Categories",
+    "description_bn": "৫টি আলাদা ক্যাটাগরি থেকে একটি করে খাবার চেখে দেখুন।",
+    "description_en": "Try dishes from 5 different categories.",
+    "rules": {
+      "type": "distinct_categories",
+      "target": 5
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "regional-3",
+    "challenge_type": "discovery",
+    "title_bn": "৩টি আঞ্চলিক বিশেষত্ব",
+    "title_en": "Discover 3 Regional Specialties",
+    "description_bn": "নির্দিষ্ট জেলার সঙ্গে যুক্ত ৩টি খাবার চেখে দেখুন।",
+    "description_en": "Try 3 dishes that are associated with a specific district.",
+    "rules": {
+      "type": "count_regional",
+      "target": 3
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "first-10-stamps",
+    "challenge_type": "milestone",
+    "title_bn": "প্রথম ১০টি স্ট্যাম্প",
+    "title_en": "Collect Your First 10 Stamps",
+    "description_bn": "পাসপোর্টে ১০টি স্ট্যাম্প সংগ্রহ করুন।",
+    "description_en": "Collect 10 stamps in your passport.",
+    "rules": {
+      "type": "stamps_total",
+      "target": 10
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "first-collection",
+    "challenge_type": "milestone",
+    "title_bn": "প্রথম কালেকশন সম্পূর্ণ",
+    "title_en": "Complete Your First Collection",
+    "description_bn": "যেকোনো একটি কালেকশনের সব স্ট্যাম্প সংগ্রহ করুন।",
+    "description_en": "Collect every stamp in any one collection.",
+    "rules": {
+      "type": "complete_collection"
+    },
+    "xp_reward": 25,
+    "is_active": true
+  },
+  {
+    "id": "first-100-xp",
+    "challenge_type": "milestone",
+    "title_bn": "প্রথম ১০০ XP",
+    "title_en": "Earn Your First 100 XP",
+    "description_bn": "মোট ১০০ XP অর্জন করুন।",
+    "description_en": "Reach a total of 100 XP.",
+    "rules": {
+      "type": "xp_total",
+      "target": 100
+    },
+    "xp_reward": 25,
+    "is_active": true
+  }
+]

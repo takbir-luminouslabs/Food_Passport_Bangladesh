@@ -1,0 +1,86 @@
+import { readFileSync } from 'node:fs'
+import { computeProgress } from './scoring'
+import { buildBookModel } from './bookModel'
+import { buildBookPages } from './bookPages'
+import { createInitialState, markTried } from './state'
+
+const foods = JSON.parse(readFileSync('public/data/foods.json', 'utf8'))
+const categories = JSON.parse(readFileSync('public/data/categories.json', 'utf8'))
+const challenges = JSON.parse(readFileSync('public/data/challenges.json', 'utf8'))
+const badges = JSON.parse(readFileSync('public/data/badges.json', 'utf8'))
+const content = { foods, categories, challenges, badges }
+const NOW = new Date(2026, 9, 20, 12)
+const build = (ids = [], opts = {}) => {
+  const state = ids.reduce(markTried, createInitialState('en'))
+  return buildBookModel({ progress: computeProgress(state, content), content, lang: 'en', now: NOW, ...opts })
+}
+
+test('a cover sheet comes first, then one sheet per spread (two pages each)', () => {
+  const m = build()
+  const pages = buildBookPages(computeProgress(createInitialState('en'), content).collections)
+  expect(m.sheets[0].type).toBe('cover')
+  expect(m.sheets).toHaveLength(1 + Math.ceil(pages.length / 2))
+  expect(m.sheets[1].left.type).toBe('data')
+  expect(m.sheets[1].right.type).toBe('visa')
+})
+
+test('the cover carries the brand and the holder name when given', () => {
+  expect(build().sheets[0].brand).toBe('Food Passport Bangladesh')
+  expect(build([], { displayName: 'Rafi' }).sheets[0].holder).toBe('Rafi')
+  expect(build().sheets[0].holder).toBeNull()
+})
+
+test('every food appears once across the visa pages, collected or locked, never more than six per page', () => {
+  const m = build(['chotpoti', 'haleem'])
+  const visa = m.sheets.slice(1).flatMap((s) => [s.left, s.right]).filter((p) => p && p.type === 'visa')
+  for (const p of visa) expect(p.slots.length).toBeLessThanOrEqual(6)
+  const slots = visa.flatMap((p) => p.slots)
+  expect(slots).toHaveLength(foods.length)
+  expect(slots.filter((s) => s.state === 'collected')).toHaveLength(2)
+})
+
+test('collected slots carry a full stamp (entry number, district); locked ones carry just the name and district', () => {
+  const m = build(['chotpoti'])
+  const slots = m.sheets.slice(1).flatMap((s) => [s.left, s.right]).filter((p) => p?.type === 'visa').flatMap((p) => p.slots)
+  const got = slots.find((s) => s.state === 'collected')
+  expect(got.stamp).toMatchObject({ name: 'Chotpoti', entryNo: '001', district: 'Dhaka' })
+  const locked = slots.find((s) => s.state === 'locked')
+  expect(locked).toMatchObject({ state: 'locked' })
+  expect(locked.name).toBeTruthy()
+  expect(locked.stamp).toBeUndefined()
+})
+
+test('visa pages are labelled: page number, collection name, part n/total and collection progress', () => {
+  const m = build(['chotpoti', 'haleem'])
+  const visa = m.sheets.slice(1).flatMap((s) => [s.left, s.right]).filter((p) => p?.type === 'visa')
+  expect(visa[0]).toMatchObject({ pageLabel: 'PAGE 01', title: 'Street Food', statLine: '2/2 · 100%' })
+  const sweets = visa.filter((p) => p.title.startsWith('Sweets and Desserts'))
+  expect(sweets.map((p) => p.title)).toEqual(sweets.map((_, i) => `Sweets and Desserts · ${i + 1}/${sweets.length}`))
+  expect(sweets.length).toBeGreaterThan(1)
+})
+
+test('labels follow the language, with Bengali numerals', () => {
+  const m = build(['chotpoti'], { lang: 'bn' })
+  const first = m.sheets[1].right
+  expect(first.pageLabel).toBe('পাতা ০১')
+  expect(first.title).toBe('স্ট্রিট ফুড')
+  expect(first.statLine).toBe('১/২ · ৫০%')
+  expect(m.card.visaLabel).toBe('ভিসা')
+})
+
+test('pages carry decorative MRZ text that is only A-Z, 0-9 and <', () => {
+  const visa = build().sheets.slice(1).flatMap((s) => [s.left, s.right]).filter((p) => p?.type === 'visa')
+  for (const p of visa) expect(p.mrz).toMatch(/^[A-Z0-9<]{44}$/)
+})
+
+test('contains no private data: no storage state, ids or quiz progress', () => {
+  const json = JSON.stringify(build(['chotpoti']))
+  for (const secret of ['quizProgress', 'correctIds', 'triedFoodIds', 'chotpoti"']) expect(json).not.toContain(secret)
+})
+
+test('a sample text covers every string drawn, so the Bengali font can be loaded up front', () => {
+  const m = build(['chotpoti'], { lang: 'bn' })
+  expect(m.sampleText).toContain('স্ট্রিট ফুড')
+  expect(m.sampleText).toContain('ঢাকা')
+  expect(m.sampleText).toContain(m.card.brand)
+})

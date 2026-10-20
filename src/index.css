@@ -1,0 +1,201 @@
+@import '@fontsource-variable/noto-sans-bengali';
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #174b32;
+  --color-primary-dark: #10251c;
+  --color-lime: #d9f99d;
+  --color-cream: #f7f4ea;
+  --color-card: #ffffff;
+  --color-muted: #566259;
+  --color-gold: #d6ad57;
+  --color-gold-dark: #8a6a1f;
+  --font-sans: 'Noto Sans Bengali Variable', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-primary-dark);
+  font-family: var(--font-sans);
+}
+
+/* Tailwind v4 resets buttons to the default arrow; restore the hand. In the base layer so utilities such as cursor-zoom-in still win. */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']),
+  summary,
+  select {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- passport look ---------- */
+
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(32px) scale(0.86); }
+  to { opacity: 1; transform: none; }
+}
+.float-up { animation: float-up 0.3s ease-out both; }
+
+.passport-cover {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 0.9rem 1.4rem 1.4rem 0.9rem;
+  color: var(--color-gold);
+  background:
+    radial-gradient(circle at 20% 12%, rgb(255 255 255 / 0.12), transparent 45%),
+    repeating-radial-gradient(circle at 30% 40%, rgb(0 0 0 / 0.06) 0 1px, transparent 1px 3px),
+    linear-gradient(160deg, #1f6143 0%, var(--color-primary) 45%, var(--color-primary-dark) 100%);
+  box-shadow:
+    inset 7px 0 10px rgb(0 0 0 / 0.35),
+    inset -2px 0 0 rgb(255 255 255 / 0.08),
+    0 14px 30px rgb(16 37 28 / 0.4);
+}
+.passport-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0.6rem 0.6rem 0.6rem 0.9rem;
+  border: 1.5px solid rgb(214 173 87 / 0.55);
+  border-radius: 0.6rem 1rem 1rem 0.6rem;
+  pointer-events: none;
+}
+.foil {
+  background-image: linear-gradient(115deg, #b98a2e 0%, #f6e3ae 28%, #d6ad57 50%, #fff2c9 62%, #b98a2e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgb(0 0 0 / 0.45));
+}
+.foil-icon { color: #e3c06f; filter: drop-shadow(0 1px 0 rgb(0 0 0 / 0.5)); }
+.passport-chip {
+  width: 2.4rem;
+  height: 1.6rem;
+  border: 2px solid rgb(214 173 87 / 0.8);
+  border-radius: 0.35rem;
+  background: radial-gradient(circle, rgb(214 173 87 / 0.8) 0 22%, transparent 24%);
+}
+
+.visa-page {
+  position: relative;
+  padding: 1rem 1rem 1rem 1.75rem;
+  border: 1px solid rgb(23 75 50 / 0.18);
+  border-radius: 0.4rem 1rem 1rem 0.4rem;
+  background-color: #fbf8ef;
+  background-image:
+    repeating-radial-gradient(circle at 85% 15%, transparent 0 7px, rgb(23 75 50 / 0.05) 7px 8px),
+    repeating-linear-gradient(0deg, rgb(23 75 50 / 0.04) 0 1px, transparent 1px 8px),
+    radial-gradient(circle at 100% 0, rgb(214 173 87 / 0.2), transparent 45%);
+  box-shadow: inset 14px 0 14px -10px rgb(16 37 28 / 0.35), 0 2px 6px rgb(16 37 28 / 0.12);
+}
+
+.passport-book {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(160deg, #1f6143 0%, var(--color-primary) 45%, var(--color-primary-dark) 100%);
+  box-shadow: 0 10px 24px rgb(16 37 28 / 0.35), inset 0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.passport-book::before {
+  content: '';
+  position: absolute;
+  inset: 0.3rem;
+  border: 1.5px dashed rgb(214 173 87 / 0.55);
+  border-radius: 0.8rem;
+  pointer-events: none;
+}
+.passport-book .visa-page {
+  border-radius: 0.5rem;
+  /* every page has the same size, whatever it holds, so turning a page never makes the book jump */
+  height: 33.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 48rem) {
+  .passport-book .visa-page { height: 31.5rem; }
+}
+@media (min-width: 64rem) {
+  .passport-book .visa-page { height: 29.5rem; }
+}
+/* in an open book the page shadow falls into the spine, and the page edge shows as a thin stack of sheets */
+.visa-page--left {
+  box-shadow: inset -14px 0 14px -10px rgb(16 37 28 / 0.4), -2px 0 0 #e9e3d1, -4px 0 0 #d8d1bb;
+  padding: 1rem 1.75rem 1rem 1rem;
+}
+.visa-page--right {
+  box-shadow: inset 14px 0 14px -10px rgb(16 37 28 / 0.4), 2px 0 0 #e9e3d1, 4px 0 0 #d8d1bb;
+}
+@media (min-width: 48rem) {
+  .passport-book > div::after {
+    content: '';
+    position: absolute;
+    top: 1.1rem;
+    bottom: 1.1rem;
+    left: 50%;
+    border-left: 2px dashed rgb(227 192 111 / 0.8);
+    pointer-events: none;
+  }
+}
+.passport-photo {
+  border: 2px solid rgb(214 173 87 / 0.8);
+  background: linear-gradient(160deg, #1f6143, var(--color-primary-dark));
+}
+
+.stamp-ink {
+  --stamp-ink: var(--color-primary);
+  border: 3px double var(--stamp-ink);
+  border-radius: 0.6rem;
+  color: var(--stamp-ink);
+  background: color-mix(in srgb, var(--stamp-ink) 8%, transparent);
+  mix-blend-mode: multiply;
+  /* worn ink: faint speckle over the stamp */
+  background-image: radial-gradient(circle at 20% 30%, rgb(251 248 239 / 0.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 60%, rgb(251 248 239 / 0.7) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 45% 85%, rgb(251 248 239 / 0.7) 0 1px, transparent 1.5px);
+  box-shadow: inset 0 0 0 2px rgb(251 248 239 / 0.5);
+}
+.stamp-ink { position: relative; }
+/* dotted rope ring inside the border, like a real seal */
+.stamp-ink::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1.5px dotted var(--stamp-ink);
+  border-radius: inherit;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.stamp-ink[data-shape='round'] { border-radius: 50%; width: min(6.75rem, 100%); aspect-ratio: 1; margin-inline: auto; padding-inline: 0.9rem; }
+.stamp-ink[data-shape='oval'] { border-radius: 50% / 40%; }
+.stamp-ink[data-shape='octagon'] { border-radius: 1.4rem; }
+.stamp-slot {
+  border: 2px dashed rgb(102 115 106 / 0.7);
+  border-radius: 0.6rem;
+  background: rgb(247 244 234 / 0.6);
+  color: var(--color-muted);
+}
+.mrz {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: rgb(102 115 106 / 0.85);
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "street_food",
+    "name_bn": "স্ট্রিট ফুড",
+    "name_en": "Street Food"
+  },
+  {
+    "id": "rice_biryani",
+    "name_bn": "ভাত ও বিরিয়ানি",
+    "name_en": "Rice and Biryani"
+  },
+  {
+    "id": "fish_seafood",
+    "name_bn": "মাছ ও সামুদ্রিক খাবার",
+    "name_en": "Fish and Seafood"
+  },
+  {
+    "id": "meat_savoury",
+    "name_bn": "মাংস ও মুখরোচক পদ",
+    "name_en": "Meat and Savoury Dishes"
+  },
+  {
+    "id": "sweets_desserts",
+    "name_bn": "মিষ্টি ও ডেজার্ট",
+    "name_en": "Sweets and Desserts"
+  },
+  {
+    "id": "pitha_snacks",
+    "name_bn": "পিঠা ও ঐতিহ্যবাহী নাস্তা",
+    "name_en": "Pitha and Traditional Snacks"
+  },
+  {
+    "id": "drinks",
+    "name_bn": "পানীয়",
+    "name_en": "Drinks"
+  },
+  {
+    "id": "regional_specialties",
+    "name_bn": "আঞ্চলিক বিশেষত্ব",
+    "name_en": "Regional Specialties"
+  }
+]

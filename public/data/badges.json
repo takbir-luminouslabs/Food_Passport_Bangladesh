@@ -1,0 +1,93 @@
+[
+  {
+    "id": "first-bite",
+    "name_bn": "প্রথম কামড়",
+    "name_en": "First Bite",
+    "description_bn": "প্রথম খাবারটি চেখে দেখুন।",
+    "description_en": "Try 1 food.",
+    "unlock_rule": {
+      "type": "count_total",
+      "target": 1
+    }
+  },
+  {
+    "id": "street-food-fan",
+    "name_bn": "স্ট্রিট ফুড ফ্যান",
+    "name_en": "Street Food Fan",
+    "description_bn": "২টি স্ট্রিট ফুড চেখে দেখুন।",
+    "description_en": "Try 2 street foods.",
+    "unlock_rule": {
+      "type": "count_category",
+      "category": "street_food",
+      "target": 2
+    }
+  },
+  {
+    "id": "sweet-tooth",
+    "name_bn": "মিষ্টি-প্রেমী",
+    "name_en": "Sweet Tooth",
+    "description_bn": "৫টি মিষ্টি চেখে দেখুন।",
+    "description_en": "Try 5 sweets.",
+    "unlock_rule": {
+      "type": "count_category",
+      "category": "sweets_desserts",
+      "target": 5
+    }
+  },
+  {
+    "id": "pitha-lover",
+    "name_bn": "পিঠা-প্রেমী",
+    "name_en": "Pitha Lover",
+    "description_bn": "৩টি পিঠা চেখে দেখুন।",
+    "description_en": "Try 3 pitha dishes.",
+    "unlock_rule": {
+      "type": "count_category",
+      "category": "pitha_snacks",
+      "target": 3
+    }
+  },
+  {
+    "id": "food-adventurer",
+    "name_bn": "খাদ্য অভিযাত্রী",
+    "name_en": "Food Adventurer",
+    "description_bn": "২৫টি আলাদা খাবার চেখে দেখুন।",
+    "description_en": "Try 25 unique foods.",
+    "unlock_rule": {
+      "type": "count_total",
+      "target": 25
+    }
+  },
+  {
+    "id": "food-collector",
+    "name_bn": "খাদ্য সংগ্রাহক",
+    "name_en": "Food Collector",
+    "description_bn": "৫০টি আলাদা খাবার চেখে দেখুন।",
+    "description_en": "Try 50 unique foods.",
+    "unlock_rule": {
+      "type": "count_total",
+      "target": 50
+    }
+  },
+  {
+    "id": "flavour-master",
+    "name_bn": "স্বাদ-মাস্টার",
+    "name_en": "Flavour Master",
+    "description_bn": "৫টি চ্যালেঞ্জ সম্পূর্ণ করুন।",
+    "description_en": "Complete 5 challenges.",
+    "unlock_rule": {
+      "type": "challenges_completed",
+      "target": 5
+    }
+  },
+  {
+    "id": "quiz-champion",
+    "name_bn": "কুইজ চ্যাম্পিয়ন",
+    "name_en": "Quiz Champion",
+    "description_bn": "১০টি কুইজ প্রশ্নের সঠিক উত্তর দিন।",
+    "description_en": "Answer 10 quiz questions correctly.",
+    "unlock_rule": {
+      "type": "quiz_correct",
+      "target": 10
+    }
+  }
+]
