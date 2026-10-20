@@ -1,0 +1,542 @@
+[
+  {
+    "id": "national-fish",
+    "question_bn": "বাংলাদেশের জাতীয় মাছ কোনটি?",
+    "question_en": "What is the national fish of Bangladesh?",
+    "options": [
+      {
+        "bn": "ইলিশ",
+        "en": "Ilish (Hilsa)"
+      },
+      {
+        "bn": "রুই",
+        "en": "Rui (Rohu)"
+      },
+      {
+        "bn": "কই",
+        "en": "Koi (Climbing perch)"
+      },
+      {
+        "bn": "পাঙ্গাস",
+        "en": "Pangas"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "ইলিশ বাংলাদেশের জাতীয় মাছ।",
+    "explanation_en": "Ilish is the national fish of Bangladesh.",
+    "source_url": "https://en.wikipedia.org/wiki/Ilish"
+  },
+  {
+    "id": "national-fruit",
+    "question_bn": "বাংলাদেশের জাতীয় ফল কোনটি?",
+    "question_en": "What is the national fruit of Bangladesh?",
+    "options": [
+      {
+        "bn": "আম",
+        "en": "Mango"
+      },
+      {
+        "bn": "কাঁঠাল",
+        "en": "Jackfruit"
+      },
+      {
+        "bn": "লিচু",
+        "en": "Lychee"
+      },
+      {
+        "bn": "কলা",
+        "en": "Banana"
+      }
+    ],
+    "correct": 1,
+    "explanation_bn": "কাঁঠাল বাংলাদেশের জাতীয় ফল।",
+    "explanation_en": "Jackfruit is the national fruit of Bangladesh.",
+    "source_url": "https://en.wikipedia.org/wiki/Jackfruit"
+  },
+  {
+    "id": "national-tree",
+    "question_bn": "বাংলাদেশের জাতীয় গাছ কোনটি?",
+    "question_en": "Which tree is the national tree of Bangladesh?",
+    "options": [
+      {
+        "bn": "বট গাছ",
+        "en": "Banyan tree"
+      },
+      {
+        "bn": "আম গাছ",
+        "en": "Mango tree"
+      },
+      {
+        "bn": "নারকেল গাছ",
+        "en": "Coconut palm"
+      },
+      {
+        "bn": "তাল গাছ",
+        "en": "Palmyra palm"
+      }
+    ],
+    "correct": 1,
+    "explanation_bn": "আম গাছ বাংলাদেশের জাতীয় গাছ।",
+    "explanation_en": "The mango tree is the national tree of Bangladesh.",
+    "source_url": "https://en.wikipedia.org/wiki/Mango"
+  },
+  {
+    "id": "jackfruit-neighbour",
+    "question_bn": "কাঁঠাল বাংলাদেশ ছাড়া আর কোন দেশের জাতীয় ফল?",
+    "question_en": "Besides Bangladesh, which country also has the jackfruit as its national fruit?",
+    "options": [
+      {
+        "bn": "শ্রীলঙ্কা",
+        "en": "Sri Lanka"
+      },
+      {
+        "bn": "জাপান",
+        "en": "Japan"
+      },
+      {
+        "bn": "মিসর",
+        "en": "Egypt"
+      },
+      {
+        "bn": "ব্রাজিল",
+        "en": "Brazil"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "কাঁঠাল বাংলাদেশ ও শ্রীলঙ্কা, দুই দেশেরই জাতীয় ফল।",
+    "explanation_en": "Jackfruit is the national fruit of both Bangladesh and Sri Lanka.",
+    "source_url": "https://en.wikipedia.org/wiki/Jackfruit"
+  },
+  {
+    "id": "rasgulla-base",
+    "question_bn": "রসগোল্লা কী দিয়ে তৈরি, যা হালকা চিনির রসে সিদ্ধ করা হয়?",
+    "question_en": "Rasgulla is made of dumplings of what, cooked in light sugar syrup?",
+    "options": [
+      {
+        "bn": "ছানা",
+        "en": "Chhena (milk curd)"
+      },
+      {
+        "bn": "বেসন",
+        "en": "Gram flour"
+      },
+      {
+        "bn": "চালের গুঁড়া",
+        "en": "Rice flour"
+      },
+      {
+        "bn": "আটা",
+        "en": "Wheat flour"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "রসগোল্লা ছানার গোলা, হালকা চিনির রসে সিদ্ধ করে তৈরি হয়।",
+    "explanation_en": "Rasgulla is made from balls of chhena dough cooked in light sugar syrup.",
+    "source_url": "https://en.wikipedia.org/wiki/Rasgulla"
+  },
+  {
+    "id": "bakarkhani-city",
+    "question_bn": "বাকরখানি রুটি কোন শহরের ঐতিহ্যের সঙ্গে জড়িত?",
+    "question_en": "Bakarkhani bread is tied to the food heritage of which city?",
+    "options": [
+      {
+        "bn": "ঢাকা",
+        "en": "Dhaka"
+      },
+      {
+        "bn": "সিলেট",
+        "en": "Sylhet"
+      },
+      {
+        "bn": "খুলনা",
+        "en": "Khulna"
+      },
+      {
+        "bn": "বরিশাল",
+        "en": "Barishal"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "ঢাকার প্রথম বাকরখানির দোকান লালবাগ কেল্লার কাছে খোলা হয়েছিল।",
+    "explanation_en": "Dhaka's first bakarkhani shop opened close to Lalbagh Fort.",
+    "source_url": "https://en.wikipedia.org/wiki/Bakarkhani"
+  },
+  {
+    "id": "porabari-district",
+    "question_bn": "পোড়াবাড়ির চমচম কোন জেলার বিখ্যাত মিষ্টি?",
+    "question_en": "Porabari chomchom is a famous sweet of which district?",
+    "options": [
+      {
+        "bn": "টাঙ্গাইল",
+        "en": "Tangail"
+      },
+      {
+        "bn": "রাজশাহী",
+        "en": "Rajshahi"
+      },
+      {
+        "bn": "কুমিল্লা",
+        "en": "Cumilla"
+      },
+      {
+        "bn": "নাটোর",
+        "en": "Natore"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "পোড়াবাড়ির চমচম টাঙ্গাইল জেলার; এর ইতিহাস উনিশ শতকের মাঝামাঝি পর্যন্ত যায়।",
+    "explanation_en": "Porabari chomchom comes from Tangail and dates back to the mid-19th century.",
+    "source_url": "https://en.wikipedia.org/wiki/Chomchom"
+  },
+  {
+    "id": "monda-place",
+    "question_bn": "মুক্তাগাছার মণ্ডা কোন জেলার সঙ্গে যুক্ত?",
+    "question_en": "Muktagachha monda is a local sweet of which district?",
+    "options": [
+      {
+        "bn": "ময়মনসিংহ",
+        "en": "Mymensingh"
+      },
+      {
+        "bn": "যশোর",
+        "en": "Jashore"
+      },
+      {
+        "bn": "বগুড়া",
+        "en": "Bogura"
+      },
+      {
+        "bn": "ফেনী",
+        "en": "Feni"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "মুক্তাগাছা ময়মনসিংহ জেলার উপজেলা, মণ্ডা সেখানকার জনপ্রিয় মিষ্টি।",
+    "explanation_en": "Muktagachha is an upazila of Mymensingh, and monda is its popular local sweetmeat.",
+    "source_url": "https://en.wikipedia.org/wiki/Muktagacha_Upazila"
+  },
+  {
+    "id": "kataribhog",
+    "question_bn": "কাটারিভোগ কী?",
+    "question_en": "What is Kataribhog?",
+    "options": [
+      {
+        "bn": "সুগন্ধি চাল",
+        "en": "A fragrant rice"
+      },
+      {
+        "bn": "এক ধরনের মাছ",
+        "en": "A type of fish"
+      },
+      {
+        "bn": "একটি মিষ্টি",
+        "en": "A sweet"
+      },
+      {
+        "bn": "এক ধরনের চা",
+        "en": "A kind of tea"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "কাটারিভোগ সুগন্ধি চাল, প্রধানত দিনাজপুর অঞ্চলে পাওয়া যায়।",
+    "explanation_en": "Kataribhog is a fragrant rice found mainly in the Dinajpur area.",
+    "source_url": "https://en.wikipedia.org/wiki/Kataribhog_rice"
+  },
+  {
+    "id": "chui-jhal",
+    "question_bn": "চুইঝাল (Piper chaba) এই নামে কোন বিভাগে পরিচিত?",
+    "question_en": "In which division of Bangladesh is Piper chaba known as chui jhal?",
+    "options": [
+      {
+        "bn": "খুলনা",
+        "en": "Khulna"
+      },
+      {
+        "bn": "সিলেট",
+        "en": "Sylhet"
+      },
+      {
+        "bn": "রংপুর",
+        "en": "Rangpur"
+      },
+      {
+        "bn": "চট্টগ্রাম",
+        "en": "Chattogram"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "খুলনা বিভাগে Piper chaba-কে চুইঝাল বলা হয়।",
+    "explanation_en": "Piper chaba is called chui jhal in Khulna Division.",
+    "source_url": "https://en.wikipedia.org/wiki/Piper_chaba"
+  },
+  {
+    "id": "shatkora-region",
+    "question_bn": "সাতকড়া (Citrus macroptera) বাংলাদেশের কোন অঞ্চলে ব্যাপকভাবে চাষ হয়?",
+    "question_en": "In which region of Bangladesh is the shatkora (Citrus macroptera) widely cultivated?",
+    "options": [
+      {
+        "bn": "সিলেট",
+        "en": "Sylhet"
+      },
+      {
+        "bn": "বরিশাল",
+        "en": "Barishal"
+      },
+      {
+        "bn": "রাজশাহী",
+        "en": "Rajshahi"
+      },
+      {
+        "bn": "ময়মনসিংহ",
+        "en": "Mymensingh"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "সাতকড়া সিলেট অঞ্চলে ব্যাপকভাবে চাষ হয়।",
+    "explanation_en": "Citrus macroptera is cultivated widely in the Sylhet region.",
+    "source_url": "https://en.wikipedia.org/wiki/Citrus_macroptera"
+  },
+  {
+    "id": "mezban-city",
+    "question_bn": "মেজবান কোন শহরের ঐতিহ্যবাহী ভোজ?",
+    "question_en": "Mezban is a traditional feast of which city?",
+    "options": [
+      {
+        "bn": "চট্টগ্রাম",
+        "en": "Chittagong (Chattogram)"
+      },
+      {
+        "bn": "রংপুর",
+        "en": "Rangpur"
+      },
+      {
+        "bn": "খুলনা",
+        "en": "Khulna"
+      },
+      {
+        "bn": "কুমিল্লা",
+        "en": "Cumilla"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "মেজবান চট্টগ্রামের জনপ্রিয় ঐতিহ্যবাহী ভোজ।",
+    "explanation_en": "Mezban is a popular traditional feast of Chittagong.",
+    "source_url": "https://en.wikipedia.org/wiki/Mezban"
+  },
+  {
+    "id": "bhapa-filling",
+    "question_bn": "ভাপা পিঠা কীভাবে তৈরি হয়, ভেতরে সাধারণত কী থাকে?",
+    "question_en": "Bhapa pitha is a steamed rice cake. What is its usual filling?",
+    "options": [
+      {
+        "bn": "নারকেল ও খেজুরের গুড়",
+        "en": "Coconut and date molasses"
+      },
+      {
+        "bn": "মাংসের কিমা",
+        "en": "Minced meat"
+      },
+      {
+        "bn": "ডাল",
+        "en": "Lentils"
+      },
+      {
+        "bn": "চকলেট",
+        "en": "Chocolate"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "ভাপা পিঠা তাজা চালের গুঁড়ার ভাপে সিদ্ধ পিঠা; পুর হয় নারকেল ও খেজুরের গুড়ের।",
+    "explanation_en": "Bhapa pitha is a steamed rice cake, filled with coconut and date molasses.",
+    "source_url": "https://en.wikipedia.org/wiki/Bhapa_pitha"
+  },
+  {
+    "id": "tea-capital",
+    "question_bn": "বাংলাদেশের \"চায়ের রাজধানী\" বলা হয় কোন উপজেলাকে?",
+    "question_en": "Which upazila is often called the \"tea capital\" of Bangladesh?",
+    "options": [
+      {
+        "bn": "শ্রীমঙ্গল",
+        "en": "Sreemangal"
+      },
+      {
+        "bn": "কক্সবাজার সদর",
+        "en": "Cox's Bazar Sadar"
+      },
+      {
+        "bn": "মুক্তাগাছা",
+        "en": "Muktagachha"
+      },
+      {
+        "bn": "কুয়াকাটা",
+        "en": "Kuakata"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "শ্রীমঙ্গল তার চা-বাগানের জন্য বিখ্যাত।",
+    "explanation_en": "Sreemangal is most famous for its tea fields.",
+    "source_url": "https://en.wikipedia.org/wiki/Sreemangal_Upazila"
+  },
+  {
+    "id": "tea-north",
+    "question_bn": "নিচের কোন জেলায় চা চাষ হয়?",
+    "question_en": "In which of these districts is tea grown?",
+    "options": [
+      {
+        "bn": "পঞ্চগড়",
+        "en": "Panchagarh"
+      },
+      {
+        "bn": "বরিশাল",
+        "en": "Barishal"
+      },
+      {
+        "bn": "ভোলা",
+        "en": "Bhola"
+      },
+      {
+        "bn": "খুলনা",
+        "en": "Khulna"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "সিলেট, পঞ্চগড়, লালমনিরহাট, ঠাকুরগাঁও, দিনাজপুর ও বান্দরবানে চা চাষ হয়।",
+    "explanation_en": "Tea is grown in Sylhet, Panchagarh, Lalmonirhat, Thakurgaon, Dinajpur and Bandarban.",
+    "source_url": "https://en.wikipedia.org/wiki/Tea_production_in_Bangladesh"
+  },
+  {
+    "id": "matri-bhandar",
+    "question_bn": "মাতৃভাণ্ডার ১৯৩০ সালে কোন জেলায় (তখনকার কুমিল্লা) রসমালাইয়ের রেসিপি ছড়িয়ে দেয়?",
+    "question_en": "The Matri Bhandar brothers shared their ras malai recipe in 1930 in which district (then Comilla)?",
+    "options": [
+      {
+        "bn": "কুমিল্লা",
+        "en": "Cumilla"
+      },
+      {
+        "bn": "নোয়াখালী",
+        "en": "Noakhali"
+      },
+      {
+        "bn": "ফরিদপুর",
+        "en": "Faridpur"
+      },
+      {
+        "bn": "পাবনা",
+        "en": "Pabna"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "মাতৃভাণ্ডার ১৯৩০ সালে ত্রিপুরা জেলায় (এখনকার কুমিল্লা) শুরু হয়।",
+    "explanation_en": "Matri Bhandar opened in 1930 in Tipperah district (now Comilla).",
+    "source_url": "https://en.wikipedia.org/wiki/Ras_malai"
+  },
+  {
+    "id": "bogura-doi",
+    "question_bn": "কোন জেলার দই ভৌগোলিক নির্দেশক (GI) স্বীকৃতি পেয়েছে?",
+    "question_en": "The yogurt of which district has received a Geographical Indication (GI) tag?",
+    "options": [
+      {
+        "bn": "বগুড়া",
+        "en": "Bogura"
+      },
+      {
+        "bn": "বান্দরবান",
+        "en": "Bandarban"
+      },
+      {
+        "bn": "সাতক্ষীরা",
+        "en": "Satkhira"
+      },
+      {
+        "bn": "পটুয়াখালী",
+        "en": "Patuakhali"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "বগুড়ার বিখ্যাত দই GI ট্যাগ পেয়েছে।",
+    "explanation_en": "Bogra's famed yogurt has gained a GI tag.",
+    "source_url": "https://en.wikipedia.org/wiki/Bogra"
+  },
+  {
+    "id": "ghee-what",
+    "question_bn": "ঘি কী?",
+    "question_en": "What is ghee?",
+    "options": [
+      {
+        "bn": "পরিশোধিত মাখন",
+        "en": "Clarified butter"
+      },
+      {
+        "bn": "এক ধরনের তেল",
+        "en": "A vegetable oil"
+      },
+      {
+        "bn": "দুধের পনির",
+        "en": "A milk cheese"
+      },
+      {
+        "bn": "চিনির সিরাপ",
+        "en": "A sugar syrup"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "ঘি ভারতীয় উপমহাদেশে উদ্ভূত পরিশোধিত মাখন।",
+    "explanation_en": "Ghee is a type of clarified butter from the Indian subcontinent.",
+    "source_url": "https://en.wikipedia.org/wiki/Ghee"
+  },
+  {
+    "id": "payesh-what",
+    "question_bn": "পায়েস (ক্ষীর) সাধারণত কী ধরনের খাবার?",
+    "question_en": "What kind of dish is payesh (kheer)?",
+    "options": [
+      {
+        "bn": "চালের পুডিং",
+        "en": "A rice pudding"
+      },
+      {
+        "bn": "ভাজা নাস্তা",
+        "en": "A fried snack"
+      },
+      {
+        "bn": "মাছের ঝোল",
+        "en": "A fish curry"
+      },
+      {
+        "bn": "ডালের সুপ",
+        "en": "A lentil soup"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "পায়েস দুধ, চিনি বা গুড় ও চাল ফুটিয়ে তৈরি পুডিং বা পরিজ।",
+    "explanation_en": "Payesh/kheer is a pudding or porridge made by boiling milk, sugar or jaggery, and rice.",
+    "source_url": "https://en.wikipedia.org/wiki/Kheer"
+  },
+  {
+    "id": "sugarcane-juice",
+    "question_bn": "আখের রস কীভাবে তৈরি হয়?",
+    "question_en": "How is sugarcane juice made?",
+    "options": [
+      {
+        "bn": "আখ চেপে রস বের করে",
+        "en": "By pressing sugarcane"
+      },
+      {
+        "bn": "আখ ভেজে",
+        "en": "By frying sugarcane"
+      },
+      {
+        "bn": "আখ পুড়িয়ে",
+        "en": "By burning sugarcane"
+      },
+      {
+        "bn": "আখ গুঁড়ো করে শুকিয়ে",
+        "en": "By drying it to powder"
+      }
+    ],
+    "correct": 0,
+    "explanation_bn": "আখের রস হলো চাপা আখ থেকে বের করা তরল।",
+    "explanation_en": "Sugarcane juice is the liquid extracted from pressed sugarcane.",
+    "source_url": "https://en.wikipedia.org/wiki/Sugarcane_juice"
+  }
+]

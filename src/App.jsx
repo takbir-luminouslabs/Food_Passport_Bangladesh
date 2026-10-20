@@ -8,6 +8,7 @@ import { useApp } from './context/app-context'
 import { useLanguage } from './hooks/useLanguage'
 import Challenges from './pages/Challenges'
 import ComingSoon from './pages/ComingSoon'
+import Quiz from './pages/Quiz'
 import FoodDetail from './pages/FoodDetail'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
@@ -41,7 +42,7 @@ function Content() {
       <Route path="/discover/:foodId" element={<FoodDetail />} />
       <Route path="/passport" element={<ToStep step="passport" />} />
       <Route path="/challenges" element={<Challenges />} />
-      <Route path="/quiz" element={<ComingSoon titleKey="nav.quiz" />} />
+      <Route path="/quiz" element={<Quiz />} />
       <Route path="/leaderboard" element={<ComingSoon titleKey="nav.leaderboard" />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="*" element={<NotFound />} />

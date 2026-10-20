@@ -7,5 +7,5 @@ test('data files are fetched under the Vite base path, so GitHub Pages sub-paths
     return { ok: true, status: 200, json: async () => [] }
   }
   await loadContent(fetchFn, '/food-passport-bangladesh/')
-  expect(urls.sort()).toEqual(['foods', 'categories', 'challenges', 'badges'].sort().map((n) => `/food-passport-bangladesh/data/${n}.json`).sort())
+  expect(urls.sort()).toEqual(['foods', 'categories', 'challenges', 'badges', 'quiz'].sort().map((n) => `/food-passport-bangladesh/data/${n}.json`).sort())
 })

@@ -1,4 +1,4 @@
-const FILES = ['foods', 'categories', 'challenges', 'badges']
+const FILES = ['foods', 'categories', 'challenges', 'badges', 'quiz']
 
 /** Fetch the static catalogue. `baseUrl` follows Vite's BASE_URL so it works on GitHub Pages sub-paths. */
 export async function loadContent(

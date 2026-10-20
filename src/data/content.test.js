@@ -6,6 +6,7 @@ const categories = load('categories')
 const foods = load('foods')
 const challenges = load('challenges')
 const badges = load('badges')
+const quiz = load('quiz')
 
 const categoryIds = new Set(categories.map((c) => c.id))
 const DIVISIONS = ['Dhaka', 'Chattogram', 'Rajshahi', 'Khulna', 'Barishal', 'Sylhet', 'Rangpur', 'Mymensingh']
@@ -187,5 +188,22 @@ describe('association confidence (PRD 4.6: do not present unverified claims as f
     for (const f of foods.filter((x) => x.association_confidence === 'high')) {
       expect(f.source_url, f.id).toMatch(/^https?:\/\//)
     }
+  })
+})
+
+describe('quiz questions', () => {
+  test('ids are unique and there are enough questions', () => {
+    expect(new Set(quiz.map((q) => q.id)).size).toBe(quiz.length)
+    expect(quiz.length).toBeGreaterThanOrEqual(20)
+  })
+
+  test.each(quiz.map((q) => [q.id, q]))('%s is complete, bilingual and sourced', (_id, q) => {
+    expect(hasBengali(q.question_bn) && hasBengali(q.explanation_bn)).toBe(true)
+    expect(q.question_en && q.explanation_en).toBeTruthy()
+    expect(q.options).toHaveLength(4)
+    for (const o of q.options) expect(hasBengali(o.bn) && o.en).toBeTruthy()
+    expect(new Set(q.options.map((o) => o.en)).size).toBe(4)
+    expect(Number.isInteger(q.correct) && q.correct >= 0 && q.correct < 4).toBe(true)
+    expect(q.source_url).toMatch(/^https:\/\//)
   })
 })

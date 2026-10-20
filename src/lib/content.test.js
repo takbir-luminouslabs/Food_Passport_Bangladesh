@@ -6,16 +6,17 @@ const diskFetch = async (url) => {
   return { ok: true, status: 200, json: async () => JSON.parse(readFileSync(`public/data/${name}.json`, 'utf8')) }
 }
 
-test('loads all four content files using the Vite base path', async () => {
+test('loads all content files using the Vite base path', async () => {
   const urls = []
   const content = await loadContent(async (u) => { urls.push(u); return diskFetch(u) }, '/food-passport-bangladesh/')
-  expect(Object.keys(content).sort()).toEqual(['badges', 'categories', 'challenges', 'foods'])
+  expect(Object.keys(content).sort()).toEqual(['badges', 'categories', 'challenges', 'foods', 'quiz'])
   expect(content.foods.length).toBeGreaterThan(60)
   expect(urls.sort()).toEqual([
     '/food-passport-bangladesh/data/badges.json',
     '/food-passport-bangladesh/data/categories.json',
     '/food-passport-bangladesh/data/challenges.json',
     '/food-passport-bangladesh/data/foods.json',
+    '/food-passport-bangladesh/data/quiz.json',
   ])
 })
 
