@@ -72,10 +72,16 @@ test('shows the donation section, clearly optional and PIN-safe', async () => {
 describe('DonationSection', () => {
   const show = (props) => render(<DonationSection lang="en" t={(k) => translations.en[k]} {...props} />)
 
-  test('does not show a number until one is configured/verified', () => {
+  test('the bKash Bangla QR opens in a floating dialog on click, and there is no copy button without a number', async () => {
+    const user = userEvent.setup()
     show({ number: '' })
-    expect(screen.getByText(translations.en['donation.pending'])).toBeInTheDocument()
-    expect(screen.queryByRole('button')).toBeNull()
+    expect(screen.queryByRole('img')).toBeNull()
+    expect(screen.queryByRole('button', { name: translations.en['donation.copy'] })).toBeNull()
+    await user.click(screen.getByRole('button', { name: translations.en['donation.showQr'] }))
+    const dialog = screen.getByRole('dialog', { name: translations.en['donation.qrLabel'] })
+    expect(within(dialog).getByRole('img', { name: translations.en['donation.qrAlt'] })).toHaveAttribute('src', 'images/bkash-qr.jpg')
+    await user.keyboard('{Escape}')
+    expect(screen.queryByRole('dialog')).toBeNull()
   })
 
   test('shows the number and copies it to the clipboard', async () => {
