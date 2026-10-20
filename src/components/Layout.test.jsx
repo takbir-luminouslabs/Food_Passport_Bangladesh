@@ -21,14 +21,14 @@ test('has a main navigation and a mobile quick navigation with every section', a
   await renderApp('#/')
   for (const label of ['nav.main', 'nav.quick']) {
     const nav = screen.getByRole('navigation', { name: translations.bn[label] })
-    for (const k of ['home', 'discover', 'passport', 'challenges', 'quiz', 'leaderboard']) {
+    for (const k of ['passport', 'challenges', 'quiz', 'leaderboard']) {
       expect(within(nav).getByRole('link', { name: new RegExp(translations.bn[`nav.${k}`]) })).toBeInTheDocument()
     }
   }
 })
 
 test('current page is marked for assistive tech', async () => {
-  await renderApp('#/discover')
+  await renderApp('#/')
   const nav = screen.getByRole('navigation', { name: translations.bn['nav.main'] })
-  expect(within(nav).getByRole('link', { name: translations.bn['nav.discover'] })).toHaveAttribute('aria-current', 'page')
+  expect(within(nav).getByRole('link', { name: translations.bn['nav.passport'] })).toHaveAttribute('aria-current', 'page')
 })

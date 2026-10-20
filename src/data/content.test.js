@@ -162,6 +162,13 @@ describe('district coverage (all 64 districts)', () => {
     expect(ALL_64_DISTRICTS.filter((d) => !covered.has(d))).toEqual([])
   })
 
+  test('exactly one (the most popular) food per district: 64 foods in all', () => {
+    expect(foods).toHaveLength(64)
+    const perDistrict = new Map()
+    for (const f of regional) perDistrict.set(f.region.district_en, (perDistrict.get(f.region.district_en) ?? 0) + 1)
+    expect([...perDistrict].filter(([, n]) => n !== 1)).toEqual([])
+  })
+
   test('no food uses an unknown district name', () => {
     const known = new Set(ALL_64_DISTRICTS)
     expect(regional.filter((f) => !known.has(f.region.district_en)).map((f) => f.id)).toEqual([])

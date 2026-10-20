@@ -1,28 +1,22 @@
-import { loadImage } from '../lib/loadImage'
 import { blobBytes, buildPdfPages } from './exportFormats'
+import { PAGE_X, drawLockedSeal, drawPageFrame, drawSeal } from './bookArt'
 import {
-  CARD_HEIGHT, CARD_WIDTH, COLOR, MONO_STACK, drawDataPage, drawEmblem, drawSlot, drawSpreadFrame, drawStamp, ensureFonts, roundedRect, text,
-} from './shareCard'
+  CARD_HEIGHT, CARD_WIDTH, COLOR, MONO_STACK, drawEmblem, drawSpreadFrame, ensureFonts, loadStampImages, roundedRect, text,
+} from './canvasKit'
+import { drawDataPage } from './shareCard'
 
 export const BOOK_FILENAME = 'food-passport-book.pdf'
-const BRAND_LINE = 'FOOD PASSPORT'
 
-// Where a page's content sits on the 1600x1130 spread: the frame line, and the 630px-wide content column.
-const GEO = { left: { frameX: 62, x: 80 }, right: { frameX: 832, x: 890 } }
-const ROW_Y = [435, 805]
+// Where the seals sit on a visa page: three columns and two rows inside the 630px-wide content column.
+const ROW_Y = [455, 805]
 const COL_W = 210
+const SEAL_R = 92
 
-/** A visa page: header, collection progress, six stamp slots (inked stamp or pre-printed guide), MRZ line. */
-function drawVisaPage(ctx, card, page, side, images) {
-  const { frameX, x } = GEO[side]
-  ctx.strokeStyle = 'rgba(23,75,50,0.28)'
-  ctx.lineWidth = 2
-  roundedRect(ctx, frameX, 62, 706, 1006, 10)
-  ctx.stroke()
-  ctx.lineWidth = 1
-  roundedRect(ctx, frameX + 6, 68, 694, 994, 7)
-  ctx.stroke()
-  drawEmblem(ctx, frameX + 353, 640, 430, 'rgba(23,75,50,0.05)')
+/** A visa page: header, collection progress, six places for round seals (inked or still locked), MRZ line. */
+function drawVisaPage(ctx, card, page, side, images = null) {
+  const x = PAGE_X[side]
+  drawPageFrame(ctx, side)
+  drawEmblem(ctx, x - 18 + 353, 640, 430, 'rgba(23,75,50,0.05)')
 
   text(ctx, page.pageLabel, x, 112, { size: 22, weight: 700, color: COLOR.muted, maxWidth: 300 })
   text(ctx, card.visaLabel, x + 630, 112, { size: 26, weight: 700, color: COLOR.primary, align: 'right', maxWidth: 300 })
@@ -38,14 +32,10 @@ function drawVisaPage(ctx, card, page, side, images) {
   }
 
   page.slots.forEach((slot, i) => {
-    const jitter = slot.state === 'collected' ? slot.stamp.tilt : 0
-    const cx = x + ((i % 3) + 0.5) * COL_W + jitter * 1.5
-    const cy = ROW_Y[Math.floor(i / 3)] - jitter * 2
-    if (slot.state === 'collected') {
-      drawStamp(ctx, slot.stamp, images.get(slot.stamp.imageUrl) ?? null, cx, cy, card.collectedLabel, BRAND_LINE, card.entryLabel)
-    } else {
-      drawSlot(ctx, cx, cy, slot.name, slot.district)
-    }
+    const cx = x + ((i % 3) + 0.5) * COL_W
+    const cy = ROW_Y[Math.floor(i / 3)]
+    if (slot.state === 'collected') drawSeal(ctx, slot.stamp, cx, cy, SEAL_R, slot.stamp.tilt, images?.get?.(slot.stamp.imageUrl))
+    else drawLockedSeal(ctx, cx, cy, SEAL_R, slot.name, slot.district)
   })
 
   text(ctx, page.mrz, x, 1040, { size: 20, weight: 700, color: 'rgba(102,115,106,0.8)', family: MONO_STACK, maxWidth: 630 })
@@ -88,7 +78,7 @@ function drawCover(ctx, sheet) {
 }
 
 /** Draw sheet `index` of the book model (0 = cover) onto a 1600x1130 context. */
-export function drawBookSheet(ctx, model, index, { photo = null, images = new Map() } = {}) {
+export function drawBookSheet(ctx, model, index, { photo = null, images = null } = {}) {
   const sheet = model.sheets[index]
   if (sheet.type === 'cover') return drawCover(ctx, sheet)
   drawSpreadFrame(ctx)
@@ -111,12 +101,11 @@ const tick = () => new Promise((resolve) => setTimeout(resolve, 0)) // let the p
  */
 export async function renderBook(
   model,
-  { photo = null, onProgress, signal, loadImageFn = loadImage, fontsApi = globalThis.document?.fonts, makeCanvas = () => document.createElement('canvas') } = {},
+  { photo = null, onProgress, signal, fontsApi = globalThis.document?.fonts, makeCanvas = () => document.createElement('canvas') } = {},
 ) {
   await ensureFonts(fontsApi, model.sampleText)
-  const urls = new Set(model.sheets.flatMap((s) => (s.type === 'spread' ? [s.left, s.right] : [])).flatMap((p) => (p?.type === 'visa' ? p.slots : []))
-    .map((sl) => sl.stamp?.imageUrl).filter(Boolean))
-  const images = new Map(await Promise.all([...urls].map(async (u) => [u, await loadImageFn(u)])))
+  const urls = model.sheets.flatMap((sh) => [sh.left, sh.right]).flatMap((pg) => (pg?.slots ?? []).filter((sl) => sl.state === 'collected').map((sl) => sl.stamp.imageUrl))
+  const images = await loadStampImages(urls)
 
   const canvas = makeCanvas()
   canvas.width = CARD_WIDTH

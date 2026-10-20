@@ -12,7 +12,7 @@ export default function ChallengeCard({ challenge, result, as: Heading = 'h3' })
   const link = challengeLink(challenge.rules)
   const shown = Math.min(result.current, result.target)
   return (
-    <article aria-labelledby={headingId} className={`rounded-2xl p-4 ${result.completed ? 'border-2 border-gold bg-lime/40' : 'bg-card'}`}>
+    <article aria-labelledby={headingId} className={`p-4 ${result.completed ? 'rounded-3xl border-2 border-gold bg-lime/40' : 'card-soft'}`}>
       <div className="flex items-start justify-between gap-2">
         <Heading id={headingId} className="text-lg font-bold text-primary">{pick(challenge, 'title')}</Heading>
         <span className="rounded-full bg-cream px-2 py-1 text-xs">{t(`challenge.type.${challenge.challenge_type}`)}</span>

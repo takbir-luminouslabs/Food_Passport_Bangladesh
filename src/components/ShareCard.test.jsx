@@ -23,11 +23,11 @@ afterEach(() => {
 const drawn = () => ctx.texts().join('|')
 
 test('renders a preview of the card for the current passport', async () => {
-  await renderApp('#/passport', { state: { triedFoodIds: ['chotpoti', 'haleem'] } })
+  await renderApp('#/passport', { state: { triedFoodIds: ['dinajpur-katarivog', 'natore-kacha-gola'] } })
   expect(screen.getByRole('button', { name: bn['share.enlarge'] })).toBeInTheDocument()
   await waitFor(() => expect(drawn()).toContain(bn['share.stamps']))
-  expect(drawn()).toContain('২/৭১')
-  expect(drawn()).toContain('হালিম')
+  expect(drawn()).toContain('২/৬৪')
+  expect(drawn()).toContain('কাঁচাগোল্লা')
 })
 
 test('shows a generating message until the card is ready', async () => {
@@ -171,7 +171,7 @@ describe('share menu (browsers without native file sharing)', () => {
   })
 
   test('the shared message carries the stamp count and the site URL, never the typed name', async () => {
-    const { user } = await renderApp('#/passport', { state: { triedFoodIds: ['chotpoti', 'haleem'] } })
+    const { user } = await renderApp('#/passport', { state: { triedFoodIds: ['dinajpur-katarivog', 'natore-kacha-gola'] } })
     await waitFor(() => expect(drawn()).toContain(bn['share.stamps']))
     await user.type(screen.getByLabelText(bn['share.nameLabel']), 'রাফি')
     await user.click(screen.getByRole('button', { name: bn['share.native'] }))
@@ -286,7 +286,11 @@ describe('float to enlarge', () => {
   })
 })
 
-test('the home page links to the share section', async () => {
-  await renderApp('#/')
-  expect(screen.getByRole('link', { name: bn['share.passport'] })).toHaveAttribute('href', '#/passport#share')
+test('the home page has a button that jumps to the download step', async () => {
+  const scroll = vi.fn()
+  Element.prototype.scrollIntoView = scroll
+  const { user } = await renderApp('#/')
+  await user.click(screen.getByRole('button', { name: bn['share.passport'] }))
+  expect(scroll).toHaveBeenCalled()
+  delete Element.prototype.scrollIntoView
 })

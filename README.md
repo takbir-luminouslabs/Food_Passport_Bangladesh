@@ -19,7 +19,7 @@ npm run build      # production build in dist/
 ## Content
 
 The catalogue is static JSON in [public/data](public/data): `foods.json`, `categories.json`, `challenges.json`,
-`badges.json`. Every food belongs to a district (all 64 are covered). XP, levels, badges and challenges are always
+`badges.json`. Every district has exactly one (its most popular) food, 64 in all. XP, levels, badges and challenges are always
 *derived* from which foods a person has tried, never stored, so progress cannot be farmed or drift out of sync.
 
 All foods are marked `unverified` until someone checks them, and 28 have `association_confidence: "low"`. Please
@@ -85,7 +85,7 @@ src/data/           bilingual strings
 
 ## Before you launch
 
-- [ ] Verify the 28 low-confidence foods (and ideally all 71) and update `verification_status` / `association_confidence`.
+- [ ] Verify the 28 low-confidence foods (and ideally all 64) and update `verification_status` / `association_confidence`.
 - [ ] Add real food photos with their credits (`image_url`, `image_attribution`), or keep the designed fallbacks.
 - [ ] Set `SITE_URL`; set `BKASH_NUMBER` only after verifying it.
 - [ ] Test on a real phone.

@@ -18,7 +18,7 @@ export default function PassportCoverButton() {
         aria-haspopup="dialog"
         aria-label={`${COVER_TEXT}. ${t('passport.cover.enlarge')}`}
         onClick={() => setOpen(true)}
-        className="block w-48 cursor-zoom-in rounded-[1.4rem] transition-transform hover:-translate-y-1 hover:rotate-1 motion-reduce:transform-none sm:w-56"
+        className="block w-full cursor-zoom-in rounded-[1.4rem] transition-transform hover:-translate-y-1 hover:rotate-1 motion-reduce:transform-none"
       >
         <PassportCover />
       </button>

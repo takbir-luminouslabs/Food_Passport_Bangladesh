@@ -18,7 +18,7 @@ test('explains local storage, user control, analytics and food data caveats', as
 
 test('lists the sources used in the food data', async () => {
   await renderApp('#/privacy')
-  const link = screen.getByRole('link', { name: 'en.wikipedia.org' })
-  expect(link).toHaveAttribute('href', expect.stringMatching(/^https:\/\/en\.wikipedia\.org\//))
+  const link = screen.getByRole('link', { name: 'commons.wikimedia.org' })
+  expect(link).toHaveAttribute('href', expect.stringMatching(/^https:\/\/commons\.wikimedia\.org\//))
   expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'))
 })

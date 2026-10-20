@@ -41,3 +41,6 @@ export function tiltFromPointer(rect, x, y, max = 10) {
   const ny = clamp((rect.top + rect.height / 2 - y) / (rect.height / 2), -1, 1)
   return { rx: ny * max + 0, ry: nx * max + 0 }
 }
+
+/** The (decorative, not real) passport number printed on the holder page. */
+export const PASSPORT_NO = 'FPB-0001'

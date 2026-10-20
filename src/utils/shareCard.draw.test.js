@@ -5,20 +5,19 @@ const model = (over = {}) => ({
   lang: 'bn', brand: 'Food Passport Bangladesh', tagline: 'বাংলাদেশের স্বাদ নিন।',
   title: 'রাফি-এর ফুড পাসপোর্ট', displayName: 'রাফি', siteUrl: null,
   fields: [
-    { label: 'নাম', value: 'রাফি' }, { label: 'লেভেল', value: '১ · কৌতূহলী' }, { label: 'মোট XP', value: '৭০' },
-    { label: 'স্ট্যাম্প', value: '২/৮৩' }, { label: 'ইস্যু', value: '২০ অক্টো ২০২৬' },
+    { label: 'নাম', value: 'রাফি' }, { label: 'বাংলাদেশের খাবার চেখে দেখা', value: '৩%' }, { label: 'স্ট্যাম্প', value: '২/৬৪' }, { label: 'ইস্যু', value: '২০ অক্টো ২০২৬' },
   ],
-  level: { name: 'কৌতূহলী', progress: 0.7, nextText: 'আরও ৩০ XP' },
+  percent: { ratio: 0.7, text: '৬৪টি জেলার খাবারের মধ্যে ২টি' },
   pageLabel: 'পাতা ০১', stampsLabel: 'সাম্প্রতিক স্ট্যাম্প', collectedLabel: 'সংগৃহীত',
   emptyText: 'আপনার প্রথম স্ট্যাম্প সংগ্রহ করুন!',
   stamps: [
-    { name: 'চটপটি', category: 'street_food', entryNo: '001', imageUrl: null, tilt: 3, shape: 'round', ink: '#174B32', district: 'ঢাকা' },
-    { name: 'ফুচকা', category: 'street_food', entryNo: '001', imageUrl: '/x.jpg', tilt: -4, shape: 'oval', ink: '#A12B2B', district: null },
+    { name: 'চটপটি', category: 'street_food', imageUrl: null, tilt: 3, ink: '#174B32', district: 'ঢাকা' },
+    { name: 'ফুচকা', category: 'street_food', imageUrl: '/x.jpg', tilt: -4, ink: '#A12B2B', district: null },
   ],
   details: [{ label: 'জাতীয়তা', value: 'বাংলাদেশি ফুডি' }, { label: 'মেয়াদ', value: 'আজীবন' }],
-  signatureLabel: 'বহনকারীর স্বাক্ষর', visaLabel: 'ভিসা', entryLabel: 'নং', stampHereLabel: 'এখানে স্ট্যাম্প',
+  signatureLabel: 'বহনকারীর স্বাক্ষর', visaLabel: 'ভিসা', stampHereLabel: 'এখানে স্ট্যাম্প',
   badges: ['প্রথম কামড়'], selfReported: 'স্ব-ঘোষিত অগ্রগতি',
-  mrz: ['FOOD<PASSPORT<EXPLORER<<<<<<<<<<<<<<<<<<<<<<<'.slice(0, 44).padEnd(44, '<'), '2<70<1<<20261020'.padEnd(44, '<')],
+  mrz: ['FOOD<PASSPORT<EXPLORER<<<<<<<<<<<<<<<<<<<<<<<'.slice(0, 44).padEnd(44, '<'), '2<64<3<<20261020'.padEnd(44, '<')],
   ...over,
 })
 
@@ -27,16 +26,17 @@ test('card is a landscape open-passport spread', () => {
   expect(CARD_WIDTH / CARD_HEIGHT).toBeLessThan(1.5)
 })
 
-test('draws every required element as text', () => {
+test('draws every required element as text, with a percentage instead of XP', () => {
   const ctx = createRecordingCtx()
   drawShareCard(ctx, model(), [])
   const texts = ctx.texts().join('|')
   for (const expected of [
-    'Food Passport Bangladesh', 'রাফি', 'কৌতূহলী', '৭০', '২/৮৩', '২০ অক্টো ২০২৬', 'নাম'.toUpperCase(), 'চটপটি', 'ফুচকা',
-    'সংগৃহীত', 'প্রথম কামড়', 'স্ব-ঘোষিত অগ্রগতি', 'পাতা ০১', 'সাম্প্রতিক স্ট্যাম্প',
+    'Food Passport Bangladesh', 'রাফি', '৩%', '২/৬৪', '৬৪টি জেলার খাবারের মধ্যে ২টি', '২০ অক্টো ২০২৬', 'নাম'.toUpperCase(), 'চটপটি', 'ফুচকা',
+    'প্রথম কামড়', 'স্ব-ঘোষিত অগ্রগতি', 'পাতা ০১', 'সাম্প্রতিক স্ট্যাম্প', 'ভিসা', 'ঢাকা', 'জাতীয়তা', 'বাংলাদেশি ফুডি', 'আজীবন', 'বহনকারীর স্বাক্ষর',
   ]) {
     expect(texts).toContain(expected)
   }
+  expect(texts).not.toMatch(/\bXP\b/)
 })
 
 test('prints both machine-readable lines', () => {
@@ -46,28 +46,22 @@ test('prints both machine-readable lines', () => {
   for (const line of m.mrz) expect(ctx.texts()).toContain(line)
 })
 
-test('missing images fall back to the category icon; a loaded image is drawn instead', () => {
-  const ctx = createRecordingCtx()
-  drawShareCard(ctx, model(), [null, { width: 100, height: 100 }])
-  expect(ctx.texts().filter((t) => t === '🥟')).toHaveLength(0) // vector line-art, never an emoji
-  expect(ctx.calls.filter((c) => c[0] === 'drawImage')).toHaveLength(1)
-})
-
 test('a failed/absent image list never throws', () => {
   expect(() => drawShareCard(createRecordingCtx(), model(), undefined)).not.toThrow()
   expect(() => drawShareCard(createRecordingCtx(), model(), [null, null])).not.toThrow()
 })
 
-test('empty passport shows the encouragement text and blank dashed slots', () => {
+test('empty passport shows the encouragement text and blank dashed places with "stamp here"', () => {
   const ctx = createRecordingCtx()
-  drawShareCard(ctx, model({ stamps: [], badges: [] }), [])
+  drawShareCard(ctx, model({ stamps: [] }))
   expect(ctx.texts()).toContain('আপনার প্রথম স্ট্যাম্প সংগ্রহ করুন!')
   expect(ctx.calls.some((c) => c[0] === 'setLineDash' && c[1].length > 0)).toBe(true)
+  expect(ctx.texts().filter((t) => t === 'এখানে স্ট্যাম্প')).toHaveLength(6)
 })
 
-test('each stamp is tilted like a hand-pressed rubber stamp', () => {
+test('each seal is tilted like a hand-pressed rubber stamp', () => {
   const ctx = createRecordingCtx()
-  drawShareCard(ctx, model(), [])
+  drawShareCard(ctx, model())
   const rotations = ctx.calls.filter((c) => c[0] === 'rotate').map((c) => c[1])
   expect(rotations).toContain((3 * Math.PI) / 180)
   expect(rotations).toContain((-4 * Math.PI) / 180)
@@ -75,13 +69,14 @@ test('each stamp is tilted like a hand-pressed rubber stamp', () => {
 
 test('shows the site URL on the card when available', () => {
   const ctx = createRecordingCtx()
-  drawShareCard(ctx, model({ siteUrl: 'https://example.com/fp' }), [])
+  drawShareCard(ctx, model({ siteUrl: 'https://example.com/fp' }))
   expect(ctx.texts()).toContain('https://example.com/fp')
 })
 
-test('level progress is clamped to the bar', () => {
-  expect(() => drawShareCard(createRecordingCtx(), model({ level: { name: 'x', progress: 5, nextText: '' } }), [])).not.toThrow()
-  expect(() => drawShareCard(createRecordingCtx(), model({ level: { name: 'x', progress: -1, nextText: '' } }), [])).not.toThrow()
+test('the percentage bar is clamped', () => {
+  for (const ratio of [5, -1, Number.NaN]) {
+    expect(() => drawShareCard(createRecordingCtx(), model({ percent: { ratio, text: '' } }))).not.toThrow()
+  }
 })
 
 test('long text shrinks the font before it is truncated', () => {
@@ -91,7 +86,7 @@ test('long text shrinks the font before it is truncated', () => {
   Object.defineProperty(ctx, 'font', { get: () => font, set: (v) => { font = v; sizes.push(Number(/(\d+)px/.exec(v)[1])) } })
   ctx.measureText = (s) => ({ width: String(s).length * Number(/(\d+)px/.exec(font)[1]) * 0.5 })
   const long = 'খাদ্য অনুসন্ধানী খাদ্য অনুসন্ধানী'
-  drawShareCard(ctx, model({ stampsLabel: long }), [])
+  drawShareCard(ctx, model({ stampsLabel: long }))
   expect(Math.min(...sizes.filter((n) => n >= 28 && n <= 40))).toBeLessThan(40)
   expect(ctx.texts()).toContain(long)
 })
@@ -107,41 +102,18 @@ describe('fitText', () => {
 })
 
 describe('real-passport look', () => {
-  test('prints the visa label, district, nationality, validity and signature line', () => {
-    const ctx = createRecordingCtx()
-    const stamps = [{ name: 'চটপটি', category: 'street_food', entryNo: '001', imageUrl: null, tilt: 3, shape: 'rect', ink: '#174B32', district: 'ঢাকা' }]
-    drawShareCard(ctx, model({ stamps }), [])
-    const texts = ctx.texts().join('|')
-    for (const expected of ['ভিসা', 'ঢাকা', 'জাতীয়তা', 'বাংলাদেশি ফুডি', 'আজীবন', 'বহনকারীর স্বাক্ষর', 'FOOD PASSPORT']) {
-      expect(texts).toContain(expected)
-    }
-  })
-
-  test('empty slots say where to stamp', () => {
-    const ctx = createRecordingCtx()
-    drawShareCard(ctx, model({ stamps: [] }), [])
-    expect(ctx.texts().filter((t) => t === 'এখানে স্ট্যাম্প')).toHaveLength(6)
-  })
-
-  test('each stamp is inked in its own colour', () => {
+  test('each seal is inked in its own colour', () => {
     const ctx = createRecordingCtx()
     const seen = new Set()
     Object.defineProperty(ctx, 'strokeStyle', { set(v) { seen.add(v) }, get: () => '' })
-    drawShareCard(ctx, model(), [])
+    drawShareCard(ctx, model())
     expect(seen.has('#174B32')).toBe(true)
     expect(seen.has('#A12B2B')).toBe(true)
   })
 
-  test('every stamp shape draws without throwing', () => {
-    for (const shape of ['round', 'oval', 'rect', 'octagon']) {
-      const stamps = [{ name: 'A', category: 'street_food', entryNo: '001', imageUrl: null, tilt: 0, shape, ink: '#174B32', district: 'X' }]
-      expect(() => drawShareCard(createRecordingCtx(), model({ stamps }), [])).not.toThrow()
-    }
-  })
-
   test('paints a spine: stitch lines down the centre of the spread', () => {
     const ctx = createRecordingCtx()
-    drawShareCard(ctx, model(), [])
+    drawShareCard(ctx, model())
     const centre = CARD_WIDTH / 2
     expect(ctx.calls.some((c) => c[0] === 'moveTo' && Math.abs(c[1] - centre) < 12 && c[2] <= 120)).toBe(true)
   })
@@ -183,58 +155,54 @@ describe('stampGrid (every collected stamp fits on the card)', () => {
 
 describe('many stamps on the card', () => {
   const stampsOf = (n) => Array.from({ length: n }, (_, i) => ({
-    name: `খাবার${i}`, category: 'street_food', entryNo: '001', imageUrl: null, tilt: (i % 9) - 4, shape: ['round', 'oval', 'rect', 'octagon'][i % 4], ink: '#174B32', district: null,
+    name: `খাবার${i}`, category: 'street_food', imageUrl: null, tilt: (i % 9) - 4, ink: '#174B32', district: null,
   }))
   test('draws the name of every stamp up to 30', () => {
     const ctx = createRecordingCtx()
-    drawShareCard(ctx, model({ stamps: stampsOf(30) }), [])
+    let font = ''
+    Object.defineProperty(ctx, 'font', { get: () => font, set: (v) => { font = v } })
+    ctx.measureText = (s) => ({ width: String(s).length * Number(/(\d+(?:\.\d+)?)px/.exec(font)?.[1] ?? 10) * 0.5 }) // text gets narrower as the font shrinks
+    drawShareCard(ctx, model({ stamps: stampsOf(30) }))
     for (let i = 0; i < 30; i++) expect(ctx.texts().some((t) => t.startsWith(`খাবার${i}`))).toBe(true)
   })
   test('draws one icon badge per stamp when there are many', () => {
-    const ctx = createRecordingCtx()
-    drawShareCard(ctx, model({ stamps: stampsOf(83) }), [])
-    expect(ctx.texts().filter((t) => t === '🥟')).toHaveLength(0)
-    const strokes = (n) => { const c = createRecordingCtx(); drawShareCard(c, model({ stamps: stampsOf(n) }), []); return c.calls.filter((x) => x[0] === 'stroke').length }
+    const strokes = (n) => { const c = createRecordingCtx(); drawShareCard(c, model({ stamps: stampsOf(n) })); return c.calls.filter((x) => x[0] === 'stroke').length }
     expect(strokes(83)).toBeGreaterThan(strokes(31))
+    const ctx = createRecordingCtx()
+    drawShareCard(ctx, model({ stamps: stampsOf(83) }))
+    expect(ctx.texts().filter((t) => /\p{Extended_Pictographic}/u.test(t))).toHaveLength(0)
   })
 })
 
-describe('seal details', () => {
-  const one = (shape, over = {}) => [{ name: 'চটপটি', category: 'street_food', entryNo: '007', imageUrl: null, tilt: 0, shape, ink: '#174B32', district: 'ঢাকা', ...over }]
+describe('seals', () => {
+  const one = (over = {}) => [{ name: 'Chotpoti', category: 'street_food', imageUrl: null, tilt: 0, ink: '#174B32', district: 'Dhaka', ...over }]
 
-  test('prints the entry number on every full-size stamp', () => {
-    for (const shape of ['round', 'oval', 'rect', 'octagon']) {
-      const ctx = createRecordingCtx()
-      drawShareCard(ctx, model({ stamps: one(shape) }), [])
-      expect(ctx.texts().some((t) => t.includes('নং') && t.includes('007'))).toBe(true)
-    }
-  })
-
-  test('round seals set the brand along a curve, one letter at a time', () => {
+  test('a Latin name and district are set along the ring, one letter at a time', () => {
     const ctx = createRecordingCtx()
-    drawShareCard(ctx, model({ stamps: one('round') }), [])
-    const letters = ctx.texts().filter((t) => t.length === 1 && /[A-Z]/.test(t))
-    expect(letters.join('')).toContain('FOODPASSPORT')
+    drawShareCard(ctx, model({ stamps: one() }))
+    const letters = ctx.texts().filter((t) => t.length === 1)
+    for (const word of ['Chotpoti', 'Dhaka']) expect([...word].every((ch) => letters.includes(ch))).toBe(true)
     expect(ctx.calls.filter((c) => c[0] === 'rotate').length).toBeGreaterThan(12)
   })
 
-  test('other seals keep the brand as straight text', () => {
+  test('a Bengali name stays whole, so its joined letters are not split', () => {
     const ctx = createRecordingCtx()
-    drawShareCard(ctx, model({ stamps: one('rect') }), [])
-    expect(ctx.texts()).toContain('FOOD PASSPORT')
+    drawShareCard(ctx, model({ stamps: one({ name: 'চটপটি', district: 'ঢাকা' }) }))
+    expect(ctx.texts()).toContain('চটপটি')
+    expect(ctx.texts()).toContain('ঢাকা')
   })
 
-  test('the stamp icon is vector line-art in the stamp ink, not an emoji', () => {
+  test('the seal icon is vector line-art in the seal ink, not an emoji', () => {
     const ctx = createRecordingCtx()
     const seen = new Set()
     Object.defineProperty(ctx, 'strokeStyle', { set(v) { seen.add(v) }, get: () => '' })
-    drawShareCard(ctx, model({ stamps: one('rect', { ink: '#5B2F86' }) }), [])
+    drawShareCard(ctx, model({ stamps: one({ ink: '#5B2F86' }) }))
     expect(seen.has('#5B2F86')).toBe(true)
-    expect(ctx.texts().filter((t) => t.length <= 2).some((t) => /\p{Extended_Pictographic}/u.test(t))).toBe(false) // no lone emoji glyphs
+    expect(ctx.texts().filter((t) => t.length <= 2).some((t) => /\p{Extended_Pictographic}/u.test(t))).toBe(false)
   })
 
-  test('inking is deterministic: the same stamp always draws the same marks', () => {
-    const run = () => { const c = createRecordingCtx(); drawShareCard(c, model({ stamps: one('oval') }), []); return JSON.stringify(c.calls) }
+  test('drawing is deterministic: the same seal always draws the same marks', () => {
+    const run = () => { const c = createRecordingCtx(); drawShareCard(c, model({ stamps: one() })); return JSON.stringify(c.calls) }
     expect(run()).toBe(run())
   })
 })

@@ -2,19 +2,22 @@ import { useApp } from '../context/app-context'
 import { useHolderPhoto } from '../context/holder-photo-context'
 import { useLanguage } from '../hooks/useLanguage'
 import { mrzLine } from '../utils/passportStyle'
+import { percentTried } from '../utils/percent'
 import Emblem from './Emblem'
+import ProgressBar from './ProgressBar'
 
-/** The holder's data page: emblem "photo", level, XP, stamps and a decorative machine-readable line. */
+/** The holder's data page: photo, name, how much of Bangladesh was tried, stamps, and a decorative machine-readable line. */
 export default function DataPage({ side = null }) {
   const { content, progress } = useApp()
-  const { t, pick, formatNumber } = useLanguage()
+  const { t, formatNumber } = useLanguage()
   const photo = useHolderPhoto()
   const holderName = photo.name.replace(/\s+/g, ' ').trim()
+  const total = content.foods.length
+  const percent = percentTried(progress.triedCount, total)
   const rows = [
     [t('share.field.name'), holderName || t('share.holderDefault')],
-    [t('stats.level'), `${formatNumber(progress.level.level)} · ${pick(progress.level, 'name')}`],
-    [t('stats.totalXp'), formatNumber(progress.totalXp)],
-    [t('passport.stamps'), `${formatNumber(progress.triedCount)}/${formatNumber(content.foods.length)}`],
+    [t('book.percentLabel'), `${formatNumber(percent)}%`],
+    [t('passport.stamps'), `${formatNumber(progress.triedCount)}/${formatNumber(total)}`],
     [t('share.field.nationality'), t('share.nationality')],
   ]
   return (
@@ -37,9 +40,13 @@ export default function DataPage({ side = null }) {
           ))}
         </dl>
       </div>
+      <div className="mt-4">
+        <ProgressBar value={percent} max={100} label={t('book.percentLabel')} />
+        <p className="mt-1 text-xs text-muted">{t('book.percentOf', { tried: formatNumber(progress.triedCount), total: formatNumber(total) })}</p>
+      </div>
       <div className="mt-auto pt-4">
         <p data-mrz aria-hidden="true" className="mrz">{mrzLine('FOOD<<PASSPORT<<EXPLORER')}</p>
-        <p data-mrz aria-hidden="true" className="mrz">{mrzLine(`${progress.triedCount}<${progress.totalXp}<${progress.level.level}`)}</p>
+        <p data-mrz aria-hidden="true" className="mrz">{mrzLine(`${progress.triedCount}<${total}<${percent}`)}</p>
       </div>
     </section>
   )

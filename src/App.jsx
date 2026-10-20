@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
 import LoadingState from './components/LoadingState'
@@ -8,12 +8,17 @@ import { useApp } from './context/app-context'
 import { useLanguage } from './hooks/useLanguage'
 import Challenges from './pages/Challenges'
 import ComingSoon from './pages/ComingSoon'
-import Discover from './pages/Discover'
 import FoodDetail from './pages/FoodDetail'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
-import Passport from './pages/Passport'
 import Privacy from './pages/Privacy'
+
+/** Old addresses (/discover, /passport) now live on the home page: go there and scroll to the matching step. */
+function ToStep({ step }) {
+  const { search, hash } = useLocation()
+  const scrollTo = hash === '#share' ? 'download' : step
+  return <Navigate to={{ pathname: '/', search }} replace state={{ scrollTo }} />
+}
 
 function Content() {
   const { status, retry } = useApp()
@@ -32,9 +37,9 @@ function Content() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/discover" element={<Discover />} />
+      <Route path="/discover" element={<ToStep step="pick" />} />
       <Route path="/discover/:foodId" element={<FoodDetail />} />
-      <Route path="/passport" element={<Passport />} />
+      <Route path="/passport" element={<ToStep step="passport" />} />
       <Route path="/challenges" element={<Challenges />} />
       <Route path="/quiz" element={<ComingSoon titleKey="nav.quiz" />} />
       <Route path="/leaderboard" element={<ComingSoon titleKey="nav.leaderboard" />} />

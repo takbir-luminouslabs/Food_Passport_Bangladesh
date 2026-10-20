@@ -20,3 +20,9 @@ test('falls back when the image fails to load', () => {
   expect(screen.queryByRole('img')).toBeNull()
   expect(container.querySelector('[data-fallback]')).toBeInTheDocument()
 })
+
+test('the fallback has steam rising over the dish, drawn aria-hidden', () => {
+  const { container } = render(<FoodImage food={food} alt="Chotpoti" />)
+  const steam = container.querySelectorAll('[data-fallback] .scene-steam')
+  expect(steam.length).toBeGreaterThanOrEqual(2)
+})

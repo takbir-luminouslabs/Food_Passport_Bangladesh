@@ -35,8 +35,8 @@ describe('translations', () => {
 
 describe('t()', () => {
   test('returns the requested language', () => {
-    expect(t('en', 'nav.home')).toBe(translations.en['nav.home'])
-    expect(t('bn', 'nav.home')).toBe(translations.bn['nav.home'])
+    expect(t('en', 'nav.passport')).toBe(translations.en['nav.passport'])
+    expect(t('bn', 'nav.passport')).toBe(translations.bn['nav.passport'])
   })
 
   test('interpolates variables and leaves unknown ones visible', () => {

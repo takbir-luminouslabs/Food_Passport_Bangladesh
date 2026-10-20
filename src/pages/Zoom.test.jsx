@@ -30,12 +30,12 @@ describe('Home cover', () => {
   test('there is still exactly one h1 and the start CTA is reachable', async () => {
     await renderApp('#/')
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
-    expect(screen.getByRole('link', { name: bn['cta.start'] })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: bn['cta.start'] })).toBeInTheDocument()
   })
 })
 
 describe('Passport visa pages', () => {
-  const name = 'স্ট্রিট ফুড'
+  const name = 'ভাত ও বিরিয়ানি'
   const enlarge = () => screen.getByRole('button', { name: t('bn', 'passport.page.enlarge', { name }) })
 
   test('each page has a page number', async () => {
@@ -45,11 +45,11 @@ describe('Passport visa pages', () => {
   })
 
   test('the enlarge button floats that page up with its stamps', async () => {
-    const { user } = await renderApp('#/passport', { state: { triedFoodIds: ['chotpoti'] } })
+    const { user } = await renderApp('#/passport', { state: { triedFoodIds: ['dinajpur-katarivog'] } })
     await user.click(enlarge())
     const dialog = screen.getByRole('dialog', { name })
-    expect(within(dialog).getAllByRole('link').length).toBeGreaterThan(1)
-    expect(within(dialog).getAllByText(bn['stamp.collected'])).toHaveLength(1)
+    expect(within(dialog).getAllByRole('link')).toHaveLength(3)
+    expect(within(dialog).getAllByText(new RegExp(`${bn['stamp.collected']}$`))).toHaveLength(1)
   })
 
   test('clicking the page itself also enlarges it, but clicking a stamp just opens that food', async () => {
@@ -59,16 +59,16 @@ describe('Passport visa pages', () => {
     await user.keyboard('{Escape}')
 
     const region = screen.getByRole('region', { name })
-    await user.click(within(region).getByRole('link', { name: /চটপটি/ }))
+    await user.click(within(region).getByRole('link', { name: /কাটারিভোগ চাল/ }))
     expect(screen.queryByRole('dialog')).toBeNull()
-    expect(window.location.hash).toBe('#/discover/chotpoti')
+    expect(window.location.hash).toBe('#/discover/dinajpur-katarivog')
   })
 
   test('a stamp inside the enlarged page opens the food and closes the dialog', async () => {
     const { user } = await renderApp('#/passport')
     await user.click(enlarge())
-    await user.click(within(screen.getByRole('dialog')).getByRole('link', { name: /চটপটি/ }))
-    expect(window.location.hash).toBe('#/discover/chotpoti')
+    await user.click(within(screen.getByRole('dialog')).getByRole('link', { name: /কাটারিভোগ চাল/ }))
+    expect(window.location.hash).toBe('#/discover/dinajpur-katarivog')
     expect(screen.queryByRole('dialog')).toBeNull()
   })
 

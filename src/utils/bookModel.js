@@ -40,7 +40,7 @@ export function buildBookModel({ progress, content, lang, displayName = null, si
   for (let i = 0; i < pages.length; i += 2) sheets.push({ type: 'spread', left: pages[i], right: pages[i + 1] ?? null })
 
   const strings = [
-    card.brand, card.tagline, card.title, card.level.name, card.level.nextText, card.pageLabel, card.collectedLabel, card.stampHereLabel,
+    card.brand, card.tagline, card.title, card.percent.text, card.pageLabel, card.collectedLabel, card.stampHereLabel,
     card.selfReported, card.signatureLabel, card.visaLabel, card.entryLabel, ...card.details.flatMap((d) => [d.label, d.value]),
     ...card.badges, ...card.fields.flatMap((f) => [f.label, f.value]),
     ...sheets.flatMap((s) => (s.type === 'spread' ? [s.left, s.right] : [])).filter((p) => p?.type === 'visa').flatMap((p) => [

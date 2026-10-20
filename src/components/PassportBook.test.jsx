@@ -11,8 +11,8 @@ const categories = JSON.parse(readFileSync('public/data/categories.json', 'utf8'
 const pages = buildBookPages(buildCollections(foods, categories))
 const SPREADS = Math.ceil(pages.length / 2)
 const bnNum = (n) => new Intl.NumberFormat('bn-BD').format(n)
-const STREET = 'স্ট্রিট ফুড'
-const RICE = 'ভাত ও বিরিয়ানি'
+const STREET = 'ভাত ও বিরিয়ানি'
+const RICE = 'মাছ ও সামুদ্রিক খাবার'
 const FISH = 'মাছ ও সামুদ্রিক খাবার'
 const REGIONAL = 'আঞ্চলিক বিশেষত্ব'
 const book = () => screen.getByRole('group', { name: bn['book.label'] })
@@ -20,16 +20,38 @@ const next = () => screen.getByRole('button', { name: bn['book.next'] })
 const prev = () => screen.getByRole('button', { name: bn['book.prev'] })
 // a collection that continues over several pages is named "<collection> · 2/5"
 const hasRegion = (name) => screen.queryAllByRole('region', { name: new RegExp(`^${name}`) }).length > 0
+const TRIED = ['dinajpur-katarivog', 'natore-kacha-gola']
 
 test('opens on a spread with the holder data page and the first visa page', async () => {
-  await renderApp('#/passport', { state: { triedFoodIds: ['chotpoti', 'haleem'] } })
+  await renderApp('#/passport', { state: { triedFoodIds: TRIED } })
   const holder = within(book()).getByRole('region', { name: bn['book.dataPage'] })
-  expect(within(holder).getByText(bn['stats.totalXp'])).toBeInTheDocument()
-  expect(within(holder).getByText(bn['stats.level'])).toBeInTheDocument()
-  expect(within(holder).getByText('২/৭১')).toBeInTheDocument()
+  expect(within(holder).getByText(bn['share.field.name'])).toBeInTheDocument()
+  expect(within(holder).getByText(bn['passport.stamps'])).toBeInTheDocument()
+  expect(within(holder).getByText('২/৬৪')).toBeInTheDocument()
   expect(holder.querySelector('[data-mrz]')).toHaveAttribute('aria-hidden', 'true')
   expect(hasRegion(STREET)).toBe(true)
   expect(hasRegion(RICE)).toBe(false)
+})
+
+describe('how much of Bangladesh was tried (instead of XP)', () => {
+  test('the data page shows the percentage of the 64 district foods already tried, with a bar', async () => {
+    await renderApp('#/passport', { state: { triedFoodIds: Array.from({ length: 16 }, (_, i) => foods[i].id) } })
+    const holder = within(book()).getByRole('region', { name: bn['book.dataPage'] })
+    expect(within(holder).getByText(bn['book.percentLabel'])).toBeInTheDocument()
+    expect(within(holder).getByText('২৫%')).toBeInTheDocument()
+    expect(within(holder).getByText(bn['book.percentOf'].replace('{total}', '৬৪').replace('{tried}', '১৬'))).toBeInTheDocument()
+    const bar = within(holder).getByRole('progressbar', { name: bn['book.percentLabel'] })
+    expect(bar).toHaveAttribute('aria-valuenow', '25')
+  })
+
+  test('an empty passport reads 0% and the page shows neither XP nor a level', async () => {
+    await renderApp('#/passport')
+    const holder = within(book()).getByRole('region', { name: bn['book.dataPage'] })
+    expect(within(holder).getByText('০%')).toBeInTheDocument()
+    expect(within(holder).queryByText(bn['stats.totalXp'])).toBeNull()
+    expect(within(holder).queryByText(bn['stats.level'])).toBeNull()
+    expect(holder).not.toHaveTextContent(/\bXP\b/)
+  })
 })
 
 test('next and previous turn to the neighbouring pages', async () => {
@@ -72,18 +94,26 @@ test('arrow keys turn pages while focus is inside the book', async () => {
   expect(hasRegion(STREET)).toBe(true)
 })
 
-test('every food appears on exactly one page, and no page holds more than six stamps', async () => {
-  const { user } = await renderApp('#/passport')
+test('there is a slot for each of the 64 district foods, on exactly one page, never more than six to a page', async () => {
+  const { user } = await renderApp('#/passport', { state: { triedFoodIds: TRIED } })
   const seen = []
   for (let i = 0; i < SPREADS; i++) {
-    const links = within(book()).getAllByRole('link').map((l) => l.getAttribute('href'))
-    seen.push(...links)
+    seen.push(...[...book().querySelectorAll('[data-food-id]')].map((el) => el.dataset.foodId))
     for (const region of within(book()).queryAllByRole('region')) {
-      expect(within(region).queryAllByRole('link').length).toBeLessThanOrEqual(6)
+      expect(region.querySelectorAll('[data-food-id]').length).toBeLessThanOrEqual(6)
     }
     if (i < SPREADS - 1) await user.click(next())
   }
-  expect(seen.sort()).toEqual(foods.map((f) => `#/discover/${f.id}`).sort())
+  expect(seen).toHaveLength(64)
+  expect(seen.sort()).toEqual(foods.map((f) => f.id).sort())
+})
+
+test('tried foods are active seals that link to the food, the rest stay locked slots', async () => {
+  await renderApp('#/passport', { state: { triedFoodIds: TRIED } })
+  const active = book().querySelector('[data-food-id="dinajpur-katarivog"]')
+  expect(active).toHaveAttribute('href', '#/discover/dinajpur-katarivog')
+  expect(active.querySelector('svg textPath')).not.toBeNull()
+  expect(within(active).getByText(new RegExp(`${bn['stamp.collected']}$`))).toBeInTheDocument()
 })
 
 test('a collection with many foods continues over pages labelled "n/total" and its chip opens the first part', async () => {

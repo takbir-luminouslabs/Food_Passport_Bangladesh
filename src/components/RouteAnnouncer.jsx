@@ -9,7 +9,8 @@ import { useLanguage } from '../hooks/useLanguage'
  * moves focus to the main content at the top.
  */
 export default function RouteAnnouncer({ siteName }) {
-  const { pathname } = useLocation()
+  const { pathname, state } = useLocation()
+  const stepRequested = useRef(false)
   const { status } = useApp()
   const { language } = useLanguage()
   const [announcement, setAnnouncement] = useState('')
@@ -24,6 +25,10 @@ export default function RouteAnnouncer({ siteName }) {
     document.title = name && name !== siteName ? `${name} · ${siteName}` : siteName
   }, [pathname, status, language, siteName])
 
+  useEffect(() => {
+    stepRequested.current = Boolean(state?.scrollTo)
+  })
+
   // announce + focus: only when the page changes, never on the first load
   useEffect(() => {
     if (status !== 'ready') return
@@ -33,7 +38,7 @@ export default function RouteAnnouncer({ siteName }) {
     }
     setAnnouncement(pageName())
     const main = document.getElementById('main')
-    document.documentElement.scrollTop = 0
+    if (!stepRequested.current) document.documentElement.scrollTop = 0 // a redirect that names a step scrolls there itself
     main?.focus({ preventScroll: true })
   }, [pathname, status])
 

@@ -10,7 +10,7 @@ const categories = JSON.parse(readFileSync('public/data/categories.json', 'utf8'
 const challenges = JSON.parse(readFileSync('public/data/challenges.json', 'utf8'))
 const badges = JSON.parse(readFileSync('public/data/badges.json', 'utf8'))
 const content = { foods, categories, challenges, badges }
-const model = (ids = ['chotpoti', 'haleem'], opts = {}) => {
+const model = (ids = ['dinajpur-katarivog', 'natore-kacha-gola'], opts = {}) => {
   const state = ids.reduce(markTried, createInitialState('en'))
   return buildBookModel({ progress: computeProgress(state, content), content, lang: 'en', now: new Date(2026, 9, 20), ...opts })
 }
@@ -23,13 +23,22 @@ describe('drawBookSheet', () => {
     expect(ctx.texts()).toContain('Rafi')
   })
 
-  test('the first spread has the holder data page and the first visa page with its stamps', () => {
-    const m = model()
+  test('the first spread has the holder data page and the first visa page with its seal', () => {
+    const m = model(['dinajpur-katarivog', 'natore-kacha-gola'])
     const ctx = createRecordingCtx()
     drawBookSheet(ctx, m, 1)
     const texts = ctx.texts().join('|')
-    for (const expected of ['Food Explorer', 'Street Food', '2/2 · 100%', 'Chotpoti', 'Haleem', 'No. 001', 'PAGE 01', 'VISA', 'Dhaka']) expect(texts).toContain(expected)
+    for (const expected of ['Food Explorer', 'BANGLADESH FOODS TRIED', '3%', '2/64', 'Rice and Biryani', '1/3 · 33%', 'PAGE 01', 'VISA']) expect(texts).toContain(expected)
+    expect(texts).not.toMatch(/\bXP\b/)
     expect(ctx.texts().some((t) => /^FOOD<<?PASSPORT/.test(t))).toBe(true)
+  })
+
+  test('collected stamps are round seals with their name and district written on the ring', () => {
+    const ctx = createRecordingCtx()
+    drawBookSheet(ctx, model(), 1)
+    const texts = ctx.texts()
+    // latin names are set letter by letter along the ring, so look for the letters of the name
+    for (const word of ['Katarivog Rice', 'Dinajpur']) expect([...word].every((ch) => texts.includes(ch))).toBe(true)
   })
 
   test('locked foods are listed by name (with district) so the explorer knows what to find', () => {

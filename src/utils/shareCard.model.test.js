@@ -33,20 +33,21 @@ describe('passport data-page fields', () => {
     expect(field(build([], { displayName: 'Rafi' }), 'Name')).toBe('Rafi')
   })
 
-  test('level, XP, stamps and issue date reflect current progress', () => {
+  test('percentage of foods tried, stamps and issue date reflect current progress (no XP, no level)', () => {
     const m = build(['s1', 's2'])
-    expect(field(m, 'Level')).toBe('1 · Curious Eater')
-    expect(field(m, 'Total XP')).toBe('70')
+    expect(field(m, 'Bangladesh foods tried')).toBe('33%')
     expect(field(m, 'Stamps')).toBe('2/6')
     expect(field(m, 'Issued')).toBe('20 Oct 2026')
-    expect(m.level.progress).toBeCloseTo(0.7)
+    expect(m.fields.map((f) => f.label)).not.toContain('Total XP')
+    expect(m.fields.map((f) => f.label)).not.toContain('Level')
+    expect(m.percent.ratio).toBeCloseTo(0.33)
+    expect(m.percent.text).toBe('2 of 6 district foods')
   })
 
-  test('uses Bengali labels, digits and level names in Bengali', () => {
+  test('uses Bengali labels and digits', () => {
     const m = build(['s1', 's2'], { lang: 'bn' })
-    expect(m.fields.map((f) => f.label)).toEqual(['নাম', 'লেভেল', 'মোট XP', 'স্ট্যাম্প', 'ইস্যু'])
-    expect(field(m, 'লেভেল')).toBe('১ · কৌতূহলী ভোজনরসিক')
-    expect(field(m, 'মোট XP')).toBe('৭০')
+    expect(m.fields.map((f) => f.label)).toEqual(['নাম', 'বাংলাদেশের খাবার চেখে দেখা', 'স্ট্যাম্প', 'ইস্যু'])
+    expect(field(m, 'বাংলাদেশের খাবার চেখে দেখা')).toBe('৩৩%')
     expect(field(m, 'ইস্যু')).toMatch(/২০২৬/)
   })
 })

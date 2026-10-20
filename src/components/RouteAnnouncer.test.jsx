@@ -14,15 +14,15 @@ test('the first page load does not steal focus, but sets a descriptive page titl
 test('navigating moves focus to the main content, updates the title and announces the new page', async () => {
   const { user } = await renderApp('#/')
   const nav = screen.getAllByRole('navigation', { name: bn['nav.main'] })[0]
-  await user.click(within(nav).getByRole('link', { name: bn['nav.discover'] }))
-  await waitFor(() => expect(document.title).toContain(bn['discover.title']))
+  await user.click(within(nav).getByRole('link', { name: bn['nav.challenges'] }))
+  await waitFor(() => expect(document.title).toContain(bn['challenges.title']))
   expect(document.activeElement).toBe(screen.getByRole('main'))
-  expect(screen.getByTestId('route-announcer')).toHaveTextContent(bn['discover.title'])
+  expect(screen.getByTestId('route-announcer')).toHaveTextContent(bn['challenges.title'])
 })
 
 test('a food page is titled with the food name', async () => {
-  await renderApp('#/discover/chotpoti')
-  await waitFor(() => expect(document.title).toBe(`চটপটি · ${SITE}`))
+  await renderApp('#/discover/dinajpur-katarivog')
+  await waitFor(() => expect(document.title).toBe(`কাটারিভোগ চাল · ${SITE}`))
 })
 
 test('the live region is polite and visually hidden', async () => {

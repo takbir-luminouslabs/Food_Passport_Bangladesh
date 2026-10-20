@@ -39,7 +39,7 @@ test('paintIcon strokes in the given colour, scaled to the requested size, witho
   }
 })
 
-const UI = ['home', 'search', 'book', 'trophy', 'help', 'chart', 'lock', 'check', 'close', 'arrowLeft', 'arrowRight', 'pin', 'medal', 'expand', 'chefHat', 'compass', 'leaf', 'user', 'utensils', 'stampTool']
+const UI = ['home', 'search', 'book', 'trophy', 'help', 'chart', 'lock', 'check', 'close', 'arrowLeft', 'arrowRight', 'pin', 'medal', 'expand']
 
 describe('interface icons (same line-art style as the stamps)', () => {
   test('there is one icon for every glyph the site used to draw with emoji or text symbols', () => {

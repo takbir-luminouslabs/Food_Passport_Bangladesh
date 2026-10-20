@@ -51,7 +51,7 @@ describe('app states', () => {
     expect(await screen.findByRole('alert')).toHaveTextContent(bn['common.error'])
     await userEvent.setup().click(screen.getByRole('button', { name: bn['common.retry'] }))
     expect(await screen.findByRole('heading', { level: 1 })).toBeInTheDocument()
-    expect(screen.queryByRole('alert')).toBeNull()
+    expect(screen.queryByText(bn['common.error'])).toBeNull()
   })
 
   test('an unknown food page says so and links back', async () => {

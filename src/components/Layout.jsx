@@ -2,6 +2,7 @@ import { useApp } from '../context/app-context'
 import { useLanguage } from '../hooks/useLanguage'
 import Footer from './Footer'
 import Navbar from './Navbar'
+import ScrollToTop from './ScrollToTop'
 import RouteAnnouncer from './RouteAnnouncer'
 import ToastHost from './ToastHost'
 
@@ -19,6 +20,7 @@ export default function Layout({ children }) {
         {children}
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   )
 }

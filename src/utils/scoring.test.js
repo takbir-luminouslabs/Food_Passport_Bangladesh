@@ -102,11 +102,11 @@ describe('against the real catalogue', () => {
   const real = realContent()
   const ids = (cat, n) => real.foods.filter((f) => f.category === cat).slice(0, n).map((f) => f.id)
 
-  test('2 street foods: 20 XP + street challenge, street badge', () => {
-    const p = computeProgress(mark(ids('street_food', 2)), real)
+  test('2 pitha: 20 XP + pitha challenge, pitha badge', () => {
+    const p = computeProgress(mark(ids('pitha_snacks', 2)), real)
     expect(p.baseXp).toBe(20)
-    expect(p.completedChallengeIds).toContain('street-food-2')
-    expect(p.earnedBadgeIds).toEqual(expect.arrayContaining(['first-bite', 'street-food-fan']))
+    expect(p.completedChallengeIds).toContain('pitha-2')
+    expect(p.earnedBadgeIds).toEqual(expect.arrayContaining(['first-bite', 'pitha-lover']))
     expect(p.totalXp).toBe(p.baseXp + 25 * p.completedChallengeIds.length)
   })
 
@@ -123,7 +123,7 @@ describe('against the real catalogue', () => {
     const p = computeProgress(mark(real.foods.map((f) => f.id)), real)
     expect(p.completedChallengeIds.length).toBe(real.challenges.length)
     expect(p.earnedBadgeIds).toEqual(
-      expect.arrayContaining(['first-bite', 'street-food-fan', 'sweet-tooth', 'pitha-lover', 'food-adventurer', 'food-collector', 'flavour-master']),
+      expect.arrayContaining(['first-bite', 'sweet-tooth', 'pitha-lover', 'food-adventurer', 'food-collector', 'flavour-master']),
     )
     expect(p.earnedBadgeIds).not.toContain('quiz-champion')
     expect(p.completionPercent).toBe(100)

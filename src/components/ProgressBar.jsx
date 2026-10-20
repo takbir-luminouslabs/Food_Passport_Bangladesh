@@ -10,7 +10,7 @@ export default function ProgressBar({ value, max, label }) {
       aria-valuenow={value}
       className="h-3 w-full overflow-hidden rounded-full bg-primary/15"
     >
-      <div className="h-full rounded-full bg-primary" style={{ width: `${pct}%` }} />
+      <div className="h-full rounded-full bg-primary transition-[width] duration-700 ease-out motion-reduce:transition-none" style={{ width: `${pct}%` }} />
     </div>
   )
 }

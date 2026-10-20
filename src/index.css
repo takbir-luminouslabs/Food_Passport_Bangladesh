@@ -10,12 +10,20 @@
   --color-muted: #566259;
   --color-gold: #d6ad57;
   --color-gold-dark: #8a6a1f;
+  --color-peach: #fde8dc;
+  --color-mint: #def3e3;
+  --color-sky: #dcecf8;
+  --color-lavender: #ebe3f7;
+  --color-sunny: #fff1c9;
   --font-sans: 'Noto Sans Bengali Variable', ui-sans-serif, system-ui, -apple-system,
     'Segoe UI', sans-serif;
 }
 
 body {
+  overflow-wrap: break-word;
   background-color: var(--color-cream);
+  background-image: linear-gradient(180deg, #eaf6ec 0, var(--color-cream) 22rem);
+  background-repeat: no-repeat;
   color: var(--color-primary-dark);
   font-family: var(--font-sans);
 }
@@ -54,6 +62,7 @@ body {
 .float-up { animation: float-up 0.3s ease-out both; }
 
 .passport-cover {
+  container-type: inline-size;
   position: relative;
   aspect-ratio: 3 / 4;
   border-radius: 0.9rem 1.4rem 1.4rem 0.9rem;
@@ -84,8 +93,8 @@ body {
 }
 .foil-icon { color: #e3c06f; filter: drop-shadow(0 1px 0 rgb(0 0 0 / 0.5)); }
 .passport-chip {
-  width: 2.4rem;
-  height: 1.6rem;
+  width: 11cqw;
+  height: 7.5cqw;
   border: 2px solid rgb(214 173 87 / 0.8);
   border-radius: 0.35rem;
   background: radial-gradient(circle, rgb(214 173 87 / 0.8) 0 22%, transparent 24%);
@@ -122,7 +131,7 @@ body {
 .passport-book .visa-page {
   border-radius: 0.5rem;
   /* every page has the same size, whatever it holds, so turning a page never makes the book jump */
-  height: 33.5rem;
+  height: 35rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -184,6 +193,9 @@ body {
 .stamp-ink[data-shape='round'] { border-radius: 50%; width: min(6.75rem, 100%); aspect-ratio: 1; margin-inline: auto; padding-inline: 0.9rem; }
 .stamp-ink[data-shape='oval'] { border-radius: 50% / 40%; }
 .stamp-ink[data-shape='octagon'] { border-radius: 1.4rem; }
+.stamp-seal {
+  mix-blend-mode: multiply;
+}
 .stamp-slot {
   border: 2px dashed rgb(102 115 106 / 0.7);
   border-radius: 0.6rem;
@@ -198,4 +210,49 @@ body {
   overflow: hidden;
   white-space: nowrap;
   user-select: none;
+}
+
+/* ---------- lively look: soft cards, pastel tints, a sky hero, moving illustrations ---------- */
+
+.card-soft {
+  border-radius: 1.5rem;
+  background: var(--color-card);
+  box-shadow: 0 1px 0 rgb(23 75 50 / 0.04), 0 8px 24px -12px rgb(23 75 50 / 0.2);
+}
+.tint-peach { background-color: var(--color-peach); }
+.tint-mint { background-color: var(--color-mint); }
+.tint-sky { background-color: var(--color-sky); }
+.tint-lavender { background-color: var(--color-lavender); }
+.tint-sunny { background-color: var(--color-sunny); }
+
+.hero-sky {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  background: linear-gradient(180deg, #cfe8f7 0%, #e8f5ee 55%, #f3f8ec 100%);
+  box-shadow: 0 10px 30px -16px rgb(23 75 50 / 0.35);
+}
+
+@keyframes scene-drift { from { transform: translateX(-24px); } to { transform: translateX(24px); } }
+@keyframes scene-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+@keyframes scene-sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes scene-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 0.85; } }
+.scene-drift { animation: scene-drift 14s ease-in-out infinite alternate; }
+.scene-drift-slow { animation-duration: 22s; }
+.scene-bob { animation: scene-bob 4.5s ease-in-out infinite; }
+.scene-bob-slow { animation-duration: 6s; animation-delay: -2s; }
+.scene-sway { transform-box: fill-box; transform-origin: 50% 100%; animation: scene-sway 5s ease-in-out infinite; }
+.scene-pulse { animation: scene-pulse 5s ease-in-out infinite; }
+@keyframes scene-float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-10px) rotate(3deg); } }
+@keyframes scene-steam { 0% { opacity: 0; transform: translateY(4px); } 40% { opacity: 0.9; } 100% { opacity: 0; transform: translateY(-9px); } }
+@keyframes pill-wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg) scale(1.15); } 75% { transform: rotate(14deg) scale(1.15); } }
+@keyframes stamp-pop { 0% { transform: scale(1.6); opacity: 0; } 60% { transform: scale(0.94); opacity: 1; } 100% { transform: scale(1); } }
+.scene-float { animation: scene-float 6s ease-in-out infinite; }
+.scene-steam { animation: scene-steam 3s ease-in-out infinite; transform-box: fill-box; }
+.scene-steam-late { animation-delay: -1.5s; }
+.pill-bounce:hover svg { animation: pill-wiggle 0.5s ease-in-out; }
+.stamp-seal > svg { animation: stamp-pop 0.45s ease-out backwards; }
+@media (prefers-reduced-motion: reduce) {
+  .scene-drift, .scene-bob, .scene-sway, .scene-pulse, .scene-float, .scene-steam, .pill-bounce:hover svg, .stamp-seal > svg { animation: none; }
+  .scene-steam { opacity: 0.6; }
 }

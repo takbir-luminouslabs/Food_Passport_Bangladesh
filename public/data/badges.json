@@ -11,18 +11,6 @@
     }
   },
   {
-    "id": "street-food-fan",
-    "name_bn": "স্ট্রিট ফুড ফ্যান",
-    "name_en": "Street Food Fan",
-    "description_bn": "২টি স্ট্রিট ফুড চেখে দেখুন।",
-    "description_en": "Try 2 street foods.",
-    "unlock_rule": {
-      "type": "count_category",
-      "category": "street_food",
-      "target": 2
-    }
-  },
-  {
     "id": "sweet-tooth",
     "name_bn": "মিষ্টি-প্রেমী",
     "name_en": "Sweet Tooth",
@@ -38,12 +26,12 @@
     "id": "pitha-lover",
     "name_bn": "পিঠা-প্রেমী",
     "name_en": "Pitha Lover",
-    "description_bn": "৩টি পিঠা চেখে দেখুন।",
-    "description_en": "Try 3 pitha dishes.",
+    "description_bn": "২টি পিঠা চেখে দেখুন।",
+    "description_en": "Try 2 pitha dishes.",
     "unlock_rule": {
       "type": "count_category",
       "category": "pitha_snacks",
-      "target": 3
+      "target": 2
     }
   },
   {

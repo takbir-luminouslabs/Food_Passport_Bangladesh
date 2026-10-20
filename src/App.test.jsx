@@ -21,7 +21,7 @@ test('shows a loading state, then the brand and the start CTA', async () => {
   render(<App />)
   expect(screen.getByText(translations.bn['common.loading'])).toBeInTheDocument()
   expect(await screen.findByRole('heading', { level: 1 })).toHaveTextContent('Food Passport Bangladesh')
-  expect(screen.getByRole('link', { name: translations.bn['cta.start'] })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: translations.bn['cta.start'] })).toBeInTheDocument()
 })
 
 test('language switcher flips the UI and persists the choice', async () => {
@@ -29,7 +29,7 @@ test('language switcher flips the UI and persists the choice', async () => {
   render(<App />)
   await screen.findByRole('heading', { level: 1 })
   await user.click(screen.getByRole('button', { name: 'English' }))
-  expect(screen.getByRole('link', { name: translations.en['cta.start'] })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: translations.en['cta.start'] })).toBeInTheDocument()
   expect(document.documentElement.lang).toBe('en')
   expect(JSON.parse(localStorage.getItem('food-passport-bangladesh:v1')).language).toBe('en')
 })

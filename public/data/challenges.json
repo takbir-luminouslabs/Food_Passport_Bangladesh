@@ -1,20 +1,5 @@
 [
   {
-    "id": "street-food-2",
-    "challenge_type": "collection",
-    "title_bn": "২টি স্ট্রিট ফুড",
-    "title_en": "Try 2 Street Foods",
-    "description_bn": "২টি আলাদা স্ট্রিট ফুড চেখে দেখুন।",
-    "description_en": "Mark 2 different street foods as tried.",
-    "rules": {
-      "type": "count_category",
-      "category": "street_food",
-      "target": 2
-    },
-    "xp_reward": 25,
-    "is_active": true
-  },
-  {
     "id": "sweets-5",
     "challenge_type": "collection",
     "title_bn": "৫টি মিষ্টি",
@@ -30,16 +15,16 @@
     "is_active": true
   },
   {
-    "id": "pitha-3",
+    "id": "pitha-2",
     "challenge_type": "collection",
-    "title_bn": "৩টি পিঠা",
-    "title_en": "Try 3 Pitha",
-    "description_bn": "৩টি আলাদা পিঠা বা ঐতিহ্যবাহী নাস্তা চেখে দেখুন।",
-    "description_en": "Mark 3 different pitha or traditional snacks as tried.",
+    "title_bn": "২টি পিঠা",
+    "title_en": "Try 2 Pitha",
+    "description_bn": "২টি আলাদা পিঠা বা ঐতিহ্যবাহী নাস্তা চেখে দেখুন।",
+    "description_en": "Mark 2 different pitha or traditional snacks as tried.",
     "rules": {
       "type": "count_category",
       "category": "pitha_snacks",
-      "target": 3
+      "target": 2
     },
     "xp_reward": 25,
     "is_active": true

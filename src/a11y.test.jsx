@@ -9,8 +9,8 @@ const run = async (container) =>
 const describeViolations = (violations) =>
   violations.map((v) => `${v.id}: ${v.help}\n${v.nodes.map((n) => `  ${n.target.join(' ')}  ${n.failureSummary?.split('\\n')[1] ?? ''}`).join('\n')}`).join('\n')
 
-const ROUTES = ['#/', '#/discover', '#/discover/chotpoti', '#/passport', '#/challenges', '#/quiz', '#/leaderboard', '#/privacy', '#/nope']
-const STATE = { triedFoodIds: ['chotpoti', 'haleem', 'bakarkhani'] }
+const ROUTES = ['#/', '#/discover', '#/discover/dinajpur-katarivog', '#/passport', '#/challenges', '#/quiz', '#/leaderboard', '#/privacy', '#/nope']
+const STATE = { triedFoodIds: ['dinajpur-katarivog', 'haleem', 'dinajpur-katarivog'] }
 
 describe.each([['bn'], ['en']])('accessibility (%s)', (lang) => {
   test.each(ROUTES)('%s has no axe violations', async (route) => {
@@ -21,14 +21,14 @@ describe.each([['bn'], ['en']])('accessibility (%s)', (lang) => {
 })
 
 test('the page has a single h1, a main landmark and a skip link', async () => {
-  await renderApp('#/passport', { state: STATE })
+  await renderApp('#/', { state: STATE })
   expect(document.querySelectorAll('h1')).toHaveLength(1)
   expect(document.querySelectorAll('main')).toHaveLength(1)
   expect(document.querySelector('a[href="#main"]')).not.toBeNull()
 })
 
 test('the skip link is the first thing keyboard users reach, and it jumps to the main content', async () => {
-  const { user } = await renderApp('#/discover')
+  const { user } = await renderApp('#/')
   await user.tab()
   const skip = document.querySelector('a[href="#main"]')
   expect(skip).toHaveFocus()

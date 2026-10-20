@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../hooks/useLanguage'
+import { HillsScene } from './Scenes'
 
 export default function Footer() {
   const { t } = useLanguage()
   return (
-    <footer className="mt-10 bg-primary-dark px-4 py-8 pb-24 text-cream md:pb-8">
-      <div className="mx-auto max-w-5xl space-y-2 text-sm">
+    <footer className="mt-10 bg-primary-dark text-cream">
+      <HillsScene className="-mt-px block h-24 w-full bg-cream sm:h-32" />
+      <div className="mx-auto max-w-5xl space-y-2 px-4 pb-24 pt-6 text-sm md:pb-8">
         <p className="text-lg font-bold">{t('brand.name')}</p>
         <p className="italic">{t('brand.tagline')}</p>
         <p>{t('footer.madeWith')}</p>
