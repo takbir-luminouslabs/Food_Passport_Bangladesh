@@ -106,11 +106,11 @@ test('deleting the account asks first, can be cancelled, and then calls the serv
   let dialog = screen.getByRole('dialog')
   await user.click(within(dialog).getByRole('button', { name: bn['auth.delete'] }))
   expect(within(dialog).getByText(bn['auth.deleteWarn'])).toBeInTheDocument()
-  expect(client.rpc).not.toHaveBeenCalled()
+  expect(client.rpc).not.toHaveBeenCalledWith('delete_my_account')
 
   await user.click(within(dialog).getByRole('button', { name: bn['auth.cancel'] }))
   expect(within(dialog).queryByText(bn['auth.deleteWarn'])).toBeNull()
-  expect(client.rpc).not.toHaveBeenCalled()
+  expect(client.rpc).not.toHaveBeenCalledWith('delete_my_account')
 
   await user.click(within(dialog).getByRole('button', { name: bn['auth.delete'] }))
   dialog = screen.getByRole('dialog')

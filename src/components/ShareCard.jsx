@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '../context/app-context'
 import { useHolderPhoto } from '../context/holder-photo-context'
+import { useCountDownload } from '../hooks/useCountDownload'
 import { useLanguage } from '../hooks/useLanguage'
 import { EXPORT_FORMATS, exportCard } from '../utils/exportFormats'
 import { CARD_HEIGHT, CARD_WIDTH, buildCardModel, renderShareCard } from '../utils/shareCard'
@@ -28,6 +29,7 @@ export default function ShareCard() {
   const shareRef = useRef(null)
   const shareBtnRef = useRef(null)
 
+  const countDownload = useCountDownload()
   const model = useMemo(
     () => buildCardModel({ progress, content, lang: language, displayName: name, siteUrl: import.meta.env.VITE_SITE_URL }),
     [progress, content, language, name],
@@ -66,6 +68,7 @@ export default function ShareCard() {
     a.download = result.filename
     a.click()
     URL.revokeObjectURL(url)
+    countDownload()
     return undefined
   }
 

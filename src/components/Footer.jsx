@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useApp } from '../context/app-context'
 import { useLanguage } from '../hooks/useLanguage'
+import SiteStats from './SiteStats'
 
 // A row of real food photos above the footer text. Decorative, so the same ten every time.
 const STRIP = [
@@ -42,6 +43,7 @@ export default function Footer() {
           <Link to="/privacy" className="min-h-11 py-3 text-lime underline">{t('footer.privacy')}</Link>
           <Link to="/privacy#sources" className="min-h-11 py-3 text-lime underline">{t('footer.sources')}</Link>
         </nav>
+        <SiteStats />
         <p className="border-t border-cream/20 pt-4 md:col-span-2">{t('footer.copyright')}</p>
       </div>
     </footer>

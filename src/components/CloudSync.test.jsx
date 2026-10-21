@@ -47,6 +47,9 @@ function fakeAccount({ foods = [], quiz = [], fail = false } = {}) {
   }
 }
 
+// the footer's visitor counter also uses rpc; what matters here is that no passport data moves
+const passportCalls = (account) => account.rpc.mock.calls.filter(([name]) => name === 'merge_guest_progress' || name === 'unmark_food_tried')
+
 const seedLocal = (foods, quiz = []) => {
   const s = createInitialState('bn')
   localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...s, triedFoodIds: foods, quizProgress: { correctIds: quiz } }))
@@ -73,7 +76,7 @@ test('guest stamps are offered to the account first; merging adds only what is n
   const dialog = await screen.findByRole('dialog', { name: bn['sync.askTitle'] })
   expect(within(dialog).getByText(fmt(bn['sync.askBody'], { stamps: 1, answers: 1 }))).toBeInTheDocument()
   expect(within(dialog).getByText(fmt(bn['sync.askAlso'], { n: 1 }))).toBeInTheDocument()
-  expect(account.rpc).not.toHaveBeenCalled() // nothing moves before the user agrees
+  expect(passportCalls(account)).toHaveLength(0) // nothing moves before the user agrees
 
   await user.click(within(dialog).getByRole('button', { name: bn['sync.merge'] }))
   expect(await screen.findByText(new RegExp(fmt(bn['sync.doneStamps'], { n: 1 })))).toBeInTheDocument()
@@ -90,7 +93,7 @@ test('"Not now" changes nothing on either side', async () => {
   const dialog = await screen.findByRole('dialog', { name: bn['sync.askTitle'] })
   await user.click(within(dialog).getByRole('button', { name: bn['sync.later'] }))
   expect(screen.queryByRole('dialog')).toBeNull()
-  expect(account.rpc).not.toHaveBeenCalled()
+  expect(passportCalls(account)).toHaveLength(0)
   expect(localState().triedFoodIds).toEqual(['bakarkhani'])
   expect([...account.db.foods]).toEqual(['mishti-doi'])
 })
@@ -102,7 +105,7 @@ test('an empty browser just receives the account progress, with no question aske
   await waitFor(() => expect([...localState().triedFoodIds].sort()).toEqual(['bakarkhani', 'mishti-doi']))
   expect(localState().quizProgress.correctIds).toEqual(['q9'])
   expect(screen.queryByRole('dialog')).toBeNull()
-  expect(account.rpc).not.toHaveBeenCalled()
+  expect(passportCalls(account)).toHaveLength(0)
 })
 
 test('merging again (a second sign-in) finds nothing to add and never asks twice', async () => {

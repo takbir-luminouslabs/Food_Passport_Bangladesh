@@ -31,7 +31,7 @@ export default function Privacy() {
         <>
           <p className="mt-2">{t('privacy.cloudBody')}</p>
           <ul className="mt-2 list-disc pl-5">
-            {['cloudNever', 'cloudPublic', 'cloudSession', 'cloudWho', 'cloudDelete'].map((k) => <li key={k}>{t(`privacy.${k}`)}</li>)}
+            {['cloudNever', 'cloudPublic', 'cloudCounts', 'cloudSession', 'cloudWho', 'cloudDelete'].map((k) => <li key={k}>{t(`privacy.${k}`)}</li>)}
           </ul>
         </>
       ))}

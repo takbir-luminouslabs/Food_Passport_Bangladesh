@@ -135,8 +135,12 @@ insert into blocked_terms (term) values ('someword');
 
 ### Going live (checklist)
 
-1. **Supabase project**: create one, then in the SQL editor run `supabase/migrations/*.sql` in order (1 to 7) and finally `supabase/seed.sql`. (Or `supabase link` + `supabase db push`, then run the seed.)
+1. **Supabase project**: create one, then in the SQL editor run `supabase/migrations/*.sql` in order (1 to 8) and finally `supabase/seed.sql`. (Or `supabase link` + `supabase db push`, then run the seed.)
 2. **Auth settings** (Authentication → URL Configuration): Site URL = the live address, e.g. `https://<user>.github.io/<repository>/`; add the same and `http://localhost:5173/` as Redirect URLs. Add your own SMTP provider under SMTP Settings before real users arrive.
 3. **GitHub**: Settings → Secrets and variables → Actions → **Variables**: `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` (Project Settings → API). They are variables rather than secrets on purpose: both end up in the public JavaScript bundle by design, and security comes from the row level security tests, not from hiding them. **Never add the `service_role` key anywhere in the repo or the workflow.** Also set `SITE_URL` (and `BKASH_NUMBER` once verified).
 4. Push to `main`. The workflow runs lint, the site tests and `npm run db:test` (the permission tests on a throwaway Postgres in Docker); only if all pass does it build and publish.
 5. Smoke test on the live site with two real emails: sign in, tick a food, check the other account cannot see it, opt into the leaderboard, delete the test accounts.
+
+### Footer community numbers
+
+The footer shows online now, visitors, members and passports downloaded, only on sites with online setup (migration 8). A visitor is a random id the browser stores itself (`food-passport-bangladesh:visitor`); `record_visit` / `record_download` add it once, `get_site_stats` returns only the three totals, and the tables behind them are closed to the API. "Online now" is Supabase Realtime presence (nothing stored) so Realtime must be on for the project (it is by default). Browsers that send Do Not Track are not counted. Members are accounts whose email link was opened. Because anyone can invent ids, treat the numbers as a friendly indicator, not an audited statistic.

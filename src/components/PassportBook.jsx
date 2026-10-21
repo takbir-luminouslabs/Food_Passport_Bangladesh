@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useApp } from '../context/app-context'
 import { useHolderPhoto } from '../context/holder-photo-context'
+import { useCountDownload } from '../hooks/useCountDownload'
 import { useLanguage } from '../hooks/useLanguage'
 import { buildBookModel } from '../utils/bookModel'
 import { buildBookPages } from '../utils/bookPages'
@@ -13,6 +14,7 @@ import ZoomDialog from './ZoomDialog'
 /** An open passport: two pages per spread (holder data page first, then visa pages of six stamps each). */
 export default function PassportBook() {
   const { content, progress } = useApp()
+  const countDownload = useCountDownload()
   const { language, t, pick, formatNumber } = useLanguage()
   const holder = useHolderPhoto()
   const [pdf, setPdf] = useState({ phase: 'idle' }) // idle | busy (n, total) | done | error
@@ -49,6 +51,7 @@ export default function PassportBook() {
       a.download = filename
       a.click()
       URL.revokeObjectURL(url)
+      countDownload()
       setPdf({ phase: 'done' })
     } catch (e) {
       if (e?.name !== 'AbortError') setPdf({ phase: 'error' })

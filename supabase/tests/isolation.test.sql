@@ -182,9 +182,9 @@ begin
   select string_agg(r || ':' || p.proname, ', ' order by r, p.proname) into got
     from pg_proc p join pg_namespace n on n.oid = p.pronamespace, unnest(array['anon', 'authenticated']) r
    where n.nspname = 'public' and p.prokind = 'f' and has_function_privilege(r, p.oid, 'execute');
-  want := 'anon:get_leaderboard, '
-       || 'authenticated:delete_my_account, authenticated:get_leaderboard, authenticated:mark_food_tried, authenticated:merge_guest_progress, '
-       || 'authenticated:my_leaderboard_rank, authenticated:my_xp_total, authenticated:record_quiz_answer, authenticated:report_display_name, '
+  want := 'anon:get_leaderboard, anon:get_site_stats, anon:record_download, anon:record_visit, '
+       || 'authenticated:delete_my_account, authenticated:get_leaderboard, authenticated:get_site_stats, authenticated:mark_food_tried, authenticated:merge_guest_progress, '
+       || 'authenticated:my_leaderboard_rank, authenticated:my_xp_total, authenticated:record_download, authenticated:record_quiz_answer, authenticated:record_visit, authenticated:report_display_name, '
        || 'authenticated:set_my_profile, authenticated:unmark_food_tried';
   if got is distinct from want then raise exception E'function privileges changed.\n got:  %\n want: %', got, want; end if;
 
