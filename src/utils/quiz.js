@@ -8,10 +8,13 @@ export function shuffle(items, random = Math.random) {
   return a
 }
 
-/** A fresh round: the questions in random order, each with its options in random order (`correct` re-pointed). */
+/**
+ * A fresh round: the questions in random order, each with its options in random order (`correct` re-pointed).
+ * Every option keeps its `index` in quiz.json, which is what the server compares against its own copy of the answer.
+ */
 export function buildRound(questions, random = Math.random) {
   return shuffle(questions, random).map((q) => {
     const order = shuffle(q.options.map((_, i) => i), random)
-    return { ...q, options: order.map((i) => q.options[i]), correct: order.indexOf(q.correct) }
+    return { ...q, options: order.map((i) => ({ ...q.options[i], index: i })), correct: order.indexOf(q.correct) }
   })
 }

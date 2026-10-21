@@ -24,3 +24,9 @@ test('a round keeps every question, and the correct index still points at the ri
     }
   }
 })
+
+test('each shuffled option remembers its original position, so the server can check it', () => {
+  const [q] = buildRound([qs[1]])
+  for (const o of q.options) expect(o.en).toBe(`B${o.index}`)
+  expect(q.options[q.correct].index).toBe(2)
+})

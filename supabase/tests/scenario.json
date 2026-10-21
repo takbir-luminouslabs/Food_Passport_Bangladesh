@@ -1,0 +1,36 @@
+{
+  "foods": [
+    "bakarkhani",
+    "madaripur-rasgulla",
+    "natore-kacha-gola",
+    "porabari-chomchom",
+    "bogura-doi",
+    "pero-sandesh",
+    "dinajpur-katarivog",
+    "jamalpur-chhanar-polao",
+    "jhenaidah-dhaner-khabar",
+    "chandpur-ilish",
+    "manikganj-ghol"
+  ],
+  "quizCorrect": [
+    "national-fish"
+  ],
+  "challenges": [
+    "categories-5",
+    "first-100-xp",
+    "first-10-stamps",
+    "first-collection",
+    "regional-3",
+    "sweets-5",
+    "unique-10"
+  ],
+  "badges": [
+    "first-bite",
+    "flavour-master",
+    "sweet-tooth"
+  ],
+  "totalXp": 290,
+  "quizOptions": {
+    "national-fish": 0
+  }
+}

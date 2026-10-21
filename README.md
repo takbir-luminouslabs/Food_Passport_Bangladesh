@@ -89,3 +89,13 @@ src/data/           bilingual strings
 - [ ] Add real food photos with their credits (`image_url`, `image_attribution`), or keep the designed fallbacks.
 - [ ] Set `SITE_URL`; set `BKASH_NUMBER` only after verifying it.
 - [ ] Test on a real phone.
+
+## Cloud backend (Supabase) — in progress
+
+The site works fully without it. The optional cloud features (accounts, sync, leaderboard) live in `supabase/`:
+
+- `supabase/migrations/` — the database schema, row level security and grants (PRD section 9).
+- `supabase/seed.sql` — the foods, challenges and badges, **generated** from `public/data/*.json` (`npm run db:seed`; a test fails if it is stale).
+- `supabase/tests/` — permission tests. `npm run db:test` starts a throwaway Postgres in Docker, applies the migrations and checks, with two fake accounts, that nobody can read or change another user's data or write XP directly.
+
+To set up a real project: create it in Supabase, then run the migration files in order and `seed.sql` in the SQL editor (or `supabase db push`). Put the project URL and publishable key in `.env` as `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Never put the `service_role` key in this repo or in the browser.
