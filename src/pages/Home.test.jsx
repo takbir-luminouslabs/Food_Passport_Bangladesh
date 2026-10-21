@@ -28,10 +28,10 @@ test('the hero is a pastel sky with a badge, the illustrated skyline and exactly
   expect(within(hero).getByRole('button', { name: bn['cta.start'] })).toBeInTheDocument()
 })
 
-test('hero has floating dishes and a row of food-category shortcuts', async () => {
+test('hero has no floating food pictures, and a row of food-category shortcuts', async () => {
   await renderApp('#/')
   const hero = screen.getByTestId('hero')
-  expect(hero.querySelectorAll('[data-dish]').length).toBeGreaterThanOrEqual(6)
+  expect(hero.querySelectorAll('[data-dish]')).toHaveLength(0)
   const nav = screen.getByRole('navigation', { name: bn['home.categories'] })
   expect(within(nav).getAllByRole('button').length).toBeGreaterThanOrEqual(8)
   expect(within(nav).getByRole('button', { name: 'ভাত ও বিরিয়ানি' })).toBeInTheDocument()

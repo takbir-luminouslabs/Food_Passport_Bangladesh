@@ -11,7 +11,7 @@ import ShareCard from '../components/ShareCard'
 import PassportCoverButton from '../components/PassportCoverButton'
 import ProgressBar from '../components/ProgressBar'
 import Icon from '../components/Icon'
-import { FoodFloaters, HeroScene } from '../components/Scenes'
+import { HeroScene } from '../components/Scenes'
 import { useApp } from '../context/app-context'
 import { useLanguage } from '../hooks/useLanguage'
 import { validBkashNumber } from '../utils/donation'
@@ -70,7 +70,6 @@ export default function Home() {
   return (
     <div>
       <section data-testid="hero" className="hero-sky">
-        <FoodFloaters />
         <div className="relative grid items-center gap-6 px-5 pb-2 pt-8 md:grid-cols-[1fr_auto] md:px-10 md:pt-10">
           <div className="text-center md:text-left">
             <p className="inline-flex min-h-8 items-center rounded-full bg-white/70 px-4 text-sm font-semibold text-primary">{t('hero.badge')}</p>

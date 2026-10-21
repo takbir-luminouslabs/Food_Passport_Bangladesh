@@ -243,16 +243,14 @@ body {
 .scene-bob-slow { animation-duration: 6s; animation-delay: -2s; }
 .scene-sway { transform-box: fill-box; transform-origin: 50% 100%; animation: scene-sway 5s ease-in-out infinite; }
 .scene-pulse { animation: scene-pulse 5s ease-in-out infinite; }
-@keyframes scene-float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-10px) rotate(3deg); } }
 @keyframes scene-steam { 0% { opacity: 0; transform: translateY(4px); } 40% { opacity: 0.9; } 100% { opacity: 0; transform: translateY(-9px); } }
 @keyframes pill-wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-14deg) scale(1.15); } 75% { transform: rotate(14deg) scale(1.15); } }
 @keyframes stamp-pop { 0% { transform: scale(1.6); opacity: 0; } 60% { transform: scale(0.94); opacity: 1; } 100% { transform: scale(1); } }
-.scene-float { animation: scene-float 6s ease-in-out infinite; }
 .scene-steam { animation: scene-steam 3s ease-in-out infinite; transform-box: fill-box; }
 .scene-steam-late { animation-delay: -1.5s; }
 .pill-bounce:hover svg { animation: pill-wiggle 0.5s ease-in-out; }
 .stamp-seal > svg { animation: stamp-pop 0.45s ease-out backwards; }
 @media (prefers-reduced-motion: reduce) {
-  .scene-drift, .scene-bob, .scene-sway, .scene-pulse, .scene-float, .scene-steam, .pill-bounce:hover svg, .stamp-seal > svg { animation: none; }
+  .scene-drift, .scene-bob, .scene-sway, .scene-pulse, .scene-steam, .pill-bounce:hover svg, .stamp-seal > svg { animation: none; }
   .scene-steam { opacity: 0.6; }
 }
