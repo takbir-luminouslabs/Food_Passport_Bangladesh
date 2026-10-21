@@ -17,7 +17,7 @@ export default function Navbar() {
             <Emblem className="size-8 shrink-0 sm:size-9" />
             {t('brand.name')}
           </Link>
-          <div className="flex shrink-0 items-center gap-1"><AuthButton /><LanguageSwitcher /></div>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3"><AuthButton /><LanguageSwitcher /></div>
         </div>
         <nav aria-label={t('nav.main')} className="mx-auto hidden max-w-5xl gap-1 px-4 pb-2 md:flex"><div className="flex gap-1 rounded-full bg-mint p-1">
           {NAV_ROUTES.map(({ path, labelKey }) => (

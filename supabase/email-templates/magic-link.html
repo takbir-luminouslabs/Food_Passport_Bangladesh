@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>আপনার Food Passport সাইন-ইন লিংক | Your Food Passport sign-in link</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f7f4ea;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f7f4ea;">
+<tr><td align="center" style="padding:24px 12px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background-color:#ffffff;border-radius:16px;overflow:hidden;font-family:'Noto Sans Bengali','Segoe UI',Arial,sans-serif;color:#10251c;">
+    <tr><td style="background-color:#174b32;padding:22px 28px;">
+      <div style="font-size:20px;font-weight:700;color:#d9f99d;line-height:1.3;">Food Passport Bangladesh</div>
+      <div style="font-size:13px;color:#def3e3;margin-top:2px;">ফুড পাসপোর্ট বাংলাদেশ</div>
+    </td></tr>
+    <tr><td style="padding:28px 28px 8px 28px;">
+      <p style="margin:0 0 8px 0;font-size:20px;font-weight:700;color:#174b32;line-height:1.4;">আপনার সাইন-ইন লিংক প্রস্তুত</p>
+      <p style="margin:0 0 20px 0;font-size:16px;line-height:1.7;">নিচের বোতামে চাপ দিয়ে Food Passport-এ ফিরে আসুন। পাসওয়ার্ড লাগবে না। আপনার স্ট্যাম্প ও অগ্রগতি যেখানে ছিল সেখানেই পাবেন।</p>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 8px 0;"><tr>
+        <td style="background-color:#174b32;border-radius:999px;">
+          <a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:14px 28px;font-size:16px;font-weight:700;color:#d9f99d;text-decoration:none;">সাইন ইন করুন &nbsp;/&nbsp; Sign in</a>
+        </td>
+      </tr></table>
+    </td></tr>
+    <tr><td style="padding:8px 28px 4px 28px;">
+      <hr style="border:0;border-top:1px solid #def3e3;margin:16px 0;">
+      <p style="margin:0 0 6px 0;font-size:17px;font-weight:700;color:#174b32;line-height:1.4;">Your sign-in link is ready</p>
+      <p style="margin:0 0 16px 0;font-size:15px;line-height:1.6;color:#10251c;">Tap the button above to get back to your Food Passport. No password needed. Your stamps and progress will be right where you left them.</p>
+    </td></tr>
+    <tr><td style="padding:0 28px 24px 28px;">
+      <p style="margin:0 0 6px 0;font-size:13px;line-height:1.6;color:#566259;">বোতামটি কাজ না করলে এই ঠিকানাটি ব্রাউজারে পেস্ট করুন। If the button does not work, paste this address into your browser:</p>
+      <p style="margin:0 0 16px 0;font-size:12px;line-height:1.5;word-break:break-all;"><a href="{{ .ConfirmationURL }}" style="color:#174b32;">{{ .ConfirmationURL }}</a></p>
+      <p style="margin:0;font-size:13px;line-height:1.6;color:#566259;">লিংকটি অল্প সময়ের জন্য এবং একবারই কাজ করে। আপনি অনুরোধ না করে থাকলে এই ইমেইল উপেক্ষা করুন, কিছুই বদলাবে না।<br>This link works once and only for a short time. If you did not ask for it, ignore this email and nothing will change.</p>
+    </td></tr>
+    <tr><td style="background-color:#f7f4ea;padding:14px 28px;font-size:12px;color:#566259;line-height:1.5;">
+      {{ .Email }} ঠিকানায় পাঠানো &middot; Sent to {{ .Email }}<br>
+      <a href="{{ .SiteURL }}" style="color:#174b32;">{{ .SiteURL }}</a>
+    </td></tr>
+  </table>
+</td></tr>
+</table>
+</body>
+</html>
