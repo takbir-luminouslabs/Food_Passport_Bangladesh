@@ -94,6 +94,7 @@ test('a signed-in person sees their email and can sign out', async () => {
   const dialog = screen.getByRole('dialog', { name: bn['auth.account'] })
   expect(within(dialog).getByText('rafi@example.com')).toBeInTheDocument()
   await user.click(within(dialog).getByRole('button', { name: bn['auth.signOut'] }))
+  await user.click(await within(screen.getByRole('dialog')).findByRole('button', { name: bn['auth.signOut'] }))
   expect(client.auth.signOut).toHaveBeenCalled()
   expect(screen.queryByRole('dialog')).toBeNull()
   expect(await within(header()).findByRole('button', { name: bn['auth.signIn'] })).toBeInTheDocument()

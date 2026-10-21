@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useApp } from '../context/app-context'
 import { useAuth } from '../context/auth-context'
 import { useLanguage } from '../hooks/useLanguage'
+import { fetchCloudProgress, planMerge, pushProgress } from '../lib/cloudSync'
 import ProfileForm from './ProfileForm'
 import ZoomDialog from './ZoomDialog'
 
@@ -8,7 +10,9 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 /** Sign in with an email link, or (when signed in) see the account, sign out or delete it. */
 export default function AccountDialog({ onClose }) {
-  const { user, signInWithEmail, signOut, deleteAccount } = useAuth()
+  const { user, client, signInWithEmail, signOut, deleteAccount } = useAuth()
+  const { state, reset } = useApp()
+  const [pending, setPending] = useState(null) // { stamps, answers, plan } | { unknown: true } | {}
   const { t } = useLanguage()
   const [email, setEmail] = useState('')
   const [phase, setPhase] = useState('idle') // idle | sending | sent | confirmDelete | working
@@ -45,8 +49,55 @@ export default function AccountDialog({ onClose }) {
     }
   }
 
+  // Signing out clears this browser's passport (the account keeps it). First check nothing would be lost.
+  const startSignOut = async () => {
+    setError(null)
+    setPhase('checking')
+    try {
+      const plan = planMerge({ foods: state.triedFoodIds, quiz: state.quizProgress.correctIds }, await fetchCloudProgress(client))
+      setPending(plan.needsAsk ? { stamps: plan.toCloud.foods.length, answers: plan.toCloud.quiz.length, plan } : {})
+    } catch {
+      setPending({ unknown: true })
+    }
+    setPhase('confirmSignOut')
+  }
+  // sign out first, and only then clear: while still signed in, clearing would be pushed to the account as un-ticks
+  const finishSignOut = async (addFirst) => {
+    setError(null)
+    setPhase('working')
+    try {
+      if (addFirst) await pushProgress(client, pending.plan.toCloud)
+    } catch {
+      setError(t('auth.failed'))
+      setPhase('confirmSignOut')
+      return
+    }
+    const { error: err } = await signOut()
+    if (err) {
+      setError(t('auth.failed'))
+      setPhase('confirmSignOut')
+      return
+    }
+    reset()
+    onClose()
+  }
+
   const body = user ? (
-    phase === 'confirmDelete' ? (
+    phase === 'confirmSignOut' ? (
+      <>
+        <h2 className="text-xl font-bold text-primary">{t('auth.signOutTitle')}</h2>
+        <p className="mt-2">{t('auth.signOutBody')}</p>
+        {pending?.plan && <p role="alert" className="mt-2 font-semibold text-red-800">{t('auth.signOutUnsynced', { stamps: pending.stamps, answers: pending.answers })}</p>}
+        {pending?.unknown && <p role="alert" className="mt-2 font-semibold text-red-800">{t('auth.signOutUnknown')}</p>}
+        <div className="mt-4 flex flex-wrap gap-3">
+          {pending?.plan && <button type="button" onClick={() => finishSignOut(true)} className="min-h-11 rounded-full bg-primary px-5 font-semibold text-lime">{t('auth.signOutAdd')}</button>}
+          <button type="button" onClick={() => finishSignOut(false)} className={`min-h-11 rounded-full px-5 font-semibold ${pending?.plan || pending?.unknown ? 'border-2 border-red-700 text-red-800' : 'bg-primary text-lime'}`}>
+            {t(pending?.plan || pending?.unknown ? 'auth.signOutAnyway' : 'auth.signOut')}
+          </button>
+          <button type="button" onClick={() => setPhase('idle')} className="min-h-11 rounded-full border-2 border-primary px-5 font-semibold text-primary">{t('auth.cancel')}</button>
+        </div>
+      </>
+    ) : phase === 'confirmDelete' ? (
       <>
         <h2 className="text-xl font-bold text-primary">{t('auth.deleteTitle')}</h2>
         <p className="mt-2">{t('auth.deleteWarn')}</p>
@@ -61,7 +112,7 @@ export default function AccountDialog({ onClose }) {
         <p className="mt-2">{t('auth.signedInAs')} <strong className="break-all">{user.email}</strong></p>
         <ProfileForm />
         <div className="mt-4 flex border-t border-primary/15 pt-4 flex-wrap gap-3">
-          <button type="button" disabled={phase === 'working'} onClick={() => run(signOut)} className="min-h-11 rounded-full bg-primary px-5 font-semibold text-lime disabled:opacity-60">{t('auth.signOut')}</button>
+          <button type="button" disabled={phase === 'working' || phase === 'checking'} onClick={startSignOut} className="min-h-11 rounded-full bg-primary px-5 font-semibold text-lime disabled:opacity-60">{t('auth.signOut')}</button>
           <button type="button" onClick={() => setPhase('confirmDelete')} className="min-h-11 rounded-full border-2 border-red-700 px-5 font-semibold text-red-800">{t('auth.delete')}</button>
         </div>
       </>
