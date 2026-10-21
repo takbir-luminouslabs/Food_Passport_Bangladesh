@@ -30,6 +30,8 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      # Throwaway Postgres in Docker: applies every migration and runs the permission tests. A failure here blocks the deploy.
+      - run: npm run db:test
 
       - uses: actions/configure-pages@v5
 

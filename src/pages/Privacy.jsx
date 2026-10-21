@@ -26,10 +26,17 @@ export default function Privacy() {
   return (
     <article>
       <h1 className="text-2xl font-bold text-primary">{t('privacy.title')}</h1>
-      {block('stored', <p className="mt-2">{t('privacy.storedBody')}</p>)}
-      {cloud && block('cloud', <p className="mt-2">{t('privacy.cloudBody')}</p>)}
-      {block('control', <p className="mt-2">{t('privacy.controlBody')}</p>)}
-      {block('analytics', <p className="mt-2">{t('privacy.analyticsBody')}</p>)}
+      {block('stored', <p className="mt-2">{t(cloud ? 'privacy.storedBodyCloud' : 'privacy.storedBody')}</p>)}
+      {cloud && block('cloud', (
+        <>
+          <p className="mt-2">{t('privacy.cloudBody')}</p>
+          <ul className="mt-2 list-disc pl-5">
+            {['cloudNever', 'cloudPublic', 'cloudSession', 'cloudWho', 'cloudDelete'].map((k) => <li key={k}>{t(`privacy.${k}`)}</li>)}
+          </ul>
+        </>
+      ))}
+      {block('control', <p className="mt-2">{t(cloud ? 'privacy.controlBodyCloud' : 'privacy.controlBody')}</p>)}
+      {block('analytics', <p className="mt-2">{t(cloud ? 'privacy.analyticsBodyCloud' : 'privacy.analyticsBody')}</p>)}
       <section id="sources" aria-labelledby="p-sources" className="mt-6 scroll-mt-4">
         <h2 id="p-sources" className="text-xl font-bold">{t('privacy.sourcesTitle')}</h2>
         <p className="mt-2">{t('privacy.sourcesBody')}</p>

@@ -51,23 +51,9 @@ begin
   select count(*) into n from public.user_challenge_progress;  if n <> 0 then raise exception 'A must not see B challenge progress'; end if;
   select count(*) into n from public.foods;                    if n <> 64 then raise exception 'content should be readable'; end if;
 
-  -- cannot touch B's profile
-  update public.profiles set display_name = 'hacked' where user_id = 'bbbbbbbb-0000-0000-0000-00000000000b';
-  get diagnostics n = row_count;                                if n <> 0 then raise exception 'A edited B profile'; end if;
-
-  -- may edit own name and opt in
-  update public.profiles set display_name = 'Rafi', leaderboard_opt_in = true;
-  get diagnostics n = row_count;                                if n <> 1 then raise exception 'A could not edit own profile'; end if;
-end $$;
-
--- opting in without a name is refused by the table itself
-do $$
-begin
-  begin
-    update public.profiles set display_name = null;
-    raise exception 'opt-in without a name was accepted';
-  exception when check_violation then null;
-  end;
+  -- profiles can only be changed through set_my_profile (which moderates the name)
+  perform public.set_my_profile('Rafi', true);
+  if (select display_name from public.profiles) <> 'Rafi' then raise exception 'A could not edit own profile'; end if;
 end $$;
 
 -- A cannot change official data: every one of these must be denied
@@ -86,6 +72,11 @@ begin
     $q$update public.foods set xp = 9999$q$,
     $q$delete from public.foods$q$,
     $q$update public.challenges set xp_reward = 9999$q$,
+    $q$update public.profiles set display_name = 'hacked'$q$,
+    $q$update public.profiles set leaderboard_opt_in = true$q$,
+    $q$update public.profiles set name_hidden = false$q$,
+    $q$select * from public.blocked_terms$q$,
+    $q$select * from public.name_reports$q$,
     $q$update public.profiles set user_id = 'bbbbbbbb-0000-0000-0000-00000000000b'$q$,
     $q$update public.profiles set created_at = now() - interval '10 years'$q$,
     $q$insert into public.profiles (user_id) values (auth.uid())$q$

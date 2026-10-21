@@ -111,3 +111,32 @@ The free Supabase email sender is rate limited and only meant for testing; befor
 ### Guest → account merge and sync
 
 On sign-in the site compares this browser's passport with the account's. If the browser holds stamps or right quiz answers the account lacks, it asks first, then calls `merge_guest_progress` (migration 4). The merge is a **union**: it only adds, never deletes or lowers anything, is safe to repeat, and pays XP by the same once-only rules as ticking one by one. Afterwards ticks and un-ticks are pushed to the account, and the account is re-read when the tab regains focus so progress follows you between devices. Choosing "Not now" leaves both sides untouched. The merged ids are the guest's own claims (a stamp has always been a self-reported tick); unknown ids are ignored and each food or question pays once.
+
+### Profile, leaderboard opt-in and moderating names
+
+Signed-in people can set a display name and switch "Show me on the leaderboard" on (off by default). Both go through `set_my_profile` (migration 5); users have no direct UPDATE right on `profiles`. The server enforces 2-24 characters, Latin letters, digits, Bangla, space and `. _ -` only, no web addresses or phone numbers, and the private `blocked_terms` list (matched after ignoring case, spacing, punctuation and digit-for-letter swaps). Opting in needs a name.
+
+Reporting: `report_display_name(user_id)` (the leaderboard will call it). Three different reporters hide a name automatically (`profiles.name_hidden`), and the leaderboard must skip hidden names. Review in the Supabase SQL editor (service role):
+
+```sql
+-- see what is waiting
+select user_id, display_name from profiles where name_hidden;
+-- allow it again
+update profiles set name_hidden = false where user_id = '...'; delete from name_reports where reported_id = '...';
+-- remove it for good
+update profiles set display_name = null, leaderboard_opt_in = false, name_hidden = false where user_id = '...';
+-- block a new word (lower case; Latin letters or Bangla only)
+insert into blocked_terms (term) values ('someword');
+```
+
+### Leaderboard
+
+`/leaderboard` calls `get_leaderboard(limit, offset)` (migration 6; 50 per page, readable by signed-out visitors) and, for signed-in people, `my_leaderboard_rank()`. Only opted-in, not-hidden profiles with a name are listed. Each row has only rank, a random public handle (used for reports), display name, XP, stamps and badges; never an email or account id. Order: more XP first; equal XP, whoever reached it first (time of the latest XP-earning event) ranks higher. The page is worded as a community progress ranking, not an eating competition.
+
+### Going live (checklist)
+
+1. **Supabase project**: create one, then in the SQL editor run `supabase/migrations/*.sql` in order (1 to 7) and finally `supabase/seed.sql`. (Or `supabase link` + `supabase db push`, then run the seed.)
+2. **Auth settings** (Authentication → URL Configuration): Site URL = the live address, e.g. `https://<user>.github.io/<repository>/`; add the same and `http://localhost:5173/` as Redirect URLs. Add your own SMTP provider under SMTP Settings before real users arrive.
+3. **GitHub**: Settings → Secrets and variables → Actions → **Variables**: `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` (Project Settings → API). They are variables rather than secrets on purpose: both end up in the public JavaScript bundle by design, and security comes from the row level security tests, not from hiding them. **Never add the `service_role` key anywhere in the repo or the workflow.** Also set `SITE_URL` (and `BKASH_NUMBER` once verified).
+4. Push to `main`. The workflow runs lint, the site tests and `npm run db:test` (the permission tests on a throwaway Postgres in Docker); only if all pass does it build and publish.
+5. Smoke test on the live site with two real emails: sign in, tick a food, check the other account cannot see it, opt into the leaderboard, delete the test accounts.

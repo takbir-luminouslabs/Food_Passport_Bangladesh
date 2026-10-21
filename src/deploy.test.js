@@ -6,7 +6,7 @@ describe('GitHub Pages deployment', () => {
   test('a workflow exists and builds, tests and deploys with the official Pages actions', () => {
     expect(existsSync('.github/workflows/deploy.yml')).toBe(true)
     const w = workflow()
-    for (const needle of ['actions/checkout@', 'actions/setup-node@', 'npm ci', 'npm run lint', 'npm test', 'npm run build', 'actions/configure-pages@', 'actions/upload-pages-artifact@', 'actions/deploy-pages@']) {
+    for (const needle of ['actions/checkout@', 'actions/setup-node@', 'npm ci', 'npm run lint', 'npm test', 'npm run db:test', 'npm run build', 'actions/configure-pages@', 'actions/upload-pages-artifact@', 'actions/deploy-pages@']) {
       expect(w, needle).toContain(needle)
     }
   })

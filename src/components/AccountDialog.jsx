@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../context/auth-context'
 import { useLanguage } from '../hooks/useLanguage'
+import ProfileForm from './ProfileForm'
 import ZoomDialog from './ZoomDialog'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -58,7 +59,8 @@ export default function AccountDialog({ onClose }) {
       <>
         <h2 className="text-xl font-bold text-primary">{t('auth.account')}</h2>
         <p className="mt-2">{t('auth.signedInAs')} <strong className="break-all">{user.email}</strong></p>
-        <div className="mt-4 flex flex-wrap gap-3">
+        <ProfileForm />
+        <div className="mt-4 flex border-t border-primary/15 pt-4 flex-wrap gap-3">
           <button type="button" disabled={phase === 'working'} onClick={() => run(signOut)} className="min-h-11 rounded-full bg-primary px-5 font-semibold text-lime disabled:opacity-60">{t('auth.signOut')}</button>
           <button type="button" onClick={() => setPhase('confirmDelete')} className="min-h-11 rounded-full border-2 border-red-700 px-5 font-semibold text-red-800">{t('auth.delete')}</button>
         </div>

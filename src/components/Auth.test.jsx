@@ -25,7 +25,7 @@ function fakeClient({ user = null } = {}) {
       }),
     },
     rpc: vi.fn(async () => ({ error: null })),
-    from: () => ({ select: () => Object.assign(Promise.resolve({ data: [], error: null }), { eq: async () => ({ data: [], error: null }) }) }),
+    from: () => ({ select: () => Object.assign(Promise.resolve({ data: [], error: null }), { maybeSingle: async () => ({ data: null, error: null }), eq: async () => ({ data: [], error: null }) }) }),
   }
 }
 
@@ -124,6 +124,22 @@ test('the download step offers saving to the cloud, and the privacy page explain
   expect(await screen.findByRole('region', { name: bn['cloud.title'] })).toBeInTheDocument()
   await user.click(within(screen.getByRole('region', { name: bn['cloud.title'] })).getByRole('button', { name: bn['cloud.cta'] }))
   expect(screen.getByRole('dialog', { name: bn['auth.signIn'] })).toBeInTheDocument()
+})
+
+test('privacy page stops saying nothing is sent to a server once accounts exist', async () => {
+  await renderWith(fakeClient(), '#/privacy')
+  await screen.findByRole('heading', { level: 2, name: bn['privacy.cloudTitle'] })
+  expect(screen.queryByText(bn['privacy.storedBody'])).toBeNull()
+  expect(screen.getByText(bn['privacy.storedBodyCloud'])).toBeInTheDocument()
+  expect(screen.getByText(bn['privacy.cloudPublic'])).toBeInTheDocument()
+  expect(screen.getByText(bn['privacy.cloudDelete'])).toBeInTheDocument()
+  expect(screen.queryByText(bn['privacy.analyticsBody'])).toBeNull()
+})
+
+test('privacy page for a guest-only site is unchanged', async () => {
+  await renderApp('#/privacy')
+  expect(await screen.findByText(bn['privacy.storedBody'])).toBeInTheDocument()
+  expect(screen.queryByText(bn['privacy.cloudPublic'])).toBeNull()
 })
 
 test('privacy page mentions accounts only when the site has them', async () => {
