@@ -104,20 +104,35 @@ export function buildCardModel({ progress, content, lang, displayName = null, si
 
 // Page area for stamps, and the tiers that keep every collected stamp on the card.
 const GRID_AREA = { x: 890, y: 250, w: 630, h: 740 }
-const FULL_TIERS = [{ max: 6, cols: 3, rows: 2 }, { max: 9, cols: 3, rows: 3 }, { max: 12, cols: 4, rows: 3 }, { max: 20, cols: 5, rows: 4 }, { max: 30, cols: 6, rows: 5 }]
-const SEAL_RADIUS = 92
+const SEAL_RADIUS = 92 // the size the seal art is designed at; other sizes scale from it
+const MAX_SEAL = 130
+const MAX_FULL = 30
 
-/** Layout for `count` stamps: roomy up to 6 (with empty guide slots), shrinking up to 30, then compact icon badges. */
+/**
+ * Layout for `count` stamps. Few stamps get big seals and more stamps shrink them, so every collected stamp stays on
+ * the card: the column count that gives the largest seal wins (ties go to more columns). An empty passport shows six
+ * guide slots. Beyond 30 stamps the card switches to compact icon badges.
+ */
 export function stampGrid(count) {
-  const tier = FULL_TIERS.find((t) => count <= t.max)
-  if (tier) {
-    const cellW = GRID_AREA.w / tier.cols
-    const cellH = GRID_AREA.h / tier.rows
-    return { mode: 'full', cols: tier.cols, tierRows: tier.rows, scale: Math.min(1, cellW / 210, cellH / 320), cellW, cellH, slots: count <= 6 ? 6 : count }
+  if (count === 0) {
+    // six empty guide slots: each is a seal with its "stamp here" label underneath, so keep them roomy
+    return { mode: 'full', cols: 3, rows: 2, cellW: GRID_AREA.w / 3, cellH: GRID_AREA.h / 2, r: SEAL_RADIUS, scale: 1, slots: 6 }
+  }
+  if (count <= MAX_FULL) {
+    const slots = count
+    let best = null
+    for (let cols = 1; cols <= 6; cols++) {
+      const rows = Math.ceil(slots / cols)
+      const cellW = GRID_AREA.w / cols
+      const cellH = GRID_AREA.h / rows
+      const r = Math.min(MAX_SEAL, Math.min(cellW, cellH) * 0.45)
+      if (!best || r >= best.r - 0.001) best = { cols, rows, cellW, cellH, r }
+    }
+    return { mode: 'full', ...best, scale: best.r / SEAL_RADIUS, slots }
   }
   const cols = 9
   const rows = Math.ceil(count / cols)
-  return { mode: 'mini', cols, scale: 1, cellW: GRID_AREA.w / cols, cellH: Math.min(80, GRID_AREA.h / rows), slots: count }
+  return { mode: 'mini', cols, rows, scale: 1, cellW: GRID_AREA.w / cols, cellH: Math.min(80, GRID_AREA.h / rows), slots: count }
 }
 
 /** A compact seal for crowded cards: the ring and the category line-art only. */
@@ -244,17 +259,19 @@ export function drawShareCard(ctx, m, images = null, photo = null) {
   ctx.fillStyle = 'rgba(23,75,50,0.35)'
   ctx.fillRect(lx, 232, 630, 2)
   const grid = stampGrid(m.stamps.length)
-  // centre the block vertically when it needs fewer rows than its tier has room for
-  const spareRows = grid.mode === 'full' ? grid.tierRows - Math.ceil(grid.slots / grid.cols) : 0
-  const topOffset = (spareRows * grid.cellH) / 2
+  // centre the block vertically, and a last row with fewer seals horizontally
+  const topOffset = grid.mode === 'full' ? (GRID_AREA.h - grid.rows * grid.cellH) / 2 : 0
   for (let i = 0; i < grid.slots; i++) {
     const stamp = m.stamps[i]
+    const row = Math.floor(i / grid.cols)
+    const inRow = Math.min(grid.cols, grid.slots - row * grid.cols)
+    const rowShift = grid.mode === 'full' ? ((grid.cols - inRow) * grid.cellW) / 2 : 0
     const jitter = (stamp?.tilt ?? 0) * grid.scale
-    const x = GRID_AREA.x + (i % grid.cols + 0.5) * grid.cellW + (grid.mode === 'full' ? jitter * 1.5 : 0)
-    const y = GRID_AREA.y + topOffset + (Math.floor(i / grid.cols) + 0.5) * grid.cellH - (grid.mode === 'full' ? jitter * 2 : 0)
-    if (!stamp) drawLockedSeal(ctx, x, y - 20 * grid.scale, SEAL_RADIUS * grid.scale, m.stampHereLabel)
+    const x = GRID_AREA.x + rowShift + (i % grid.cols + 0.5) * grid.cellW + (grid.mode === 'full' ? jitter * 1.5 : 0)
+    const y = GRID_AREA.y + topOffset + (row + 0.5) * grid.cellH - (grid.mode === 'full' ? jitter * 2 : 0)
+    if (!stamp) drawLockedSeal(ctx, x, y - 20 * grid.scale, grid.r, m.stampHereLabel)
     else if (grid.mode === 'mini') drawMiniSeal(ctx, stamp, x, y, Math.min(grid.cellW, grid.cellH) - 10)
-    else drawSeal(ctx, stamp, x, y, SEAL_RADIUS * grid.scale, stamp.tilt, images?.get?.(stamp.imageUrl))
+    else drawSeal(ctx, stamp, x, y, grid.r, stamp.tilt, images?.get?.(stamp.imageUrl))
   }
   text(ctx, m.selfReported, lx, 1040, { size: 22, color: COLOR.muted, maxWidth: 630 })
 }

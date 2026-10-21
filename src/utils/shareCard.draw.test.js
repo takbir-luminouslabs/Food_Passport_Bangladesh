@@ -119,36 +119,41 @@ describe('real-passport look', () => {
   })
 })
 
-describe('stampGrid (every collected stamp fits on the card)', () => {
-  const AREA = { w: 630, h: 770 }
-  test('up to 6 stamps keep the roomy 3x2 layout with empty guide slots', () => {
-    for (const n of [0, 1, 6]) {
-      const g = stampGrid(n)
-      expect(g).toMatchObject({ mode: 'full', cols: 3, scale: 1, slots: 6 })
-    }
+describe('stampGrid (every collected stamp fits on the card, and fewer stamps get bigger seals)', () => {
+  const AREA = { w: 630, h: 740 }
+  const radius = (n) => stampGrid(n).r
+  test('an empty passport shows six guide slots', () => {
+    expect(stampGrid(0)).toMatchObject({ mode: 'full', slots: 6 })
   })
-  test('more stamps shrink them instead of dropping any', () => {
-    let last = 1
-    for (const n of [7, 12, 13, 20, 21, 30]) {
+  test('seals only get smaller as stamps are added, and a lone stamp is big', () => {
+    let last = Infinity
+    for (let n = 1; n <= 30; n++) {
+      expect(radius(n)).toBeLessThanOrEqual(last + 0.001)
+      last = radius(n)
+    }
+    expect(radius(1)).toBeGreaterThan(110)
+    expect(radius(3)).toBeGreaterThan(110)
+    expect(radius(13)).toBeGreaterThan(65)
+    expect(radius(13)).toBeGreaterThan(radius(30))
+  })
+  test('every stamp up to 30 keeps its own slot, none dropped', () => {
+    for (const n of [1, 6, 7, 12, 13, 20, 30]) {
       const g = stampGrid(n)
       expect(g.mode).toBe('full')
       expect(g.slots).toBe(n)
-      expect(g.scale).toBeLessThanOrEqual(last)
-      last = g.scale
     }
-    expect(stampGrid(7).scale).toBeLessThan(1)
   })
   test('beyond 30 stamps the card switches to compact icon badges', () => {
     expect(stampGrid(31).mode).toBe('mini')
     expect(stampGrid(83)).toMatchObject({ mode: 'mini', slots: 83 })
   })
-  test('every tier fits inside the page area, up to the whole catalogue', () => {
+  test('every layout fits inside the page area, up to the whole catalogue', () => {
     for (let n = 0; n <= 83; n++) {
       const g = stampGrid(n)
-      const rows = Math.ceil(g.slots / g.cols)
       expect(g.cols * g.cellW).toBeLessThanOrEqual(AREA.w + 0.01)
-      expect(rows * g.cellH).toBeLessThanOrEqual(AREA.h + 0.01)
-      expect(g.cols * rows).toBeGreaterThanOrEqual(g.slots)
+      expect(g.rows * g.cellH).toBeLessThanOrEqual(AREA.h + 0.01)
+      expect(g.cols * g.rows).toBeGreaterThanOrEqual(g.slots)
+      if (g.mode === 'full') expect(g.r * 2).toBeLessThanOrEqual(Math.min(g.cellW, g.cellH))
     }
   })
 })
