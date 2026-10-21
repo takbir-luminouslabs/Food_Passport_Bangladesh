@@ -32,3 +32,24 @@ test('current page is marked for assistive tech', async () => {
   const nav = screen.getByRole('navigation', { name: translations.bn['nav.main'] })
   expect(within(nav).getByRole('link', { name: translations.bn['nav.passport'] })).toHaveAttribute('aria-current', 'page')
 })
+
+test('the footer starts with a decorative strip of real food photos', async () => {
+  await renderApp('#/')
+  const strip = within(screen.getByRole('contentinfo')).getByTestId('footer-strip')
+  expect(strip).toHaveAttribute('aria-hidden', 'true')
+  const imgs = strip.querySelectorAll('img')
+  expect(imgs.length).toBe(20) // ten photos, listed twice for a seamless loop
+  expect(new Set([...imgs].map((i) => i.getAttribute('src'))).size).toBe(10)
+  for (const img of imgs) {
+    expect(img).toHaveAttribute('alt', '')
+    expect(img.getAttribute('src')).toMatch(/^images\/foods\//)
+  }
+})
+
+test('the photo strip is a banner with a heading line and a start button that goes to the food picker', async () => {
+  const { user } = await renderApp('#/quiz')
+  const banner = within(screen.getByRole('contentinfo')).getByTestId('footer-banner')
+  expect(within(banner).getByText(translations.bn['footer.banner'])).toBeInTheDocument()
+  await user.click(within(banner).getByRole('link', { name: translations.bn['cta.start'] }))
+  expect(window.location.hash).toBe('#/')
+})

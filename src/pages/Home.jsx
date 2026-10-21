@@ -71,10 +71,9 @@ export default function Home() {
       <section data-testid="hero" className="hero-panel">
         <div className="grid items-center gap-8 px-5 py-8 md:grid-cols-[1fr_1.05fr] md:gap-10 md:px-10 md:py-12">
           <div className="text-center md:text-left">
-            <p className="text-sm font-semibold text-gold-dark">{t('hero.badge')}</p>
-            <h1 className="mt-2 text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">{t('brand.name')}</h1>
-            <h2 className="mt-3 text-xl text-primary-dark">{t('hero.title')}</h2>
-            <p className="mt-2 max-w-md text-muted md:max-w-none">{returning ? t('brand.tagline') : t('hero.onboarding')}</p>
+            <p className="text-sm font-bold uppercase tracking-wider text-gold-dark">{t('brand.name')}</p>
+            <h1 className="mt-2 text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">{t('hero.heading')}</h1>
+            <p className="mt-4 max-w-md text-lg text-muted md:max-w-none">{t('hero.lead')}</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
               <button type="button" onClick={() => goToStep('pick')} className="inline-flex min-h-12 items-center rounded-lg bg-primary px-7 font-semibold text-lime transition-colors hover:bg-primary-dark">
                 {returning ? t('cta.continue') : t('cta.start')}
@@ -83,6 +82,10 @@ export default function Home() {
                 {t('share.passport')}
               </button>
             </div>
+            <p className="mt-4 text-sm text-muted">
+              <span>{t('hero.badge')}</span>
+              {!returning && <><span aria-hidden="true"> · </span><span>{t('hero.onboarding')}</span></>}
+            </p>
           </div>
           <HeroCollage />
         </div>

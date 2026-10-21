@@ -20,7 +20,8 @@ afterEach(() => vi.unstubAllGlobals())
 test('shows a loading state, then the brand and the start CTA', async () => {
   render(<App />)
   expect(screen.getByText(translations.bn['common.loading'])).toBeInTheDocument()
-  expect(await screen.findByRole('heading', { level: 1 })).toHaveTextContent('Food Passport Bangladesh')
+  expect(await screen.findByRole('heading', { level: 1 })).toHaveTextContent(translations.bn['hero.heading'])
+  expect(screen.getByText('Food Passport Bangladesh', { selector: 'header *' })).toBeInTheDocument()
   expect(screen.getByRole('button', { name: translations.bn['cta.start'] })).toBeInTheDocument()
 })
 

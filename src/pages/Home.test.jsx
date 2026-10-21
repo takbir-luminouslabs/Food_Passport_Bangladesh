@@ -39,11 +39,6 @@ test('hero has no floating food pictures, and a row of food-category shortcuts',
   expect(within(nav).getByRole('button', { name: 'ভাত ও বিরিয়ানি' })).toBeInTheDocument()
 })
 
-test('the footer ends with the illustrated hills', async () => {
-  await renderApp('#/')
-  expect(document.querySelector('footer svg[data-scene="hills"]')).not.toBeNull()
-})
-
 test('returning guests see saved progress, level bar and the continue CTA', async () => {
   await renderApp('#/', { state: { triedFoodIds: pitha.slice(0, 1) } })
   expect(screen.getByRole('button', { name: bn['cta.continue'] })).toBeInTheDocument()

@@ -13,7 +13,8 @@ export const translations = {
     'nav.language': 'Language',
     'nav.skip': 'Skip to content',
 
-    'hero.title': 'Your Bangladeshi food passport',
+    'hero.heading': 'How much of Bangladesh have you tasted?',
+    'hero.lead': 'Pick one famous food from every district, collect a stamp for each, and watch your passport fill up, from Natore’s kacha gola to Chandpur’s ilish.',
     'hero.subtitle': 'Try a dish, collect its stamp, earn XP and share your journey.',
     'hero.onboarding': 'No sign-up needed. Your passport is saved in this browser.',
     'cta.start': 'Start My Food Passport',
@@ -127,6 +128,7 @@ export const translations = {
 
     'footer.madeWith': 'Made with love for Bangladesh’s food culture.',
     'footer.copyright': '© 2026 Food Passport Bangladesh',
+    'footer.banner': 'Taste every district of Bangladesh',
     'footer.privacy': 'Privacy',
     'footer.sources': 'Data sources',
 
@@ -267,11 +269,12 @@ export const translations = {
     'nav.language': 'ভাষা',
     'nav.skip': 'মূল অংশে যান',
 
-    'hero.title': 'আপনার বাংলাদেশি খাবারের পাসপোর্ট',
+    'hero.heading': 'বাংলাদেশের কতগুলো স্বাদ চেখেছেন?',
+    'hero.lead': 'প্রতিটি জেলার একটি বিখ্যাত খাবার খুঁজে নিন, চেখে দেখুন, আর পাসপোর্টে স্ট্যাম্প লাগান। নাটোরের কাঁচাগোল্লা থেকে চাঁদপুরের ইলিশ, ৬৪ জেলার স্বাদ এক পাসপোর্টে।',
     'hero.subtitle': 'একটি খাবার চেখে দেখুন, স্ট্যাম্প সংগ্রহ করুন, XP অর্জন করুন এবং আপনার যাত্রা শেয়ার করুন।',
     'hero.onboarding': 'সাইন-আপ লাগবে না। আপনার পাসপোর্ট এই ব্রাউজারেই সংরক্ষিত থাকবে।',
-    'cta.start': 'আমার ফুড পাসপোর্ট শুরু করুন',
-    'cta.continue': 'আমার যাত্রা চালিয়ে যান',
+    'cta.start': 'যাত্রা শুরু করুন',
+    'cta.continue': 'যাত্রা চালিয়ে যান',
 
     'stats.foodsTried': 'চেখে দেখা খাবার',
     'stats.totalXp': 'মোট XP',
@@ -319,7 +322,7 @@ export const translations = {
     'backup.importFailed': 'ওই ব্যাকআপ ফাইলটি ব্যবহার করা যায়নি।',
     'storage.failed': 'এই ব্রাউজারে আপনার অগ্রগতি সংরক্ষণ করা যাচ্ছে না (প্রাইভেট মোড বা জায়গা শেষ)।',
 
-    'share.passport': 'আমার পাসপোর্ট শেয়ার করুন',
+    'share.passport': 'পাসপোর্ট শেয়ার করুন',
     'share.download': 'ডাউনলোড করুন',
     'share.format': 'ডাউনলোডের ফরম্যাট',
     'photo.add': 'আপনার ছবি যোগ করুন (ঐচ্ছিক)',
@@ -381,6 +384,7 @@ export const translations = {
 
     'footer.madeWith': 'বাংলাদেশের খাদ্যসংস্কৃতির প্রতি ভালোবাসা নিয়ে তৈরি।',
     'footer.copyright': '© ২০২৬ Food Passport Bangladesh',
+    'footer.banner': 'বাংলাদেশের প্রতিটি জেলার স্বাদ নিন',
     'footer.privacy': 'গোপনীয়তা',
     'footer.sources': 'তথ্যসূত্র',
 
