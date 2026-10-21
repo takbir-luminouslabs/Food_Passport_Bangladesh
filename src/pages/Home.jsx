@@ -7,6 +7,7 @@ import DonationSection from '../components/DonationSection'
 import FoodPicker from '../components/FoodPicker'
 import JourneySteps, { NextStep } from '../components/JourneySteps'
 import PassportBook from '../components/PassportBook'
+import CloudCard from '../components/CloudCard'
 import ShareCard from '../components/ShareCard'
 import ProgressBar from '../components/ProgressBar'
 import Icon from '../components/Icon'
@@ -128,6 +129,7 @@ export default function Home() {
 
       <Step id="download" title={t('journey.download')}>
         <ShareCard />
+        <CloudCard />
       </Step>
 
       <Section id="home-progress" title={t('home.progress')}>

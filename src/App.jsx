@@ -3,6 +3,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
 import LoadingState from './components/LoadingState'
 import { AppProvider } from './context/AppContext'
+import { AuthProvider } from './context/AuthProvider'
 import { HolderPhotoProvider } from './context/HolderPhotoProvider'
 import { useApp } from './context/app-context'
 import { useLanguage } from './hooks/useLanguage'
@@ -60,16 +61,18 @@ function Boundary() {
 }
 
 // HashRouter keeps client-side routes working on GitHub Pages without server rewrites.
-export default function App(props) {
+export default function App({ authClient, ...props }) {
   return (
     <AppProvider {...props}>
-      <HolderPhotoProvider>
-        <HashRouter>
-          <Layout>
-            <Boundary />
-          </Layout>
-        </HashRouter>
-      </HolderPhotoProvider>
+      <AuthProvider client={authClient}>
+        <HolderPhotoProvider>
+          <HashRouter>
+            <Layout>
+              <Boundary />
+            </Layout>
+          </HashRouter>
+        </HolderPhotoProvider>
+      </AuthProvider>
     </AppProvider>
   )
 }

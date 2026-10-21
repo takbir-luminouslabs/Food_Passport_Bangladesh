@@ -43,6 +43,8 @@ jobs:
           VITE_SITE_URL: ${{ vars.SITE_URL }}
           # Leave BKASH_NUMBER unset until the number has been verified; the donation block then shows "coming soon".
           VITE_BKASH_NUMBER: ${{ vars.BKASH_NUMBER }}
+          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

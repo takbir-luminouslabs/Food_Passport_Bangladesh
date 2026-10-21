@@ -1,10 +1,12 @@
 import { useApp } from '../context/app-context'
+import { useAuth } from '../context/auth-context'
 import { useLanguage } from '../hooks/useLanguage'
 import { useScrollToHash } from '../hooks/useScrollToHash'
 
 export default function Privacy() {
   const { content } = useApp()
   const { t } = useLanguage()
+  const { enabled: cloud } = useAuth()
   useScrollToHash()
 
   const byHost = new Map()
@@ -25,6 +27,7 @@ export default function Privacy() {
     <article>
       <h1 className="text-2xl font-bold text-primary">{t('privacy.title')}</h1>
       {block('stored', <p className="mt-2">{t('privacy.storedBody')}</p>)}
+      {cloud && block('cloud', <p className="mt-2">{t('privacy.cloudBody')}</p>)}
       {block('control', <p className="mt-2">{t('privacy.controlBody')}</p>)}
       {block('analytics', <p className="mt-2">{t('privacy.analyticsBody')}</p>)}
       <section id="sources" aria-labelledby="p-sources" className="mt-6 scroll-mt-4">

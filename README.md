@@ -99,3 +99,11 @@ The site works fully without it. The optional cloud features (accounts, sync, le
 - `supabase/tests/` — permission tests. `npm run db:test` starts a throwaway Postgres in Docker, applies the migrations and checks, with two fake accounts, that nobody can read or change another user's data or write XP directly.
 
 To set up a real project: create it in Supabase, then run the migration files in order and `seed.sql` in the SQL editor (or `supabase db push`). Put the project URL and publishable key in `.env` as `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. Never put the `service_role` key in this repo or in the browser.
+
+### Accounts (sign in with an email link)
+
+Accounts are off until `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` are set (locally in `.env`, for the live site as GitHub Actions variables). Without them the site is the plain guest passport and no sign-in button appears.
+
+In the Supabase dashboard (Authentication → URL Configuration) add the site address as the **Site URL** and as a **Redirect URL**, for example `https://<user>.github.io/<repository>/` and `http://localhost:5173/` for development. Email sign-in is on by default. The sign-in link returns as `?code=…` before the `#/` route (PKCE flow), so it does not clash with the hash router.
+
+The free Supabase email sender is rate limited and only meant for testing; before real users arrive, add your own SMTP provider under Authentication → SMTP Settings.

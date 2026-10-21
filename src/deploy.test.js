@@ -27,6 +27,8 @@ describe('GitHub Pages deployment', () => {
     const w = workflow()
     expect(w).toContain('vars.BKASH_NUMBER')
     expect(w).toContain('vars.SITE_URL')
+    expect(w).toContain('vars.SUPABASE_URL')
+    expect(w).toContain('vars.SUPABASE_PUBLISHABLE_KEY')
     expect(w).not.toContain('secrets.')
   })
 
