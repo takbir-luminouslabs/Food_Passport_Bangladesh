@@ -53,7 +53,7 @@ export function AuthProvider({ client: given, children }) {
   }, [client])
 
   const value = useMemo(
-    () => ({ enabled: Boolean(client), ready, user: session?.user ?? null, signInWithEmail, signOut, deleteAccount }),
+    () => ({ enabled: Boolean(client), client, ready, user: session?.user ?? null, signInWithEmail, signOut, deleteAccount }),
     [client, ready, session, signInWithEmail, signOut, deleteAccount],
   )
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

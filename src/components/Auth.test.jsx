@@ -25,6 +25,7 @@ function fakeClient({ user = null } = {}) {
       }),
     },
     rpc: vi.fn(async () => ({ error: null })),
+    from: () => ({ select: () => Object.assign(Promise.resolve({ data: [], error: null }), { eq: async () => ({ data: [], error: null }) }) }),
   }
 }
 

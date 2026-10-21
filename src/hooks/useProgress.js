@@ -65,9 +65,22 @@ export function useProgress(content, storage) {
   )
   const exportBackup = useCallback(() => exportState(latest.current), [])
 
+  // Cloud sync: make this browser's stamps / right answers match a given set. Quiet (no celebration) and a no-op
+  // when nothing differs, so a background refresh never interrupts the user.
+  const applyCloud = useCallback(
+    ({ foods, quiz }) => {
+      const cur = latest.current
+      const same = (a, b) => a.length === b.length && a.every((id) => b.includes(id))
+      if (same(cur.triedFoodIds, foods) && same(cur.quizProgress.correctIds, quiz)) return
+      prevProgress.current = null
+      commit({ ...cur, triedFoodIds: [...foods], quizProgress: { correctIds: [...quiz] } })
+    },
+    [commit],
+  )
+
   return {
     state, progress, lastDiff, saveFailed,
     toggleTried, setLanguage, recordQuizCorrect: recordQuiz, setPersonalityResult: setPersonality,
-    dismissDiff, reset, importBackup, exportBackup,
+    dismissDiff, reset, importBackup, exportBackup, applyCloud,
   }
 }

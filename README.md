@@ -107,3 +107,7 @@ Accounts are off until `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` a
 In the Supabase dashboard (Authentication → URL Configuration) add the site address as the **Site URL** and as a **Redirect URL**, for example `https://<user>.github.io/<repository>/` and `http://localhost:5173/` for development. Email sign-in is on by default. The sign-in link returns as `?code=…` before the `#/` route (PKCE flow), so it does not clash with the hash router.
 
 The free Supabase email sender is rate limited and only meant for testing; before real users arrive, add your own SMTP provider under Authentication → SMTP Settings.
+
+### Guest → account merge and sync
+
+On sign-in the site compares this browser's passport with the account's. If the browser holds stamps or right quiz answers the account lacks, it asks first, then calls `merge_guest_progress` (migration 4). The merge is a **union**: it only adds, never deletes or lowers anything, is safe to repeat, and pays XP by the same once-only rules as ticking one by one. Afterwards ticks and un-ticks are pushed to the account, and the account is re-read when the tab regains focus so progress follows you between devices. Choosing "Not now" leaves both sides untouched. The merged ids are the guest's own claims (a stamp has always been a self-reported tick); unknown ids are ignored and each food or question pays once.

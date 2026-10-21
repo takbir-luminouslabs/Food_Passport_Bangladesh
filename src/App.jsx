@@ -1,4 +1,5 @@
 import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import CloudSync from './components/CloudSync'
 import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/Layout'
 import LoadingState from './components/LoadingState'
@@ -65,6 +66,7 @@ export default function App({ authClient, ...props }) {
   return (
     <AppProvider {...props}>
       <AuthProvider client={authClient}>
+        <CloudSync />
         <HolderPhotoProvider>
           <HashRouter>
             <Layout>
