@@ -8,10 +8,9 @@ import FoodPicker from '../components/FoodPicker'
 import JourneySteps, { NextStep } from '../components/JourneySteps'
 import PassportBook from '../components/PassportBook'
 import ShareCard from '../components/ShareCard'
-import PassportCoverButton from '../components/PassportCoverButton'
 import ProgressBar from '../components/ProgressBar'
 import Icon from '../components/Icon'
-import { HeroScene } from '../components/Scenes'
+import HeroCollage from '../components/HeroCollage'
 import { useApp } from '../context/app-context'
 import { useLanguage } from '../hooks/useLanguage'
 import { validBkashNumber } from '../utils/donation'
@@ -69,32 +68,31 @@ export default function Home() {
 
   return (
     <div>
-      <section data-testid="hero" className="hero-sky">
-        <div className="relative grid items-center gap-6 px-5 pb-2 pt-8 md:grid-cols-[1fr_auto] md:px-10 md:pt-10">
+      <section data-testid="hero" className="hero-panel">
+        <div className="grid items-center gap-8 px-5 py-8 md:grid-cols-[1fr_1.05fr] md:gap-10 md:px-10 md:py-12">
           <div className="text-center md:text-left">
-            <p className="inline-flex min-h-8 items-center rounded-full bg-white/70 px-4 text-sm font-semibold text-primary">{t('hero.badge')}</p>
-            <h1 className="mt-3 text-3xl font-extrabold text-primary sm:text-4xl">{t('brand.name')}</h1>
-            <h2 className="mt-2 text-xl text-primary-dark">{t('hero.title')}</h2>
-            <p className="mt-2 text-muted">{returning ? t('brand.tagline') : t('hero.onboarding')}</p>
-            <div className="mt-5 flex flex-wrap justify-center gap-3 md:justify-start">
-              <button type="button" onClick={() => goToStep('pick')} className="inline-flex min-h-11 items-center rounded-full bg-primary px-7 font-semibold text-lime shadow-md transition duration-150 hover:-translate-y-0.5 hover:bg-primary-dark motion-reduce:transition-none motion-reduce:hover:transform-none">
+            <p className="text-sm font-semibold text-gold-dark">{t('hero.badge')}</p>
+            <h1 className="mt-2 text-3xl font-extrabold leading-tight text-primary sm:text-4xl lg:text-5xl">{t('brand.name')}</h1>
+            <h2 className="mt-3 text-xl text-primary-dark">{t('hero.title')}</h2>
+            <p className="mt-2 max-w-md text-muted md:max-w-none">{returning ? t('brand.tagline') : t('hero.onboarding')}</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
+              <button type="button" onClick={() => goToStep('pick')} className="inline-flex min-h-12 items-center rounded-lg bg-primary px-7 font-semibold text-lime transition-colors hover:bg-primary-dark">
                 {returning ? t('cta.continue') : t('cta.start')}
               </button>
-              <button type="button" onClick={() => goToStep('download')} className="inline-flex min-h-11 items-center rounded-full border-2 border-primary bg-white/60 px-6 font-semibold text-primary transition duration-150 hover:-translate-y-0.5 hover:bg-white motion-reduce:transition-none motion-reduce:hover:transform-none">
+              <button type="button" onClick={() => goToStep('download')} className="inline-flex min-h-12 items-center rounded-lg border-2 border-primary px-6 font-semibold text-primary transition-colors hover:bg-primary/5">
                 {t('share.passport')}
               </button>
             </div>
           </div>
-          <div className="mx-auto w-28 sm:w-36 md:mx-0 md:w-52"><PassportCoverButton /></div>
+          <HeroCollage />
         </div>
-        <HeroScene className="mt-2 block h-36 w-full sm:h-48 md:h-60" />
       </section>
 
       <JourneySteps />
 
       <nav aria-label={t('home.categories')} className="mt-6">
         <ul className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          {content.categories.map((c, i) => (
+          {content.categories.filter((c) => content.foods.some((f) => f.category === c.id)).map((c, i) => (
             <li key={c.id}>
               <button
                 type="button"

@@ -74,7 +74,7 @@ export default function FoodPicker() {
             className="mt-1 min-h-11 w-full rounded-xl border border-primary/30 bg-card px-3"
           >
             <option value="all">{t('discover.allCategories')}</option>
-            {content.categories.map((c) => (
+            {content.categories.filter((c) => content.foods.some((f) => f.category === c.id)).map((c) => (
               <option key={c.id} value={c.id}>{pick(c, 'name')}</option>
             ))}
           </select>

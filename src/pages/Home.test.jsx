@@ -19,12 +19,14 @@ test('new visitors see onboarding and a start CTA', async () => {
   expect(screen.getByText(bn['hero.onboarding'])).toBeInTheDocument()
 })
 
-test('the hero is a pastel sky with a badge, the illustrated skyline and exactly one h1', async () => {
+test('the hero has a badge, a collage of real food photos and exactly one h1', async () => {
   await renderApp('#/')
   expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
   const hero = screen.getByTestId('hero')
   expect(within(hero).getByText(bn['hero.badge'])).toBeInTheDocument()
-  expect(hero.querySelector('svg[data-scene="hero"]')).toHaveAttribute('aria-hidden', 'true')
+  const prints = hero.querySelectorAll('[data-print] img')
+  expect(prints.length).toBeGreaterThanOrEqual(5)
+  for (const img of prints) expect(img).toHaveAttribute('alt', '')
   expect(within(hero).getByRole('button', { name: bn['cta.start'] })).toBeInTheDocument()
 })
 
@@ -33,7 +35,7 @@ test('hero has no floating food pictures, and a row of food-category shortcuts',
   const hero = screen.getByTestId('hero')
   expect(hero.querySelectorAll('[data-dish]')).toHaveLength(0)
   const nav = screen.getByRole('navigation', { name: bn['home.categories'] })
-  expect(within(nav).getAllByRole('button').length).toBeGreaterThanOrEqual(8)
+  expect(within(nav).getAllByRole('button')).toHaveLength(7)
   expect(within(nav).getByRole('button', { name: 'ভাত ও বিরিয়ানি' })).toBeInTheDocument()
 })
 

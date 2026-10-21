@@ -225,12 +225,10 @@ body {
 .tint-lavender { background-color: var(--color-lavender); }
 .tint-sunny { background-color: var(--color-sunny); }
 
-.hero-sky {
-  position: relative;
-  overflow: hidden;
-  border-radius: 2rem;
-  background: linear-gradient(180deg, #cfe8f7 0%, #e8f5ee 55%, #f3f8ec 100%);
-  box-shadow: 0 10px 30px -16px rgb(23 75 50 / 0.35);
+.hero-panel {
+  border: 1px solid rgb(23 75 50 / 0.15);
+  border-radius: 1rem;
+  background: #fff;
 }
 
 @keyframes scene-drift { from { transform: translateX(-24px); } to { transform: translateX(24px); } }
