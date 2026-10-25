@@ -163,6 +163,12 @@ export default function ShareCard() {
             className="w-full rounded-2xl bg-card"
           />
         </button>
+        <button type="button" aria-haspopup="dialog" onClick={enlarge} className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-primary/30 px-4 text-sm font-semibold text-primary transition-colors hover:border-primary hover:bg-primary/10 sm:hidden">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" className="size-[1.1em]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />
+          </svg>
+          {t('share.viewBigger')}
+        </button>
         {status === 'loading' && <p role="status" className="mt-2 text-sm text-muted">{t('share.generating')}</p>}
         {status === 'error' && <p role="alert" className="mt-2 text-sm text-red-700">{t('share.error')}</p>}
       </div>
@@ -246,9 +252,13 @@ export default function ShareCard() {
       </div>
       {zoomUrl && (
         <ZoomDialog label={t('share.cardAlt')} closeLabel={t('common.close')} widthClass="max-w-5xl" onClose={closeZoom}>
-          <TiltSurface max={6}>
-            <img src={zoomUrl} alt={t('share.cardAlt')} className="w-full rounded-2xl shadow-2xl" />
-          </TiltSurface>
+          {/* on a phone the card is shown at a readable width and can be swiped sideways; larger screens fit it whole */}
+          <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:overflow-visible sm:px-0" data-testid="zoom-scroller">
+            <TiltSurface max={6}>
+              <img src={zoomUrl} alt={t('share.cardAlt')} className="w-[165vw] max-w-none rounded-2xl shadow-2xl sm:w-full sm:max-w-full" />
+            </TiltSurface>
+          </div>
+          <p className="mt-3 text-center text-sm text-cream sm:hidden">{t('share.panHint')}</p>
           <p className="mt-3 text-center text-sm text-cream">{t('share.saveHint')}</p>
           <p className="text-center text-sm text-cream/80">{t('dialog.hint')}</p>
         </ZoomDialog>

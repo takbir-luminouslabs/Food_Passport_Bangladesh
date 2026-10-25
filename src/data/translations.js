@@ -245,6 +245,8 @@ export const translations = {
     'auth.signOutUnknown': "We could not check whether everything is saved online. Signing out now could lose recent changes.",
     'auth.signOutAdd': "Add them and sign out",
     'auth.signOutAnyway': "Sign out and clear anyway",
+    'share.viewBigger': "Tap to view bigger",
+    'share.panHint': "Swipe sideways to see the whole card.",
     'coming.soon': 'This page is coming soon.',
 
     'passport.cover.label': 'Food Passport cover',
@@ -595,6 +597,8 @@ export const translations = {
     'auth.signOutUnknown': "সবকিছু অনলাইনে সংরক্ষিত আছে কিনা যাচাই করা যায়নি। এখন সাইন আউট করলে সাম্প্রতিক পরিবর্তন হারাতে পারে।",
     'auth.signOutAdd': "যোগ করে সাইন আউট করুন",
     'auth.signOutAnyway': "তবুও সাইন আউট করে মুছে দিন",
+    'share.viewBigger': "বড় করে দেখুন",
+    'share.panHint': "পুরো কার্ড দেখতে পাশে সোয়াইপ করুন।",
     'coming.soon': 'এই পাতাটি শিগগিরই আসছে।',
 
     'passport.cover.label': 'ফুড পাসপোর্টের কভার',
